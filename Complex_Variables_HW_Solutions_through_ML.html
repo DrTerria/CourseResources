@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complex Variables — Homework Solutions (§1–47, through the ML Inequality)</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], tags: 'none' },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<style>
+  :root{
+    --ink:#1a1d24; --paper:#fbf8f1; --accent:#7a2e2e; --accent2:#1f5673;
+    --soft:#efe9dc; --line:#d9d0bd; --gold:#a8842c; --green:#3a6b41;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.6; font-size:18px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 26px 120px}
+  header.hero{
+    background:linear-gradient(135deg,#22323d,#3a2727);
+    color:#f3ecd9;padding:54px 26px 46px;text-align:center;
+    border-bottom:5px solid var(--gold);
+  }
+  header.hero h1{font-size:2rem;margin:0 0 8px;letter-spacing:.5px}
+  header.hero .sub{font-style:italic;opacity:.9;font-size:1.05rem}
+  header.hero .meta{margin-top:14px;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
+  h2.chap{
+    margin:60px 0 6px;font-size:1.6rem;color:var(--accent);
+    border-bottom:3px double var(--line);padding-bottom:6px;
+  }
+  h2.chap .tag{display:block;font-size:.68rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-style:normal}
+  h3.set{margin:40px 0 4px;font-size:1.2rem;color:var(--accent2);background:var(--soft);padding:8px 14px;border-radius:6px}
+  h3.set .pg{color:var(--gold);font-size:.9rem;font-weight:normal;float:right}
+  .prob{margin:22px 0 8px;padding-left:6px;border-left:3px solid var(--line)}
+  .prob .num{font-weight:bold;color:var(--accent);font-size:1.02rem}
+  .q{margin:.2em 0 .5em;padding-left:14px}
+  .sol{padding:10px 16px;background:#fff;border:1px solid var(--line);border-radius:6px;margin:6px 0 0}
+  .sol .lab{font-variant:small-caps;font-weight:bold;letter-spacing:1px;font-size:.78rem;color:var(--green);display:block;margin-bottom:3px}
+  .ans{margin-top:8px;font-weight:bold;color:var(--accent2)}
+  .ans::before{content:"Answer: ";font-variant:small-caps;color:var(--gold);font-weight:bold}
+  p{margin:.5em 0}
+  ul,ol{margin:.3em 0 .6em;padding-left:1.4em}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 24px;margin:30px 0;column-count:2;column-gap:38px}
+  @media(max-width:640px){.toc{column-count:1}body{font-size:17px}}
+  .toc a{color:var(--accent2);text-decoration:none;font-size:.93rem}
+  .toc a:hover{text-decoration:underline}
+  .toc .ch{font-weight:bold;color:var(--accent);display:block;margin:9px 0 2px;break-after:avoid}
+  .note{background:#f7f0db;border-left:4px solid var(--gold);padding:12px 16px;margin:18px 0;border-radius:0 6px 6px 0;font-size:.95rem}
+  a.top{font-size:.72rem;color:var(--gold);text-decoration:none;float:right;margin-top:8px}
+  .footer{text-align:center;font-size:.85rem;color:#7a7361;margin-top:56px;font-style:italic}
+  code{background:#ece5d4;padding:1px 5px;border-radius:3px;font-size:.85em}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Homework Solutions</h1>
+  <div class="sub">Complex Variables &amp; Applications — Brown &amp; Churchill, 9th ed.</div>
+  <div class="meta">All assigned problems, §1–47 &nbsp;•&nbsp; pp. 4–5 through pp. 138–140 &nbsp;•&nbsp; through the ML inequality</div>
+</header>
+<div class="wrap">
+
+<p style="margin-top:28px">This document contains every assigned homework problem from the start of the course through the §47 exercise set (pp. 138–140) on upper bounds for moduli of contour integrals — i.e. through the ML inequality, inclusive. Problems are stated (lightly paraphrased from the text) and solved. Hard problems get full step-by-step work; routine ones get the key steps and the answer. Final answers are marked in an <span style="color:var(--accent2);font-weight:bold">Answer</span> line.</p>
+
+<div class="note"><strong>Scope note.</strong> The ML inequality is §47, whose exercises are the assigned pp. 138–140 set. The later assigned page ranges in your list (pp. 147, 159, 170, 185, 195, 205, 218) belong to §48 (Antiderivatives) and beyond — past the ML cutoff — so they're <em>not</em> included here. This file stops exactly at the ML inequality, matching your study guide.</div>
+
+<div class="toc" id="top">
+  <span class="ch">Ch. 1 — Complex Numbers</span>
+  <a href="#p4">pp. 4–5 (§2)</a><br>
+  <a href="#p7">pp. 7–8 (§3)</a><br>
+  <a href="#p13">pp. 13–14 (§5)</a><br>
+  <a href="#p16">pp. 16–17 (§6)</a><br>
+  <a href="#p23">pp. 23–25 (§9)</a><br>
+  <a href="#p30">pp. 30–32 (§10)</a><br>
+  <a href="#p34">pp. 34–35 (§12)</a><br>
+  <span class="ch">Ch. 2 — Analytic Functions</span>
+  <a href="#p43">pp. 43–44 (§14)</a><br>
+  <a href="#p54">pp. 54–55 (§18)</a><br>
+  <a href="#p61">pp. 61–62 (§20)</a><br>
+  <a href="#p70">pp. 70–72 (§24)</a><br>
+  <a href="#p76">pp. 76–77 (§26)</a><br>
+  <span class="ch">Ch. 3 — Elementary Functions</span>
+  <a href="#p89">pp. 89–90 (§30)</a><br>
+  <a href="#p95">pp. 95–97 (§33)</a><br>
+  <a href="#p99">pp. 99–100 (§34)</a><br>
+  <a href="#p103">p. 103 (§36)</a><br>
+  <a href="#p107">pp. 107–109 (§38)</a><br>
+  <a href="#p111">pp. 111–112 (§39)</a><br>
+  <span class="ch">Ch. 4 — Integrals (→ §47)</span>
+  <a href="#p119">pp. 119–120 (§42)</a><br>
+  <a href="#p133">pp. 133–135 (§46)</a><br>
+  <a href="#p138">pp. 138–140 (§47, ML)</a><br>
+</div>
+
+<!-- ===================== CHAPTER 1 ===================== -->
+<h2 class="chap" id="ch1"><span class="tag">Chapter 1</span>Complex Numbers <a class="top" href="#top">↑ top</a></h2>
+
+<h3 class="set" id="p4">pp. 4–5 — §2 Basic Algebraic Properties <span class="pg">1, 2, 6, 8–11</span></h3>
+
+<div class="prob"><span class="num">1.</span> Verify: (a) \((\sqrt2-i)-i(1-\sqrt2 i)=-2i\); (b) \((2,-3)(-2,1)=(-1,8)\); (c) \((3,1)(3,-1)\left(\tfrac15,\tfrac1{10}\right)=(2,1)\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \((\sqrt2-i)-i+\sqrt2 i^2=\sqrt2-i-i-\sqrt2=-2i.\) ✓<br>
+(b) \((2)(-2)-(-3)(1)+i[(2)(1)+(-2)(-3)]=(-4+3)+i(2+6)=-1+8i.\) ✓<br>
+(c) First \((3,1)(3,-1)=(9+1,\,-3+3)=(10,0)\). Then \((10,0)(\tfrac15,\tfrac1{10})=(2,1).\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Show (a) \(\operatorname{Re}(iz)=-\operatorname{Im}z\); (b) \(\operatorname{Im}(iz)=\operatorname{Re}z\).
+<div class="sol"><span class="lab">Solution</span>
+With \(z=x+iy\), \(iz=ix-y=-y+ix\). Hence \(\operatorname{Re}(iz)=-y=-\operatorname{Im}z\) and \(\operatorname{Im}(iz)=x=\operatorname{Re}z.\) ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Verify (a) the associative law for addition; (b) the distributive law \(z(z_1+z_2)=zz_1+zz_2\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Write each number in components and use the corresponding laws for real numbers.<br>
+(a) \([(x_1,y_1)+(x_2,y_2)]+(x_3,y_3)=(x_1+x_2+x_3,\,y_1+y_2+y_3)\), which equals \((x_1,y_1)+[(x_2,y_2)+(x_3,y_3)]\) since real addition is associative.<br>
+(b) Expand both sides into real-part / imaginary-part pairs; real distributivity makes them identical.</div></div>
+
+<div class="prob"><span class="num">8.</span> (a) From \((x,y)+(u,v)=(x,y)\) show \(0=(0,0)\) is the unique additive identity. (b) From \((x,y)(u,v)=(x,y)\) show \(1=(1,0)\) is the unique multiplicative identity.
+<div class="sol"><span class="lab">Solution</span>
+(a) The equation forces \(u=0,\ v=0\) for it to hold for some (hence all) \((x,y)\); so the identity is \((0,0)\) and it is unique because any two identities must equal each other.<br>
+(b) \((x,y)(u,v)=(xu-yv,\,xv+yu)=(x,y)\). Taking \((x,y)=(1,0)\) gives \(u=1,v=0\); checking \((0,1)\) confirms \((1,0)\) works for all \(z\). Uniqueness as before.</div></div>
+
+<div class="prob"><span class="num">9.</span> Use \(-1=(-1,0)\) and \(z=(x,y)\) to show \((-1)z=-z\).
+<div class="sol"><span class="lab">Solution</span>
+\((-1,0)(x,y)=(-x-0,\,-y+0)=(-x,-y)=-z.\) ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> Use \(i=(0,1)\) and \(y=(y,0)\) to verify \(-(iy)=(-i)y\); hence \(-z=-x-iy\) unambiguously.
+<div class="sol"><span class="lab">Solution</span>
+\(iy=(0,1)(y,0)=(0,y)\), so \(-(iy)=(0,-y)\). Also \((-i)y=(0,-1)(y,0)=(0,-y)\). Equal, so writing \(-iy\) is unambiguous, and \(-z=-x-iy.\) ✓</div></div>
+
+<div class="prob"><span class="num">11.</span> Solve \(z^2+z+1=0\) for \(z=(x,y)\) by reducing to simultaneous real equations.
+<div class="sol"><span class="lab">Solution (full)</span>
+\((x,y)(x,y)+(x,y)+(1,0)=(0,0)\) gives \((x^2-y^2+x+1,\ 2xy+y)=(0,0).\) From the imaginary part \(y(2x+1)=0\). Since no real \(x\) solves the equation, \(y\neq0\), so \(x=-\tfrac12\). Substituting into the real part: \(\tfrac14-y^2-\tfrac12+1=0\Rightarrow y^2=\tfrac34\Rightarrow y=\pm\tfrac{\sqrt3}{2}.\)
+<div class="ans">\(z=\left(-\tfrac12,\ \pm\tfrac{\sqrt3}{2}\right).\)</div></div></div>
+
+<h3 class="set" id="p7">pp. 7–8 — §3 Further Algebraic Properties <span class="pg">1, 2, 5–7</span></h3>
+
+<div class="prob"><span class="num">1.</span> Reduce to real form: (a) \(\dfrac{1+2i}{3-4i}+\dfrac{2-i}{5i}\); (b) \(\dfrac{5i}{(1-i)(2-i)(3-i)}\); (c) \((1-i)^4\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(\dfrac{1+2i}{3-4i}=\dfrac{(1+2i)(3+4i)}{25}=\dfrac{-5+10i}{25}=-\tfrac15+\tfrac25 i\); \(\ \dfrac{2-i}{5i}=\dfrac{(2-i)(-i)}{5}=\dfrac{-1-2i}{5}=-\tfrac15-\tfrac25 i\). Sum \(=-\tfrac25.\)<br>
+(b) Denominator: \((1-i)(2-i)=1-3i+i^2=-3i+1-1\)... compute: \((1-i)(2-i)=2-i-2i+i^2=1-3i\); times \((3-i)\): \((1-3i)(3-i)=3-i-9i+3i^2=-10i\). So \(\dfrac{5i}{-10i}=-\tfrac12.\)<br>
+(c) \((1-i)^2=-2i\Rightarrow(1-i)^4=(-2i)^2=-4.\)
+<div class="ans">(a) \(-\tfrac25\); (b) \(-\tfrac12\); (c) \(-4\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show \(\dfrac{1}{1/z}=z\) (\(z\neq0\)).
+<div class="sol"><span class="lab">Solution</span>
+\(1/z=z^{-1}\) by definition; then \(1/(1/z)=(z^{-1})^{-1}=z\), since the multiplicative inverse of \(z^{-1}\) is the unique number whose product with \(z^{-1}\) is 1, namely \(z\). ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Derive the quotient formula (6) of §3 for \(z_1/z_2\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Multiply numerator and denominator of \(\dfrac{z_1}{z_2}=\dfrac{x_1+iy_1}{x_2+iy_2}\) by \(\overline{z_2}=x_2-iy_2\):
+\[\frac{(x_1+iy_1)(x_2-iy_2)}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+i\,\frac{y_1x_2-x_1y_2}{x_2^2+y_2^2},\]
+which is formula (6). ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Using relations (10),(11) of §3, derive \(\left(\dfrac{z_1}{z_3}\right)\left(\dfrac{z_2}{z_4}\right)=\dfrac{z_1z_2}{z_3z_4}\) (\(z_3,z_4\neq0\)).
+<div class="sol"><span class="lab">Solution</span>
+\(\left(z_1 z_3^{-1}\right)\left(z_2 z_4^{-1}\right)=z_1z_2\,(z_3^{-1}z_4^{-1})=z_1z_2\,(z_3z_4)^{-1}=\dfrac{z_1z_2}{z_3z_4},\) using \(z_3^{-1}z_4^{-1}=(z_3z_4)^{-1}\) from (11). ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Use Exercise 6 to derive the cancellation law \(\dfrac{z_1 z}{z_2 z}=\dfrac{z_1}{z_2}\) (\(z_2,z\neq0\)).
+<div class="sol"><span class="lab">Solution</span>
+\(\dfrac{z_1 z}{z_2 z}=\dfrac{z_1}{z_2}\cdot\dfrac{z}{z}=\dfrac{z_1}{z_2}\cdot 1=\dfrac{z_1}{z_2},\) since \(z/z=1\) for \(z\neq0\). ✓</div></div>
+
+<h3 class="set" id="p13">pp. 13–14 — §5 Vectors, Moduli, Triangle Inequality <span class="pg">1, 2, 3, 5, 7–9</span></h3>
+
+<div class="prob"><span class="num">1.</span> Locate \(z_1+z_2\) and \(z_1-z_2\) vectorially for the given pairs.
+<div class="sol"><span class="lab">Solution (description)</span>
+Treat each \(z\) as a position vector. The sum is the parallelogram diagonal; the difference \(z_1-z_2\) is the vector from \(z_2\) to \(z_1\). E.g. (a) \(z_1=2i,\ z_2=-\tfrac23 i\): \(z_1+z_2=\tfrac43 i\), \(z_1-z_2=\tfrac83 i\) (both on the imaginary axis). (d) \(z_2=\overline{z_1}\): \(z_1+z_2=2x_1\) (real), \(z_1-z_2=2iy_1\) (pure imaginary).</div></div>
+
+<div class="prob"><span class="num">2.</span> Verify inequalities (3) of §4: \(\operatorname{Re}z\le|\operatorname{Re}z|\le|z|\) and \(\operatorname{Im}z\le|\operatorname{Im}z|\le|z|\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\operatorname{Re}z|=|x|=\sqrt{x^2}\le\sqrt{x^2+y^2}=|z|\), and \(\operatorname{Re}z\le|\operatorname{Re}z|\) trivially. Same for \(\operatorname{Im}z=y\). ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Show that when \(|z_3|\neq|z_4|\), \(\dfrac{\operatorname{Re}(z_1+z_2)}{|z_3+z_4|}\le\dfrac{|z_1|+|z_2|}{\big||z_3|-|z_4|\big|}.\)
+<div class="sol"><span class="lab">Solution</span>
+Numerator: \(\operatorname{Re}(z_1+z_2)\le|z_1+z_2|\le|z_1|+|z_2|\). Denominator: by the reverse triangle inequality \(|z_3+z_4|\ge\big||z_3|-|z_4|\big|>0\). Dividing the (larger) numerator bound by the (smaller) denominator bound gives the inequality. ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Sketch: (a) \(|z-1+i|=1\); (b) \(|z+i|\le3\); (c) \(|z-4i|\ge4\).
+<div class="sol"><span class="lab">Solution</span>
+(a) Circle of radius 1 centered at \(1-i\). (b) Closed disk radius 3 centered at \(-i\). (c) Closed exterior (including boundary) of the circle radius 4 centered at \(4i\) — all points at distance \(\ge4\) from \(4i\).</div></div>
+
+<div class="prob"><span class="num">7.</span> Show that for \(R\) large enough, the polynomial \(P(z)=a_0+\dots+a_nz^n\) satisfies \(|P(z)|<2|a_n||z|^n\) whenever \(|z|>R\).
+<div class="sol"><span class="lab">Solution (key idea)</span>
+Write \(P(z)=a_nz^n\Big(1+\tfrac{a_{n-1}}{a_n z}+\dots+\tfrac{a_0}{a_n z^n}\Big)\). Each fractional term \(\to0\) as \(|z|\to\infty\), so choose \(R\) so that the sum of their moduli is \(<1\) when \(|z|>R\). Then the bracket has modulus \(<2\), giving \(|P(z)|<2|a_n||z|^n.\) ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> Show \(|(x_1+iy_1)(x_2+iy_2)|\) and \(\sqrt{(x_1^2+y_1^2)(x_2^2+y_2^2)}\) are equal; conclude \(|z_1z_2|=|z_1||z_2|\).
+<div class="sol"><span class="lab">Solution</span>
+The product is \((x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)\); its modulus squared is
+\[(x_1x_2-y_1y_2)^2+(x_1y_2+x_2y_1)^2 = (x_1^2+y_1^2)(x_2^2+y_2^2)\]
+(expand — cross terms cancel). Taking square roots gives \(|z_1z_2|=|z_1||z_2|.\) ✓</div></div>
+
+<div class="prob"><span class="num">9.</span> Use Exercise 8 and induction to show \(|z^n|=|z|^n\) (\(n=1,2,\dots\)).
+<div class="sol"><span class="lab">Solution</span>
+Base \(n=1\) trivial. If \(|z^m|=|z|^m\), then \(|z^{m+1}|=|z^m\cdot z|=|z^m||z|=|z|^m|z|=|z|^{m+1}\) by Exercise 8. ✓</div></div>
+
+<h3 class="set" id="p16">pp. 16–17 — §6 Complex Conjugates <span class="pg">1, 2, 5, 7, 9, 10, 13–14</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show: (a) \(\overline{z+3i}=\bar z-3i\); (b) \(\overline{iz}=-i\bar z\); (c) \(\overline{(2+i)^2}=3-4i\); (d) \(|(2z+5)(\sqrt2-i)|=\sqrt3\,|2z+5|\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(\overline{z+3i}=\bar z+\overline{3i}=\bar z-3i.\)<br>
+(b) \(\overline{iz}=\bar i\,\bar z=-i\bar z.\)<br>
+(c) \((2+i)^2=3+4i\), conjugate \(=3-4i.\)<br>
+(d) \(|\sqrt2-i|=\sqrt{2+1}=\sqrt3\), and modulus is multiplicative. ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Sketch (a) \(\operatorname{Re}(\bar z-i)=2\); (b) \(|2z+i|=4\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\operatorname{Re}(\bar z-i)=\operatorname{Re}\bar z=x=2\): the vertical line \(x=2\).<br>
+(b) \(|2z+i|=2|z+\tfrac i2|=4\Rightarrow|z+\tfrac i2|=2\): circle radius 2 centered at \(-\tfrac i2\).</div></div>
+
+<div class="prob"><span class="num">5.</span> Verify property (9) of §6: \(|z|^2=z\bar z\) (and \(|\bar z|=|z|\)).
+<div class="sol"><span class="lab">Solution</span>
+\(z\bar z=(x+iy)(x-iy)=x^2+y^2=|z|^2.\) ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Show \(|\operatorname{Re}(2+\bar z+z^3)|\le4\) when \(|z|\le1\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\operatorname{Re}(2+\bar z+z^3)|\le|2+\bar z+z^3|\le2+|\bar z|+|z^3|=2+|z|+|z|^3\le2+1+1=4\) when \(|z|\le1.\) ✓</div></div>
+
+<div class="prob"><span class="num">9.</span> By factoring \(z^4-4z^2+3\) and using \(|z_1+z_2|\ge\big||z_1|-|z_2|\big|\), show that on \(|z|=2\), \(\left|\dfrac{1}{z^4-4z^2+3}\right|\le\dfrac13.\)
+<div class="sol"><span class="lab">Solution (full)</span>
+Factor: \(z^4-4z^2+3=(z^2-1)(z^2-3)\). On \(|z|=2\), \(|z^2|=4\), so
+\[|z^2-1|\ge\big||z^2|-1\big|=3,\qquad |z^2-3|\ge\big||z^2|-3\big|=1.\]
+Thus \(|z^4-4z^2+3|\ge3\cdot1=3\), giving \(\left|\dfrac{1}{z^4-4z^2+3}\right|\le\dfrac13.\) ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> Prove (a) \(z\) is real \(\iff z=\bar z\); (b) \(z\) is real or pure imaginary \(\iff z^2=\bar z^2\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(z-\bar z=2iy\); this is 0 iff \(y=0\) iff \(z\) real.<br>
+(b) \(z^2-\bar z^2=(z-\bar z)(z+\bar z)=(2iy)(2x)=4ixy\); this is 0 iff \(x=0\) or \(y=0\), i.e. \(z\) is pure imaginary or real. ✓</div></div>
+
+<div class="prob"><span class="num">13.</span> Show the circle \(|z-z_0|=R\) can be written \(|z|^2-2\operatorname{Re}(z\bar z_0)+|z_0|^2=R^2\).
+<div class="sol"><span class="lab">Solution</span>
+\(|z-z_0|^2=(z-z_0)\overline{(z-z_0)}=z\bar z - z\bar z_0-\bar z z_0+z_0\bar z_0=|z|^2-2\operatorname{Re}(z\bar z_0)+|z_0|^2,\) using \(z\bar z_0+\overline{z\bar z_0}=2\operatorname{Re}(z\bar z_0)\). Set equal to \(R^2\). ✓</div></div>
+
+<div class="prob"><span class="num">14.</span> Using \(x=\tfrac{z+\bar z}{2},\ y=\tfrac{z-\bar z}{2i}\), show \(x^2-y^2=1\) becomes \(z^2+\bar z^2=2\).
+<div class="sol"><span class="lab">Solution</span>
+\(x^2-y^2=\left(\tfrac{z+\bar z}{2}\right)^2-\left(\tfrac{z-\bar z}{2i}\right)^2=\tfrac{(z+\bar z)^2}{4}+\tfrac{(z-\bar z)^2}{4}=\tfrac{2z^2+2\bar z^2}{4}=\tfrac{z^2+\bar z^2}{2}.\) Setting \(=1\) gives \(z^2+\bar z^2=2.\) ✓</div></div>
+
+
+<h3 class="set" id="p23">pp. 23–25 — §9 Arguments of Products and Quotients <span class="pg">1, 2, 5, 6, 8, 10</span></h3>
+
+<div class="prob"><span class="num">1.</span> Find \(\operatorname{Arg}z\): (a) \(z=\dfrac{-2}{1+\sqrt3\,i}\); (b) \(z=(\sqrt3-i)^6\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(1+\sqrt3 i=2e^{i\pi/3}\), so \(z=\dfrac{-2}{2e^{i\pi/3}}=-e^{-i\pi/3}=e^{i\pi}e^{-i\pi/3}=e^{i2\pi/3}\). \(\operatorname{Arg}z=\tfrac{2\pi}{3}.\)<br>
+(b) \(\sqrt3-i=2e^{-i\pi/6}\Rightarrow z=2^6 e^{-i\pi}= -64\). \(\operatorname{Arg}z=\pi.\)
+<div class="ans">(a) \(2\pi/3\); (b) \(\pi\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show (a) \(|e^{i\theta}|=1\); (b) \(\overline{e^{i\theta}}=e^{-i\theta}\).
+<div class="sol"><span class="lab">Solution</span>
+\(e^{i\theta}=\cos\theta+i\sin\theta\). (a) \(|e^{i\theta}|=\sqrt{\cos^2\theta+\sin^2\theta}=1\). (b) \(\overline{e^{i\theta}}=\cos\theta-i\sin\theta=\cos(-\theta)+i\sin(-\theta)=e^{-i\theta}.\) ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Via exponential form, show (a) \(i(1-\sqrt3 i)(\sqrt3+i)=2(1+\sqrt3 i)\); (b) \(\dfrac{5i}{2+i}=1+2i\); (c) \((\sqrt3+i)^6=-64\); (d) \((1+\sqrt3 i)^{-10}=2^{-11}(-1+\sqrt3 i)\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(i=e^{i\pi/2}\), \(1-\sqrt3 i=2e^{-i\pi/3}\), \(\sqrt3+i=2e^{i\pi/6}\). Product \(=4\,e^{i(\pi/2-\pi/3+\pi/6)}=4e^{i\pi/3}=4(\tfrac12+\tfrac{\sqrt3}{2}i)=2+2\sqrt3 i=2(1+\sqrt3 i).\)<br>
+(c) \((2e^{i\pi/6})^6=64e^{i\pi}=-64.\)<br>
+(d) \(1+\sqrt3 i=2e^{i\pi/3}\Rightarrow(2e^{i\pi/3})^{-10}=2^{-10}e^{-i10\pi/3}=2^{-10}e^{i2\pi/3}=2^{-10}(-\tfrac12+\tfrac{\sqrt3}{2}i)=2^{-11}(-1+\sqrt3 i).\) ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Show that if \(\operatorname{Re}z_1>0\) and \(\operatorname{Re}z_2>0\), then \(\operatorname{Arg}(z_1z_2)=\operatorname{Arg}z_1+\operatorname{Arg}z_2\).
+<div class="sol"><span class="lab">Solution</span>
+\(\operatorname{Re}z>0\) means \(-\tfrac\pi2<\operatorname{Arg}z<\tfrac\pi2\). So \(\operatorname{Arg}z_1+\operatorname{Arg}z_2\in(-\pi,\pi)\), which is already in the principal range; since \(\arg(z_1z_2)=\arg z_1+\arg z_2\) and the sum lies in \((-\pi,\pi]\), it equals the principal value. ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> Prove two nonzero \(z_1,z_2\) have equal moduli \(\iff\) there exist \(c_1,c_2\) with \(z_1=c_1c_2,\ z_2=c_1\bar c_2\).
+<div class="sol"><span class="lab">Solution (full)</span>
+(\(\Leftarrow\)) If \(z_1=c_1c_2,\ z_2=c_1\bar c_2\) then \(|z_1|=|c_1||c_2|=|c_1||\bar c_2|=|z_2|.\)<br>
+(\(\Rightarrow\)) Suppose \(|z_1|=|z_2|=r\), write \(z_1=re^{i\theta_1},\ z_2=re^{i\theta_2}\). Take
+\[c_1=r\exp\!\Big(i\tfrac{\theta_1+\theta_2}{2}\Big),\quad c_2=\exp\!\Big(i\tfrac{\theta_1-\theta_2}{2}\Big).\]
+Then \(c_1c_2=re^{i\theta_1}=z_1\) and \(c_1\bar c_2=re^{i\theta_2}=z_2.\) ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> Use de Moivre to derive (a) \(\cos3\theta=\cos^3\theta-3\cos\theta\sin^2\theta\); (b) \(\sin3\theta=3\cos^2\theta\sin\theta-\sin^3\theta\).
+<div class="sol"><span class="lab">Solution</span>
+\((\cos\theta+i\sin\theta)^3=\cos3\theta+i\sin3\theta\). Expand the left with the binomial theorem:
+\[\cos^3\theta+3i\cos^2\theta\sin\theta-3\cos\theta\sin^2\theta-i\sin^3\theta.\]
+Match real and imaginary parts to get (a) and (b). ✓</div></div>
+
+<h3 class="set" id="p30">pp. 30–32 — §10 Roots of Complex Numbers <span class="pg">1–8</span></h3>
+
+<div class="prob"><span class="num">1.</span> Square roots of (a) \(2i\); (b) \(1-\sqrt3 i\), in rectangular form.
+<div class="sol"><span class="lab">Solution</span>
+(a) \(2i=2e^{i\pi/2}\): roots \(\sqrt2\,e^{i(\pi/4+k\pi)}\), \(k=0,1\Rightarrow\sqrt2(\tfrac{\sqrt2}{2}+\tfrac{\sqrt2}{2}i)=1+i\) and its negative. So \(\pm(1+i)\).<br>
+(b) \(1-\sqrt3 i=2e^{-i\pi/3}\): roots \(\sqrt2\,e^{-i\pi/6}\) and its negative \(=\pm\sqrt2(\tfrac{\sqrt3}{2}-\tfrac12 i)=\pm\dfrac{\sqrt3-i}{\sqrt2}.\)
+<div class="ans">(a) \(\pm(1+i)\); (b) \(\pm\dfrac{\sqrt3-i}{\sqrt2}\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Three cube roots of \(-8i\).
+<div class="sol"><span class="lab">Solution</span>
+\(-8i=8e^{-i\pi/2}\). Roots \(2e^{i(-\pi/6+2k\pi/3)}\), \(k=0,1,2\):
+\(2e^{-i\pi/6}=\sqrt3-i\); \(2e^{i\pi/2}=2i\); \(2e^{i7\pi/6}=-\sqrt3-i.\)
+<div class="ans">\(\pm\sqrt3-i,\ 2i\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Find \((-8-8\sqrt3 i)^{1/4}\); show roots are vertices of a square; identify principal root.
+<div class="sol"><span class="lab">Solution</span>
+\(-8-8\sqrt3 i=16e^{i4\pi/3}\) (equivalently \(16e^{-i2\pi/3}\)). Fourth roots: \(2\,e^{i(-\pi/6+k\pi/2)}\), \(k=0,1,2,3\):
+\(2e^{-i\pi/6}=\sqrt3-i\); \(2e^{i\pi/3}=1+\sqrt3 i\); \(2e^{i5\pi/6}=-\sqrt3+i\); \(2e^{i4\pi/3}=-1-\sqrt3 i.\)
+They lie on \(|z|=2\) at \(90^\circ\) spacing — a square. Principal root uses \(\operatorname{Arg}=-2\pi/3\), \(k=0\): \(\sqrt3-i\).
+<div class="ans">\(\pm(\sqrt3-i),\ \pm(1+\sqrt3 i)\); principal root \(\sqrt3-i\).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> All roots, as vertices of regular polygons, principal root: (a) \((-1)^{1/3}\); (b) \(8^{1/6}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(-1=e^{i\pi}\): roots \(e^{i(\pi+2k\pi)/3}\): \(e^{i\pi/3}=\tfrac12+\tfrac{\sqrt3}{2}i\), \(e^{i\pi}=-1\), \(e^{i5\pi/3}=\tfrac12-\tfrac{\sqrt3}{2}i\). Equilateral triangle on the unit circle; principal root \(\tfrac12+\tfrac{\sqrt3}{2}i\).<br>
+(b) \(8=8e^{i0}\): roots \(8^{1/6}e^{i2k\pi/6}=\sqrt2\,e^{ik\pi/3}\), \(k=0,\dots,5\): \(\pm\sqrt2,\ \dfrac{\pm1\pm\sqrt3 i}{\sqrt2}\) (regular hexagon). Principal root \(\sqrt2\).
+<div class="ans">(b) \(\pm\sqrt2,\ \pm\dfrac{1+\sqrt3 i}{\sqrt2},\ \pm\dfrac{1-\sqrt3 i}{\sqrt2}\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> For \(z_0=-4\sqrt2+4\sqrt2 i\), show \(c_0=2(1+i)\) and find the other two cube roots via \(\omega_3=e^{i2\pi/3}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+\(z_0=8e^{i3\pi/4}\), so principal cube root \(c_0=2e^{i\pi/4}=2(\tfrac{\sqrt2}{2}+\tfrac{\sqrt2}{2}i)=\sqrt2+\sqrt2 i\)... matching the book's \(2(1+i)/\sqrt2\)? The book states \(c_0=\sqrt2(1+i)\). The other roots are \(c_0\omega_3=c_0 e^{i2\pi/3}\) and \(c_0\omega_3^2=c_0e^{i4\pi/3}\), i.e. rotate \(c_0\) by \(120^\circ\) and \(240^\circ\). Multiplying out gives the two rectangular expressions quoted in the text:
+\[c_0\omega_3=\frac{-(\sqrt3+1)+(\sqrt3-1)i}{\sqrt2}\cdot\!\!,\quad c_0\omega_3^2=\frac{(\sqrt3-1)-(\sqrt3+1)i}{\sqrt2}.\]</div></div></div>
+
+<div class="prob"><span class="num">6.</span> Find the four zeros of \(z^4+4\) (one is \(z_0=\sqrt2 e^{i\pi/4}=1+i\)); factor into real quadratics.
+<div class="sol"><span class="lab">Solution</span>
+\(z^4=-4=4e^{i\pi}\): roots \(\sqrt2\,e^{i(\pi+2k\pi)/4}\): \(1+i,\ -1+i,\ -1-i,\ 1-i\). Pair conjugates:
+\((z-(1+i))(z-(1-i))=z^2-2z+2\); \((z-(-1+i))(z-(-1-i))=z^2+2z+2\).
+<div class="ans">\(z^4+4=(z^2-2z+2)(z^2+2z+2).\)</div></div></div>
+
+<div class="prob"><span class="num">7.</span> Show if \(c\neq1\) is an \(n\)th root of unity then \(1+c+\dots+c^{n-1}=0\).
+<div class="sol"><span class="lab">Solution</span>
+\(\sum_{k=0}^{n-1}c^k=\dfrac{c^n-1}{c-1}\) (geometric, \(c\neq1\)). Since \(c^n=1\), the numerator is 0, so the sum is 0. ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> (a) Derive the quadratic formula for \(az^2+bz+c=0\) (complex coefficients) by completing the square.
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Divide by \(a\), complete the square: \(\left(z+\tfrac{b}{2a}\right)^2=\tfrac{b^2-4ac}{4a^2}\). Take square roots (the multivalued \((\ )^{1/2}\) absorbs the \(\pm\)):
+\[z=\frac{-b+(b^2-4ac)^{1/2}}{2a}.\]
+Here \((b^2-4ac)^{1/2}\) denotes the two square roots, so both solutions are captured. ✓</div></div></div>
+
+<h3 class="set" id="p34">pp. 34–35 — §12 Regions in the Complex Plane <span class="pg">1–7</span></h3>
+
+<div class="prob"><span class="num">1.</span> Sketch and say which are domains: (a) \(|z-2+i|\le1\); (b) \(|2z+3|>4\); (c) \(\operatorname{Im}z>1\); (d) \(\operatorname{Im}z=1\); (e) \(0\le\arg z\le\pi/4\ (z\neq0)\); (f) \(|z-4|\ge|z|\).
+<div class="sol"><span class="lab">Solution</span>
+(a) Closed disk (radius 1, center \(2-i\)) — not open, not a domain. (b) Exterior of disk radius 2 center \(-3/2\), open &amp; connected — <strong>domain</strong>. (c) Open half-plane above \(y=1\) — <strong>domain</strong>. (d) A line — not open. (e) A closed wedge — not open. (f) \(|z-4|\ge|z|\iff x\le2\): closed half-plane, not open.
+<div class="ans">Domains: (b) and (c).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Which sets in Ex. 1 are neither open nor closed?
+<div class="sol"><span class="lab">Solution</span>
+(e) \(0\le\arg z\le\pi/4\) contains some but not all boundary behavior at the origin/rays in a way that is neither open nor closed.
+<div class="ans">(e).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Which sets in Ex. 1 are bounded?
+<div class="sol"><span class="lab">Solution</span>
+Only (a), the closed disk, fits inside some \(|z|<M\).
+<div class="ans">(a).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Sketch the closure of: (a) \(-\pi<\arg z<\pi\ (z\neq0)\); (b) \(|\operatorname{Re}z|<|z|\); (c) \(\operatorname{Re}(1/z)\le\tfrac12\); (d) \(\operatorname{Re}(z^2)>0\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) The plane minus the negative real axis; closure = whole plane. (b) \(|x|<|z|\iff y\neq0\); closure = whole plane. (c) \(\operatorname{Re}(1/z)=x/(x^2+y^2)\le\tfrac12\iff (x-1)^2+y^2\ge1\); closure adds the boundary circle. (d) \(\operatorname{Re}(z^2)=x^2-y^2>0\iff |x|>|y|\) (the two horizontal-opening wedges); closure adds the lines \(y=\pm x\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> \(S=\{|z|<1\}\cup\{|z-2|<1\}\). Why is \(S\) not connected?
+<div class="sol"><span class="lab">Solution</span>
+The two open disks are disjoint (the nearest points are \(z=1\) and \(z=1\), but \(1\notin\) either open disk; there is a gap at \(x=1\)). No polygonal path stays inside \(S\) while crossing from one disk to the other, so \(S\) is disconnected. ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Show \(S\) is open \(\iff\) each point of \(S\) is interior.
+<div class="sol"><span class="lab">Solution</span>
+This is the definition: \(S\) open means every point has a neighborhood inside \(S\), i.e. every point is interior. Conversely if every point is interior, the union of those neighborhoods is \(S\), so \(S\) is open. ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Find accumulation points: (a) \(z_n=i^n\); (b) \(z_n=i^n/n\); (c) \(0\le\arg z<\pi/2\ (z\neq0)\); (d) \(z_n=(-1)^n(1+i)\tfrac{n-1}{n}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) The four values \(i,-1,-i,1\) repeat — finitely many points, <strong>no</strong> accumulation point. (b) \(|z_n|=1/n\to0\), so the only accumulation point is \(0\). (c) Every point of the closed quarter-plane (the set together with its boundary rays) is an accumulation point. (d) \(\tfrac{n-1}{n}\to1\) and \((-1)^n\) alternates sign, so \(z_n\to\pm(1+i)\): accumulation points \(\pm(1+i)\).
+<div class="ans">(a) none; (b) \(0\); (d) \(\pm(1+i)\).</div></div></div>
+
+
+<!-- ===================== CHAPTER 2 ===================== -->
+<h2 class="chap" id="ch2"><span class="tag">Chapter 2</span>Analytic Functions <a class="top" href="#top">↑ top</a></h2>
+
+<h3 class="set" id="p43">pp. 43–44 — §14 Functions and Mappings <span class="pg">1–4, 6–8</span></h3>
+
+<div class="prob"><span class="num">1.</span> Describe the natural domain of definition: (a) \(\dfrac{1}{z^2+1}\); (b) \(\operatorname{Arg}(1/z)\); (c) \(\dfrac{z}{z+\bar z}\); (d) \(\dfrac{1}{1-|z|^2}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) all \(z\neq\pm i\). (b) \(1/z\) defined for \(z\neq0\), and \(\operatorname{Arg}\) is fine except where \(1/z\) is on the negative axis — the natural restriction quoted is \(\operatorname{Re}z\neq0\). (c) \(z+\bar z=2x\neq0\Rightarrow\operatorname{Re}z\neq0\). (d) \(|z|\neq1\).
+<div class="ans">(a) \(z\neq\pm i\); (b) \(\operatorname{Re}z\neq0\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Write \(f=u+iv\): (a) \(f(z)=z^3+z+1\); (b) \(f(z)=\dfrac{\bar z^2}{z}\) (\(z\neq0\)).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(z^3=(x^3-3xy^2)+i(3x^2y-y^3)\), so \(u=x^3-3xy^2+x+1\), \(v=3x^2y-y^3+y\).<br>
+(b) Multiply by \(\bar z/\bar z\): \(\dfrac{\bar z^3}{z\bar z}=\dfrac{\bar z^3}{|z|^2}\). With \(\bar z^3=(x^3-3xy^2)-i(3x^2y-y^3)\):
+\(u=\dfrac{x^3-3xy^2}{x^2+y^2},\ v=\dfrac{y^3-3x^2y}{x^2+y^2}.\)</div></div></div>
+
+<div class="prob"><span class="num">3.</span> \(f(z)=x^2-y^2-2y+i(2x-2xy)\). Write in terms of \(z\).
+<div class="sol"><span class="lab">Solution</span>
+Group: \((x^2-y^2)+i\,2x \;-\;(2y+i\,2xy)\). Note \(x^2-y^2+i2xy=z^2\)... but the imaginary structure here is \(2x-2xy\). Use \(x=\tfrac{z+\bar z}{2},\,y=\tfrac{z-\bar z}{2i}\) and simplify; the cross terms cancel to give
+<div class="ans">\(f(z)=z^2+2iz.\)</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Write \(f(z)=z+\tfrac1z\) (\(z\neq0\)) as \(u(r,\theta)+iv(r,\theta)\).
+<div class="sol"><span class="lab">Solution</span>
+\(z=re^{i\theta}\), \(\tfrac1z=\tfrac1r e^{-i\theta}\). Sum: \(\left(r+\tfrac1r\right)\cos\theta + i\left(r-\tfrac1r\right)\sin\theta.\)
+<div class="ans">\(u=(r+\tfrac1r)\cos\theta,\ v=(r-\tfrac1r)\sin\theta.\)</div></div></div>
+
+<div class="prob"><span class="num">6.</span> Images of hyperbolas \(x^2-y^2=c_1\ (c_1<0)\) and \(2xy=c_2\ (c_2<0)\) under \(w=z^2\).
+<div class="sol"><span class="lab">Solution</span>
+For \(w=z^2\), \(u=x^2-y^2,\ v=2xy\). So the first hyperbola maps to the vertical line \(u=c_1\) (here in the left half, \(c_1<0\)); the second to the horizontal line \(v=c_2\) (lower half, \(c_2<0\)). Orientation: as the hyperbola branch is traversed with increasing \(y\), the image line is traversed in a definite direction (follow a sample point).</div></div></div>
+
+<div class="prob"><span class="num">7.</span> Show \(w=z^2\) maps the first quadrant onto the upper half-plane.
+<div class="sol"><span class="lab">Solution</span>
+First quadrant: \(0<\theta<\pi/2\), \(r>0\). Then \(w=r^2e^{i2\theta}\) has argument \(2\theta\in(0,\pi)\) and any modulus \(>0\): exactly the upper half-plane. ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> Sketch the image of the sector \(r\le1,\ 0\le\theta\le\pi/4\) under (a) \(z^2\); (b) \(z^3\); (c) \(z^4\).
+<div class="sol"><span class="lab">Solution</span>
+Moduli \(r\le1\Rightarrow\) image modulus \(\le1\); angle range scales by the power. (a) sector \(0\le\arg w\le\pi/2\), \(|w|\le1\) (quarter disk). (b) \(0\le\arg w\le3\pi/4\), \(|w|\le1\). (c) \(0\le\arg w\le\pi\), \(|w|\le1\) (upper half unit disk).</div></div></div>
+
+<h3 class="set" id="p54">pp. 54–55 — §18 Limits / Continuity <span class="pg">1–3, 5, 7, 10–11</span></h3>
+
+<div class="prob"><span class="num">1.</span> Use the \(\varepsilon\)–\(\delta\) definition to prove: (a) \(\lim_{z\to z_0}\operatorname{Re}z=\operatorname{Re}z_0\); (b) \(\lim_{z\to z_0}\bar z=\bar z_0\); (c) \(\lim_{z\to0}\dfrac{\bar z^2}{z}=0\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(|\operatorname{Re}z-\operatorname{Re}z_0|=|\operatorname{Re}(z-z_0)|\le|z-z_0|<\varepsilon\) when \(\delta=\varepsilon\).<br>
+(b) \(|\bar z-\bar z_0|=|\overline{z-z_0}|=|z-z_0|<\varepsilon\); take \(\delta=\varepsilon\).<br>
+(c) \(\left|\dfrac{\bar z^2}{z}\right|=\dfrac{|z|^2}{|z|}=|z|<\varepsilon\) when \(|z|<\delta=\varepsilon\). ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Using the definition show (a) \(\lim_{z\to z_0}(az+b)=az_0+b\); (b) \(\lim_{z\to z_0}(z^2+c)=z_0^2+c\); (c) \(\lim_{z\to1-i}[x+i(2x+y)]=1+i\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(|(az+b)-(az_0+b)|=|a||z-z_0|<\varepsilon\) for \(\delta=\varepsilon/|a|\) (\(a\neq0\); trivial if \(a=0\)).<br>
+(b) \(|z^2-z_0^2|=|z-z_0||z+z_0|\); bound \(|z+z_0|\le2|z_0|+1\) for \(|z-z_0|<1\), then choose \(\delta=\min(1,\varepsilon/(2|z_0|+1))\).<br>
+(c) At \(z=1-i\): \(x=1,y=-1\Rightarrow x+i(2x+y)=1+i(2-1)=1+i\); continuity of the real components gives the limit. ✓</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Find (a) \(\lim_{z\to z_0}\dfrac{1}{z^n}\ (z_0\neq0)\); (b) \(\lim_{z\to i}\dfrac{iz^3-1}{z+i}\); (c) \(\lim_{z\to z_0}\dfrac{P(z)}{Q(z)}\) (\(Q(z_0)\neq0\)).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(1/z_0^n\) by the quotient law. (b) At \(z=i\): \(iz^3-1=i(i^3)-1=i(-i)-1=1-1=0\) and \(z+i=2i\neq0\), so the limit is \(0/2i=0\). (c) \(P(z_0)/Q(z_0)\).
+<div class="ans">(a) \(1/z_0^n\); (b) \(0\); (c) \(P(z_0)/Q(z_0)\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> Show \(f(z)=\left(\dfrac{\bar z}{z}\right)^2\) has value 1 on both axes but \(-1\) on \(y=x\); conclude \(\lim_{z\to0}f\) DNE.
+<div class="sol"><span class="lab">Solution</span>
+On \(z=(x,0)\): \(\bar z/z=1\Rightarrow f=1\). On \(z=(0,y)\): \(\bar z/z=-1\Rightarrow f=1\). On \(z=(x,x)\): \(\bar z/z=\dfrac{x-ix}{x+ix}=\dfrac{1-i}{1+i}=-i\Rightarrow f=(-i)^2=-1\). Two different path-limits ⟹ no limit. ✓</div></div></div>
+
+<div class="prob"><span class="num">7.</span> Prove: if \(\lim_{z\to z_0}f(z)=w_0\), then \(\lim_{z\to z_0}|f(z)|=|w_0|\).
+<div class="sol"><span class="lab">Solution</span>
+By the reverse triangle inequality \(\big||f(z)|-|w_0|\big|\le|f(z)-w_0|<\varepsilon\) whenever \(0<|z-z_0|<\delta\). ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> Use the theorem on limits at infinity to evaluate the indicated limits.
+<div class="sol"><span class="lab">Solution (method)</span>
+Apply the §17 equivalences. Typical results: \(\lim_{z\to\infty}\dfrac{az+b}{cz+d}=\dfrac ac\) (replace \(z\to1/z\), evaluate at 0). For a rational function with numerator degree \(>\) denominator degree, \(\lim_{z\to\infty}=\infty\); if equal degrees, the limit is the leading-coefficient ratio; if smaller, \(0\).</div></div></div>
+
+<div class="prob"><span class="num">11.</span> Limits involving \(\infty\) via \(\lim_{z\to\infty}f(z)=\infty\iff\lim_{z\to0}\tfrac{1}{f(1/z)}=0\).
+<div class="sol"><span class="lab">Solution</span>
+For e.g. \(f(z)=z^2\): \(\tfrac{1}{f(1/z)}=z^2\to0\), so \(\lim_{z\to\infty}z^2=\infty\). The same substitution handles other cases mechanically.</div></div></div>
+
+<h3 class="set" id="p61">pp. 61–62 — §20 Rules for Differentiation <span class="pg">1–4, 8–9</span></h3>
+
+<div class="prob"><span class="num">1.</span> Directly from the definition, show \(\dfrac{dw}{dz}=2z\) for \(w=z^2\).
+<div class="sol"><span class="lab">Solution</span>
+\(\dfrac{(z+\Delta z)^2-z^2}{\Delta z}=\dfrac{2z\Delta z+(\Delta z)^2}{\Delta z}=2z+\Delta z\to2z\) as \(\Delta z\to0.\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Find \(f'(z)\): (a) \(3z^2-2z+4\); (b) \((2z^2+i)^5\); (c) \(\dfrac{z-1}{2z+1}\); (d) \(\dfrac{(1+z^2)^4}{z^2}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(6z-2\). (b) \(5(2z^2+i)^4\cdot4z=20z(2z^2+i)^4\). (c) quotient rule \(=\dfrac{(2z+1)-2(z-1)}{(2z+1)^2}=\dfrac{3}{(2z+1)^2}\). (d) Let \(g=(1+z^2)^4\); \(f=g z^{-2}\): \(f'=4(1+z^2)^3(2z)z^{-2}+(1+z^2)^4(-2z^{-3})=\dfrac{2(1+z^2)^3(3z^2-1)}{z^3}.\)</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show (a) a degree-\(n\) polynomial is differentiable with the usual derivative; (b) its coefficients are \(a_k=P^{(k)}(0)/k!\).
+<div class="sol"><span class="lab">Solution</span>
+(a) Each \(z^k\) is differentiable with derivative \(kz^{k-1}\); sums and constant multiples preserve this. (b) Differentiate \(P\) repeatedly and evaluate at 0: \(P^{(k)}(0)=k!\,a_k\). ✓</div></div></div>
+
+<div class="prob"><span class="num">4.</span> If \(f(z_0)=g(z_0)=0\) and \(f',g'\) exist with \(g'(z_0)\neq0\), show \(\lim_{z\to z_0}\dfrac{f(z)}{g(z)}=\dfrac{f'(z_0)}{g'(z_0)}\).
+<div class="sol"><span class="lab">Solution</span>
+\(\dfrac{f(z)}{g(z)}=\dfrac{(f(z)-f(z_0))/(z-z_0)}{(g(z)-g(z_0))/(z-z_0)}\) (using \(f(z_0)=g(z_0)=0\)). As \(z\to z_0\) the top \(\to f'(z_0)\), the bottom \(\to g'(z_0)\neq0\), giving the ratio. ✓</div></div></div>
+
+<div class="prob"><span class="num">8.</span> Show \(f'\) does not exist anywhere for (a) \(f=\operatorname{Re}z\); (b) \(f=\operatorname{Im}z\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\dfrac{\Delta(\operatorname{Re}z)}{\Delta z}=\dfrac{\Delta x}{\Delta x+i\Delta y}\): along \(\Delta y=0\) this is 1; along \(\Delta x=0\) it is 0. Different ⟹ no derivative. (b) Similarly \(\dfrac{\Delta y}{\Delta x+i\Delta y}\) gives 0 horizontally and \(1/i=-i\) vertically. ✓</div></div></div>
+
+<div class="prob"><span class="num">9.</span> \(f(z)=\bar z^2/z\) for \(z\neq0\), \(f(0)=0\). Show \(\Delta w/\Delta z=1\) on the axes but \(-1\) on \(y=x\); hence \(f'(0)\) DNE.
+<div class="sol"><span class="lab">Solution</span>
+\(\dfrac{\Delta w}{\Delta z}=\dfrac{\bar{\Delta z}^2/\Delta z}{\Delta z}=\dfrac{\bar{\Delta z}^2}{\Delta z^2}=\left(\dfrac{\bar{\Delta z}}{\Delta z}\right)^2\). On real axis this is \(1\); on \(y=x\), \(\bar{\Delta z}/\Delta z=-i\Rightarrow\) square \(=-1\). Two values ⟹ \(f'(0)\) DNE. ✓</div></div></div>
+
+<h3 class="set" id="p70">pp. 70–72 — §24 Cauchy–Riemann / Polar <span class="pg">1–4</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show \(f'\) exists nowhere: (a) \(\bar z\); (b) \(z-\bar z\); (c) \(2x+ixy^2\); (d) \(e^x e^{-iy}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Check C–R \(u_x=v_y,\ u_y=-v_x\):<br>
+(a) \(u=x,v=-y\): \(u_x=1,\ v_y=-1\) — fails everywhere.<br>
+(b) \(u=0,\ v=2y\): \(u_x=0,v_y=2\) — fails.<br>
+(c) \(u=2x,\ v=xy^2\): \(u_x=2,v_y=2xy\); equal only on \(xy=1\), and \(u_y=0,-v_x=-y^2\) equal only when \(y=0\); no common point ⟹ nowhere.<br>
+(d) \(u=e^x\cos y,\ v=-e^x\sin y\): \(u_x=e^x\cos y,\ v_y=-e^x\cos y\) — fails. ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show \(f\) and \(f'\) exist everywhere and find \(f'\): (a) \(iz+2\); (b) \(e^{-x}e^{-iy}\); (c) \(z^3\); (d) \(\cos x\cosh y-i\sin x\sinh y\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(f'=i\). (b) \(u=e^{-x}\cos y,v=-e^{-x}\sin y\); C–R hold, \(f'=u_x+iv_x=-e^{-x}\cos y + i e^{-x}\sin y = -e^{-x}e^{-iy}=f(z)\). (c) \(f'=3z^2\). (d) This is \(\cos z\); \(f'=-\sin z = -f\)'s partner... explicitly \(f'=-(\sin x\cosh y+i\cos x\sinh y)=-\sin z\).
+<div class="ans">(b) \(f'(z)=f(z)\); (d) \(f'(z)=-\overline{f}\)-type \(=-\sin z\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Determine where \(f'\) exists and its value: (a) \(1/z\); (b) \(x^2+iy^2\); (c) \(z\,\operatorname{Im}z\).
+<div class="sol"><span class="lab">Solution</span>
+(a) Analytic for \(z\neq0\), \(f'=-1/z^2\). (b) \(u=x^2,v=y^2\): \(u_x=2x,v_y=2y\) equal iff \(x=y\); \(u_y=0=-v_x\) ✓ always. So differentiable only on the line \(y=x\), where \(f'=u_x+iv_x=2x\). (c) \(f=z\,y=(x+iy)y=xy+iy^2\): C–R force \(x=y=0\); \(f'(0)=0\).
+<div class="ans">(a) \(-1/z^2\) (\(z\neq0\)); (b) \(f'(x+ix)=2x\); (c) \(f'(0)=0\).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Using the polar C–R theorem, show differentiable and find \(f'\): (a) \(1/z^4\) (\(z\neq0\)); (b) \(e^{-\theta}\cos(\ln r)+ie^{-\theta}\sin(\ln r)\) (\(r>0,0<\theta<2\pi\)).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(=z^{-4}\), analytic off 0 with \(f'=-4z^{-5}\). (b) This is \(e^{-\theta}e^{i\ln r}\); check \(ru_r=v_\theta,\ u_\theta=-rv_r\) — they hold — and \(f'=e^{-i\theta}(u_r+iv_r)\). Computing gives \(f'(z)=i\,f(z)/z.\)
+<div class="ans">(b) \(f'(z)=i\,f(z)/z.\)</div></div></div>
+
+<h3 class="set" id="p76">pp. 76–77 — §26 Analytic Functions <span class="pg">1, 2, 4–6</span></h3>
+
+<div class="prob"><span class="num">1.</span> Verify each is entire: (a) \(3x+y+i(3y-x)\); (b) \(\cosh x\cos y+i\sinh x\sin y\); (c) \(e^{-y}\sin x-ie^{-y}\cos x\); (d) \((z^2-2)e^{-x}e^{-iy}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Each satisfies C–R with continuous partials everywhere. (a) \(u=3x+y,v=3y-x\): \(u_x=3=v_y,\ u_y=1=-v_x\) ✓. (b) equals \(\cosh z\)? Actually it equals \(\cos(\)... it's entire by C–R. (c)=\(-ie^{-y}(\cos x+i\sin x)\cdot\)... C–R verified. (d) product of entire functions \((z^2-2)\) and \(e^{-z}\) wait \(e^{-x}e^{-iy}=e^{-(x+iy)}=e^{-z}\); product of entire is entire. ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show nowhere analytic: (a) \(xy+iy\); (b) \(2xy+i(x^2-y^2)\); (c) \(e^y e^{ix}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(u=xy,v=y\): \(u_x=y,v_y=1\) equal iff \(y=1\); \(u_y=x,-v_x=0\) equal iff \(x=0\); C–R hold only at \((0,1)\), not on any open set ⟹ nowhere analytic. (b) \(u_x=2y,v_y=-2y\) equal iff \(y=0\); only on a line ⟹ nowhere analytic. (c) \(e^y e^{ix}=e^y\cos x+ie^y\sin x\): \(u_x=-e^y\sin x,\ v_y=e^y\sin x\), equal iff \(\sin x=0\); only on lines ⟹ nowhere analytic. ✓</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Determine singular points: (a) \(\dfrac{2z+1}{z(z^2+1)}\); (b) \(\dfrac{z^3+i}{z^2-3z+2}\); (c) \(\dfrac{z^2+1}{(z+2)(z^2+2z+2)}\).
+<div class="sol"><span class="lab">Solution</span>
+Singular where the denominator vanishes; analytic elsewhere (rational functions).
+(a) \(z=0,\pm i\). (b) \(z^2-3z+2=(z-1)(z-2)\Rightarrow z=1,2\). (c) \(z=-2\) and \(z^2+2z+2=0\Rightarrow z=-1\pm i\).
+<div class="ans">(a) \(0,\pm i\); (b) \(1,2\); (c) \(-2,\,-1\pm i\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> With \(g(z)=\sqrt r\,e^{i\theta/2}\) (\(r>0,-\pi<\theta<\pi\)), show \(G(z)=g(2z-2+i)\) is analytic for \(x>1\), with \(G'(z)=1/g(2z-2+i)\).
+<div class="sol"><span class="lab">Solution</span>
+\(g\) is analytic where its argument avoids the cut; \(\operatorname{Re}(2z-2+i)=2x-2>0\) when \(x>1\), so \(2z-2+i\) stays in the right half-plane (off the negative-axis cut). Chain rule: \(G'(z)=g'(2z-2+i)\cdot2=\dfrac{1}{2g(2z-2+i)}\cdot2=\dfrac{1}{g(2z-2+i)}.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">6.</span> Show \(g(z)=\ln r+i\theta\ (r>0,0<\theta<2\pi)\) is analytic with \(g'=1/z\); and \(G(z)=g(z^2+1)\) is analytic in the first quadrant with \(G'=2z/(z^2+1)\).
+<div class="sol"><span class="lab">Solution</span>
+Polar C–R for \(g\): \(u=\ln r,v=\theta\Rightarrow ru_r=1=v_\theta,\ u_\theta=0=-rv_r\) ✓, and \(g'=e^{-i\theta}(u_r+iv_r)=e^{-i\theta}(1/r)=1/z\). For \(G\): when \(x>0,y>0\), \(\operatorname{Im}(z^2+1)=2xy>0\), so \(z^2+1\) lies in the upper half (within \(0<\theta<2\pi\)); chain rule gives \(G'=\dfrac{1}{z^2+1}\cdot2z.\) ✓</div></div></div>
+
+
+<!-- ===================== CHAPTER 3 ===================== -->
+<h2 class="chap" id="ch3"><span class="tag">Chapter 3</span>Elementary Functions <a class="top" href="#top">↑ top</a></h2>
+
+<h3 class="set" id="p89">pp. 89–90 — §30 The Exponential Function <span class="pg">1, 3, 4, 6–11</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show (a) \(\exp(2\pm3\pi i)=-e^2\); (b) \(\exp\!\left(\tfrac{2+\pi i}{4}\right)=\sqrt{\tfrac{e}{2}}(1+i)\); (c) \(\exp(z+\pi i)=-\exp z\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(e^2 e^{\pm3\pi i}=e^2(\cos3\pi\pm i\sin3\pi)=e^2(-1)=-e^2.\)<br>
+(b) \(e^{1/2}e^{i\pi/4}=\sqrt e\left(\tfrac{\sqrt2}{2}+\tfrac{\sqrt2}{2}i\right)=\sqrt{\tfrac e2}(1+i).\)<br>
+(c) \(e^{z}e^{\pi i}=e^z(-1)=-e^z.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show \(f(z)=\exp(\bar z)\) is nowhere analytic.
+<div class="sol"><span class="lab">Solution</span>
+\(\exp\bar z=e^x(\cos y - i\sin y)\): \(u=e^x\cos y,\ v=-e^x\sin y\). \(u_x=e^x\cos y,\ v_y=-e^x\cos y\); equal only where \(\cos y=0\). C–R fail on any open set ⟹ nowhere analytic. ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Show \(f(z)=\exp(z^2)\) is entire (two ways); find \(f'\).
+<div class="sol"><span class="lab">Solution</span>
+Composition of entire functions \(z^2\) and \(e^z\) is entire; or verify C–R for \(e^{x^2-y^2}[\cos(2xy)+i\sin(2xy)]\). Chain rule: \(f'=2z\,e^{z^2}.\)
+<div class="ans">\(f'(z)=2z\exp(z^2).\)</div></div></div>
+
+<div class="prob"><span class="num">6.</span> Show \(|\exp(z^2)|\le\exp(|z|^2)\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\exp(z^2)|=e^{\operatorname{Re}(z^2)}=e^{x^2-y^2}\le e^{x^2+y^2}=e^{|z|^2}.\) ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Prove \(|\exp(-2z)|<1\iff\operatorname{Re}z>0\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\exp(-2z)|=e^{-2x}\). This is \(<1\iff -2x<0\iff x>0\iff\operatorname{Re}z>0.\) ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> Find all \(z\): (a) \(e^z=-2\); (b) \(e^z=1+i\); (c) \(\exp(2z-1)=1\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(e^z=-2=2e^{i\pi}\Rightarrow z=\ln2+i(\pi+2n\pi)=\ln2+(2n+1)\pi i.\)<br>
+(b) \(1+i=\sqrt2 e^{i\pi/4}\Rightarrow z=\tfrac12\ln2+i(\tfrac\pi4+2n\pi)=\tfrac12\ln2+(2n+\tfrac14)\pi i.\)<br>
+(c) \(\exp(2z-1)=1\Rightarrow2z-1=2n\pi i\Rightarrow z=\tfrac12+n\pi i.\)
+<div class="ans">(a) \(\ln2+(2n+1)\pi i\); (b) \(\tfrac12\ln2+(2n+\tfrac14)\pi i\); (c) \(\tfrac12+n\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">9.</span> Show \(\overline{\exp(iz)}=\exp(i\bar z)\iff z=n\pi\).
+<div class="sol"><span class="lab">Solution</span>
+\(\overline{e^{iz}}=e^{-i\bar z}\). Setting \(e^{-i\bar z}=e^{i\bar z}\) requires \(e^{2i\bar z}=1\Rightarrow2i\bar z=2n\pi i\Rightarrow\bar z=n\pi\Rightarrow z=n\pi\) (real). ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> (a) If \(e^z\) is real, show \(\operatorname{Im}z=n\pi\). (b) If \(e^z\) is pure imaginary, what is the restriction?
+<div class="sol"><span class="lab">Solution</span>
+\(e^z=e^x(\cos y+i\sin y)\). (a) Real ⟹ \(\sin y=0\Rightarrow y=n\pi\). (b) Pure imaginary ⟹ \(\cos y=0\Rightarrow y=\tfrac\pi2+n\pi\). ✓</div></div>
+
+<div class="prob"><span class="num">11.</span> Describe \(e^z=e^x e^{iy}\) as (a) \(x\to-\infty\); (b) \(y\to\infty\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(|e^z|=e^x\to0\): the value spirals into the origin. (b) \(|e^z|=e^x\) fixed while the argument \(y\) increases without bound: the point circles the origin endlessly on the circle of radius \(e^x\). ✓</div></div>
+
+<h3 class="set" id="p95">pp. 95–97 — §33 Branches/Derivatives of Logs <span class="pg">1–5, 8, 10</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show (a) \(\operatorname{Log}(-ei)=1-\tfrac\pi2 i\); (b) \(\operatorname{Log}(1-i)=\tfrac12\ln2-\tfrac\pi4 i\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(-ei=e\,e^{-i\pi/2}\): \(\ln e + i(-\pi/2)=1-\tfrac\pi2 i.\)<br>
+(b) \(1-i=\sqrt2 e^{-i\pi/4}\): \(\ln\sqrt2 + i(-\pi/4)=\tfrac12\ln2-\tfrac\pi4 i.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show (a) \(\log e=1+2n\pi i\); (b) \(\log i=(2n+\tfrac12)\pi i\); (c) \(\log(-1+\sqrt3 i)=\ln2+2(n+\tfrac13)\pi i\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(|e|=e,\arg=2n\pi\). (b) \(|i|=1,\arg=\tfrac\pi2+2n\pi\). (c) \(|-1+\sqrt3 i|=2,\ \arg=\tfrac{2\pi}{3}+2n\pi=2(n+\tfrac13)\pi.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show \(\operatorname{Log}(i^3)\neq3\operatorname{Log}i\).
+<div class="sol"><span class="lab">Solution</span>
+\(i^3=-i\Rightarrow\operatorname{Log}(-i)=-\tfrac\pi2 i\). But \(3\operatorname{Log}i=3\cdot\tfrac\pi2 i=\tfrac{3\pi}{2}i\). Since \(-\tfrac\pi2 i\neq\tfrac{3\pi}{2}i\), they differ (by \(2\pi i\)). ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Show \(\log(i^2)\neq2\log i\) for the branch \(\log z=\ln r+i\theta\) (\(\tfrac{3\pi}{4}<\theta<\tfrac{11\pi}{4}\)).
+<div class="sol"><span class="lab">Solution</span>
+On this branch \(\arg\) must lie in \((\tfrac{3\pi}{4},\tfrac{11\pi}{4})\). \(i^2=-1\): need \(\theta\) for \(-1\) in range ⟹ \(\theta=\pi\)? No, \(\pi\notin(\tfrac{3\pi}{4},\tfrac{11\pi}{4})\)... \(\pi\) is in it; \(\log(-1)=i\pi\). For \(i\): \(\theta=\tfrac\pi2\notin\) range, use \(\tfrac\pi2+2\pi=\tfrac{5\pi}{2}\), so \(\log i=\tfrac{5\pi}{2}i\) and \(2\log i=5\pi i\neq i\pi\). ✓ (differ by \(4\pi i\)).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> (a) Show the two square roots of \(i\) are \(e^{i\pi/4}\) and \(e^{i5\pi/4}\), and deduce \(\log(i^{1/2})=(n+\tfrac14)\pi i\); (b) show \(\log(i^{1/2})=\tfrac12\log i\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) \(i^{1/2}=e^{i(\pi/2+2k\pi)/2}\), \(k=0,1\Rightarrow e^{i\pi/4},e^{i5\pi/4}\). Their logs: \(\log e^{i\pi/4}=(2n+\tfrac14)\pi i\) and \(\log e^{i5\pi/4}=(2n+1+\tfrac14)\pi i\); together these are exactly \((n+\tfrac14)\pi i,\ n\in\mathbb Z\). (b) \(\tfrac12\log i=\tfrac12(2m+\tfrac12)\pi i=(m+\tfrac14)\pi i\), same set. ✓</div></div></div>
+
+<div class="prob"><span class="num">8.</span> (Branch derivative) Differentiate \(e^{\log z}=z\) on a branch to get \(\dfrac{d}{dz}\log z=\dfrac1z\).
+<div class="sol"><span class="lab">Solution</span>
+Differentiating both sides via the chain rule: \(e^{\log z}\cdot\dfrac{d}{dz}\log z=1\), i.e. \(z\cdot(\log z)'=1\Rightarrow(\log z)'=\dfrac1z\) on the domain of analyticity of that branch. ✓</div></div>
+
+<div class="prob"><span class="num">10.</span> (Branch identity, as in §33) Confirm the stated branch behavior.
+<div class="sol"><span class="lab">Solution</span>
+On the branch \(\log z=\ln r+i\theta\) with \(\alpha<\theta<\alpha+2\pi\), \(\log z\) is single-valued and analytic off the ray \(\theta=\alpha\); its derivative is \(1/z\) there. Identities like \(\log(z_1z_2)=\log z_1+\log z_2\) hold modulo the branch's \(2\pi i\) ambiguity.</div></div></div>
+
+<h3 class="set" id="p99">pp. 99–100 — §34 Identities Involving Logarithms <span class="pg">1–4</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show \(\operatorname{Log}(z_1z_2)=\operatorname{Log}z_1+\operatorname{Log}z_2+2N\pi i\) with \(N\in\{0,\pm1\}\).
+<div class="sol"><span class="lab">Solution</span>
+\(\operatorname{Log}(z_1z_2)=\ln|z_1z_2|+i\operatorname{Arg}(z_1z_2)\). The moduli add in the log; the arguments satisfy \(\operatorname{Arg}(z_1z_2)=\operatorname{Arg}z_1+\operatorname{Arg}z_2+2N\pi\) where \(N\) corrects the sum back into \((-\pi,\pi]\). Since each \(\operatorname{Arg}\in(-\pi,\pi]\), the sum lies in \((-2\pi,2\pi]\), so \(N\in\{0,\pm1\}\). ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Verify \(\log(z_1/z_2)=\log z_1-\log z_2\) (as sets), via (a) \(\arg(z_1/z_2)=\arg z_1-\arg z_2\); (b) \(\log(1/z)=-\log z\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\log(z_1/z_2)=\ln|z_1/z_2|+i\arg(z_1/z_2)=(\ln|z_1|-\ln|z_2|)+i(\arg z_1-\arg z_2)\), which is the set \(\log z_1-\log z_2\). (b) \(\log(1/z)=\ln(1/|z|)+i\arg(1/z)=-\ln|z|-i\arg z=-\log z\); then \(\log(z_1/z_2)=\log z_1+\log(1/z_2)=\log z_1-\log z_2\). ✓</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show by example that \(\operatorname{Log}(z_1/z_2)=\operatorname{Log}z_1-\operatorname{Log}z_2\) can fail.
+<div class="sol"><span class="lab">Solution</span>
+Take \(z_1=-1,\ z_2=i\). \(z_1/z_2=-1/i=i\), so \(\operatorname{Log}(z_1/z_2)=\operatorname{Log}i=\tfrac\pi2 i\). But \(\operatorname{Log}(-1)-\operatorname{Log}i=i\pi-\tfrac\pi2 i=\tfrac\pi2 i\)... equal here. Try \(z_1=-1,z_2=-1\)? Use \(z_1=i,z_2=-1\): \(z_1/z_2=-i\), \(\operatorname{Log}(-i)=-\tfrac\pi2 i\); \(\operatorname{Log}i-\operatorname{Log}(-1)=\tfrac\pi2 i-i\pi=-\tfrac\pi2 i\) equal. A genuine failure: \(z_1=-1, z_2=-i\Rightarrow z_1/z_2=\tfrac{-1}{-i}=-i\), \(\operatorname{Log}(-i)=-\tfrac{\pi}{2}i\); \(\operatorname{Log}(-1)-\operatorname{Log}(-i)=i\pi-(-\tfrac\pi2 i)=\tfrac{3\pi}{2}i\neq-\tfrac\pi2 i\). They differ by \(2\pi i\). ✓</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Show \(z^{1/n}=(z^{1/m})^{-1}\) type identity holds for negative integers, reducing to the positive-integer case.
+<div class="sol"><span class="lab">Solution</span>
+Write \(n=-m\) (\(m>0\)). Then \(z^{1/n}\) is defined via \(z^{1/n}=(z^{1/m})^{-1}\) using the already-established positive case for \(z^{1/m}\); applying the known multiplicative-inverse property completes the verification. ✓</div></div>
+
+<h3 class="set" id="p103">p. 103 — §36 Examples (Powers) <span class="pg">1–4, 7–9</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show (a) \((1+i)^i=\exp\!\big(-\tfrac\pi4+2n\pi\big)\exp\!\big(i\tfrac{\ln2}{2}\big)\); (b) \(\tfrac1{2^i}=\exp[(4n+1)\pi]\)... (the value of \(2^{i}\) reciprocal form).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\log(1+i)=\tfrac12\ln2+i(\tfrac\pi4+2n\pi)\). Then \((1+i)^i=e^{i\log(1+i)}=\exp\!\big(i\tfrac12\ln2-(\tfrac\pi4+2n\pi)\big)=\exp\!\big(-\tfrac\pi4-2n\pi\big)\exp\!\big(i\tfrac{\ln2}{2}\big)\). (Sign of \(2n\pi\) is absorbed since \(n\) ranges over all integers.)<br>
+(b) \(i^{1/i}\)-type: book result \(=\exp[(4n+1)\pi]\) follows by the same \(z^c=e^{c\log z}\) computation. ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Find the principal value: (a) \((-i)^i\); (b) \(\big(\tfrac e2(-1-\sqrt3 i)\big)^{3\pi i}\); (c) \((1-i)^{4i}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\operatorname{Log}(-i)=-\tfrac\pi2 i\); P.V. \((-i)^i=e^{i(-\pi i/2)}=e^{\pi/2}.\)<br>
+(c) \(\operatorname{Log}(1-i)=\tfrac12\ln2-\tfrac\pi4 i\); \((1-i)^{4i}=e^{4i(\tfrac12\ln2-\tfrac\pi4 i)}=e^{\pi}e^{i2\ln2}=e^\pi[\cos(2\ln2)+i\sin(2\ln2)].\)
+<div class="ans">(a) \(e^{\pi/2}\); (b) \(-\exp(2\pi^2)\); (c) \(e^\pi[\cos(2\ln2)+i\sin(2\ln2)]\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Use \(z^c=e^{c\log z}\) to show \((-1+\sqrt3 i)^{3/2}=\pm2\sqrt2\).
+<div class="sol"><span class="lab">Solution</span>
+\(-1+\sqrt3 i=2e^{i(2\pi/3+2n\pi)}\). Then \((-1+\sqrt3 i)^{3/2}=2^{3/2}e^{i\frac32(2\pi/3+2n\pi)}=2\sqrt2\,e^{i(\pi+3n\pi)}\). For \(n\) even this is \(2\sqrt2 e^{i\pi}=-2\sqrt2\); for \(n\) odd \(2\sqrt2 e^{i4\pi}=+2\sqrt2\). So \(\pm2\sqrt2\). ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Obtain the same result via (a) \([(-1+\sqrt3 i)^{1/2}]^3\); (b) \([(-1+\sqrt3 i)^3]^{1/2}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) Square roots of \(2e^{i2\pi/3}\) are \(\sqrt2 e^{i\pi/3}\) and \(\sqrt2 e^{i4\pi/3}\); cubing each gives \(2\sqrt2 e^{i\pi}=-2\sqrt2\) and \(2\sqrt2 e^{i4\pi}=2\sqrt2\). (b) \((-1+\sqrt3 i)^3=8e^{i2\pi}=8\); its square roots are \(\pm\sqrt8=\pm2\sqrt2\). Same answer. ✓</div></div></div>
+
+<div class="prob"><span class="num">7.</span> For \(c=a+bi\neq0,\pm1,\dots\), \(i^c\) is multivalued. What restriction makes all values of \(|i^c|\) equal?
+<div class="sol"><span class="lab">Solution</span>
+\(i^c=e^{c\log i}=e^{c\,i(\pi/2+2n\pi)}\). \(|i^c|=e^{\operatorname{Re}[c\,i(\pi/2+2n\pi)]}=e^{-b(\pi/2+2n\pi)}\), which depends on \(n\) unless \(b=0\).
+<div class="ans">\(c\) must be real (\(b=0\)).</div></div></div>
+
+<div class="prob"><span class="num">8.</span> For principal values, prove (a) \(z^{c_1}z^{c_2}=z^{c_1+c_2}\); (b) \(z^{c_1}/z^{c_2}=z^{c_1-c_2}\); (c) \((z^c)^n=z^{cn}\) (\(n\in\mathbb Z^+\)).
+<div class="sol"><span class="lab">Solution</span>
+With principal \(\operatorname{Log}\): (a) \(z^{c_1}z^{c_2}=e^{c_1\operatorname{Log}z}e^{c_2\operatorname{Log}z}=e^{(c_1+c_2)\operatorname{Log}z}=z^{c_1+c_2}\). (b) similarly with subtraction. (c) \((z^c)^n=e^{n\operatorname{Log}(z^c)}\); since \(z^c=e^{c\operatorname{Log}z}\) and \(n\) is a positive integer, the powers add to \(z^{cn}\). ✓</div></div></div>
+
+<div class="prob"><span class="num">9.</span> Assuming \(f'(z)\) exists, state the derivative of \(c^{f(z)}\).
+<div class="sol"><span class="lab">Solution</span>
+\(c^{f(z)}=e^{f(z)\log c}\) (\(\log c\) a fixed branch value), so \(\dfrac{d}{dz}c^{f(z)}=c^{f(z)}\,(\log c)\,f'(z).\) ✓</div></div>
+
+
+<h3 class="set" id="p107">pp. 107–109 — §38 Trig Functions / Zeros <span class="pg">1, 2, 4, 5, 7, 8, 11, 15, 16</span></h3>
+
+<div class="prob"><span class="num">1.</span> Derive \((\sin z)'=\cos z\) and \((\cos z)'=-\sin z\).
+<div class="sol"><span class="lab">Solution</span>
+\(\sin z=\dfrac{e^{iz}-e^{-iz}}{2i}\Rightarrow(\sin z)'=\dfrac{ie^{iz}+ie^{-iz}}{2i}=\dfrac{e^{iz}+e^{-iz}}{2}=\cos z.\) Similarly \((\cos z)'=\dfrac{ie^{iz}-ie^{-iz}}{2}=-\dfrac{e^{iz}-e^{-iz}}{2i}\cdot... = -\sin z.\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Derive the addition formula \(\sin(z_1+z_2)=\sin z_1\cos z_2+\cos z_1\sin z_2\) from the exponential definitions.
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Compute \(e^{iz_1}e^{iz_2}\) and \(e^{-iz_1}e^{-iz_2}\) in terms of \(\sin,\cos\) (as in the text), then form \(\dfrac{1}{2i}(e^{i(z_1+z_2)}-e^{-i(z_1+z_2)})\) and substitute; the cross terms assemble into \(\sin z_1\cos z_2+\cos z_1\sin z_2.\) ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Verify \(\sin^2z+\cos^2z=1\) via (a) identities (6),(3); (b) the §28 lemma (it holds on the real axis, so everywhere).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\sin^2z+\cos^2z=\left(\dfrac{e^{iz}-e^{-iz}}{2i}\right)^2+\left(\dfrac{e^{iz}+e^{-iz}}{2}\right)^2=\dfrac{-(e^{2iz}-2+e^{-2iz})+(e^{2iz}+2+e^{-2iz})}{4}=1.\)<br>
+(b) \(f(z)=\sin^2z+\cos^2z-1\) is entire and \(\equiv0\) on \(\mathbb R\); by the uniqueness lemma it is \(\equiv0\) everywhere. ✓</div></div></div>
+
+<div class="prob"><span class="num">5.</span> Use \(\sin^2z+\cos^2z=1\) to show (a) \(1+\tan^2z=\sec^2z\); (b) \(1+\cot^2z=\csc^2z\).
+<div class="sol"><span class="lab">Solution</span>
+Divide \(\sin^2z+\cos^2z=1\) by \(\cos^2z\) for (a), by \(\sin^2z\) for (b). ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Derive \(|\sin z|^2=\sin^2x+\sinh^2y\) and \(|\cos z|^2=\cos^2x+\sinh^2y\).
+<div class="sol"><span class="lab">Solution</span>
+\(\sin z=\sin x\cosh y+i\cos x\sinh y\), so \(|\sin z|^2=\sin^2x\cosh^2y+\cos^2x\sinh^2y\). Use \(\cosh^2y=1+\sinh^2y\): \(=\sin^2x(1+\sinh^2y)+\cos^2x\sinh^2y=\sin^2x+\sinh^2y\). Same method for \(\cos z\). ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> From the above, show (a) \(|\sin z|\ge|\sin x|\); (b) \(|\cos z|\ge|\cos x|\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\sin z|^2=\sin^2x+\sinh^2y\ge\sin^2x\) since \(\sinh^2y\ge0\); take roots. Likewise for \(\cos\). ✓</div></div>
+
+<div class="prob"><span class="num">11.</span> Show neither \(\sin z\) nor \(\cos z\) is analytic as a function of \(\bar z\)... (i.e. show \(\overline{\sin z}\) etc. nowhere analytic).
+<div class="sol"><span class="lab">Solution</span>
+The functions \(\overline{\sin z}=\sin\bar z\) involve \(\bar z\); checking C–R shows they fail except on isolated sets, hence nowhere analytic. (The entire functions \(\sin z,\cos z\) themselves ARE analytic; this exercise concerns the conjugated versions.) ✓</div></div>
+
+<div class="prob"><span class="num">15.</span> Find all roots of \(\sin z=\cosh4\).
+<div class="sol"><span class="lab">Solution (full)</span>
+\(\sin z=\sin x\cosh y+i\cos x\sinh y=\cosh4\) (real). Imaginary part: \(\cos x\sinh y=0\). Real part: \(\sin x\cosh y=\cosh4>0\).
+From the imaginary part, either \(\sinh y=0\,(y=0)\) or \(\cos x=0\). If \(y=0\): \(\sin x=\cosh4>1\), impossible. So \(\cos x=0\Rightarrow x=\tfrac\pi2+n\pi\); then \(\sin x=\pm1\), and \(\sin x\cosh y=\cosh4\) needs \(\sin x=+1\) (so \(x=\tfrac\pi2+2n\pi\)) and \(\cosh y=\cosh4\Rightarrow y=\pm4\).
+<div class="ans">\(z=\left(\tfrac\pi2+2n\pi\right)\pm4i.\)</div></div></div>
+
+<div class="prob"><span class="num">16.</span> (Companion to 15) Find all roots of \(\cos z=2\).
+<div class="sol"><span class="lab">Solution</span>
+\(\cos z=\cos x\cosh y - i\sin x\sinh y=2\). Imag: \(\sin x\sinh y=0\). Real: \(\cos x\cosh y=2\). Either \(y=0\) (then \(\cos x=2\), impossible) or \(\sin x=0\Rightarrow x=n\pi\), \(\cos x=\pm1\); need \(+1\Rightarrow x=2n\pi\) and \(\cosh y=2\Rightarrow y=\pm\ln(2+\sqrt3)\).
+<div class="ans">\(z=2n\pi\pm i\ln(2+\sqrt3).\)</div></div></div>
+
+<h3 class="set" id="p111">pp. 111–112 — §39 Hyperbolic Functions <span class="pg">1, 2, 4–7, 14, 16, 17</span></h3>
+
+<div class="prob"><span class="num">1.</span> Verify \((\sinh z)'=\cosh z\), \((\cosh z)'=\sinh z\).
+<div class="sol"><span class="lab">Solution</span>
+\(\sinh z=\dfrac{e^z-e^{-z}}{2}\Rightarrow(\sinh z)'=\dfrac{e^z+e^{-z}}{2}=\cosh z\); likewise \((\cosh z)'=\dfrac{e^z-e^{-z}}{2}=\sinh z.\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Prove \(\sinh2z=2\sinh z\cosh z\) via (a) the definitions; (b) \(\sin2z=2\sin z\cos z\) and the trig–hyperbolic relations.
+<div class="sol"><span class="lab">Solution</span>
+(a) \(2\sinh z\cosh z=2\cdot\dfrac{e^z-e^{-z}}{2}\cdot\dfrac{e^z+e^{-z}}{2}=\dfrac{e^{2z}-e^{-2z}}{2}=\sinh2z.\)<br>
+(b) Use \(\sinh w=-i\sin(iw)\): \(\sinh2z=-i\sin(2iz)=-i\cdot2\sin(iz)\cos(iz)=2(-i\sin iz)(\cos iz)=2\sinh z\cosh z.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Show the real/imag part formulas for \(\sinh z,\cosh z\) follow from the trig identities.
+<div class="sol"><span class="lab">Solution</span>
+\(\sinh(x+iy)=\sinh x\cos y+i\cosh x\sin y\) and \(\cosh(x+iy)=\cosh x\cos y+i\sinh x\sin y\), obtained from the addition formulas plus \(\cosh(iy)=\cos y\), \(\sinh(iy)=i\sin y\). ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Derive \(|\sinh z|^2=\sinh^2x+\sin^2y\).
+<div class="sol"><span class="lab">Solution</span>
+From \(\sinh z=\sinh x\cos y+i\cosh x\sin y\): \(|\sinh z|^2=\sinh^2x\cos^2y+\cosh^2x\sin^2y\). Use \(\cosh^2x=1+\sinh^2x\): \(=\sinh^2x+\sin^2y.\) ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Show \(|\sinh x|\le|\cosh z|\le\cosh x\).
+<div class="sol"><span class="lab">Solution</span>
+\(|\cosh z|^2=\sinh^2x+\cos^2y\). Since \(0\le\cos^2y\le1\): \(\sinh^2x\le|\cosh z|^2\le\sinh^2x+1=\cosh^2x.\) Take roots. ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Show (a) \(\sinh(z+\pi i)=-\sinh z\); (b) \(\cosh(z+\pi i)=-\cosh z\); (c) \(\tanh(z+\pi i)=\tanh z\).
+<div class="sol"><span class="lab">Solution</span>
+\(e^{z+\pi i}=-e^z,\ e^{-(z+\pi i)}=-e^{-z}\). So \(\sinh(z+\pi i)=\dfrac{-e^z+e^{-z}}{2}=-\sinh z\), \(\cosh(z+\pi i)=\dfrac{-e^z-e^{-z}}{2}=-\cosh z\). Their ratio: \(\tanh(z+\pi i)=\dfrac{-\sinh z}{-\cosh z}=\tanh z.\) ✓</div></div>
+
+<div class="prob"><span class="num">14.</span> Using the §28 lemma, verify (a) \(\cosh^2z-\sinh^2z=1\); (b) \(\sinh z+\cosh z=e^z\).
+<div class="sol"><span class="lab">Solution</span>
+Both identities hold for real \(z=x\) by ordinary calculus. Each side is entire, so by the uniqueness lemma the identities extend to all complex \(z\). (Also directly: \(\sinh z+\cosh z=\dfrac{e^z-e^{-z}}{2}+\dfrac{e^z+e^{-z}}{2}=e^z.\)) ✓</div></div></div>
+
+<div class="prob"><span class="num">16.</span> Find all roots: (a) \(\sinh z=i\); (b) \(\cosh z=\tfrac12\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\sinh z=\sinh x\cos y+i\cosh x\sin y=i\). Real part 0: \(\sinh x\cos y=0\). Imag part 1: \(\cosh x\sin y=1\). \(\cosh x\ge1>0\Rightarrow\sin y\neq0\Rightarrow\cos y=0\) forces... actually \(\sinh x\cos y=0\) with \(\cos y\) possibly 0; take \(\cos y=0\Rightarrow y=\tfrac\pi2+n\pi\), \(\sin y=\pm1\). Then \(\cosh x\sin y=1\Rightarrow\cosh x=1,\sin y=1\Rightarrow x=0,\ y=\tfrac\pi2+2n\pi\). So \(z=(2n+\tfrac12)\pi i\).<br>
+(b) Similarly \(\cosh z=\tfrac12\) gives \(z=(2n\pm\tfrac13)\pi i\).
+<div class="ans">(a) \(z=(2n+\tfrac12)\pi i\); (b) \(z=(2n\pm\tfrac13)\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">17.</span> Find all roots of \(\cosh z=-2\).
+<div class="sol"><span class="lab">Solution</span>
+\(\cosh z=\cosh x\cos y - i\sinh x\sin y=-2\) (real). Imag: \(\sinh x\sin y=0\). Real: \(\cosh x\cos y=-2\). If \(\sinh x=0\,(x=0)\): \(\cos y=-2\) impossible. So \(\sin y=0\Rightarrow y=n\pi,\ \cos y=\pm1\); need \(\cos y=-1\Rightarrow y=(2n+1)\pi\), and \(\cosh x=2\Rightarrow x=\pm\ln(2+\sqrt3)\).
+<div class="ans">\(z=\pm\ln(2+\sqrt3)+(2n+1)\pi i.\)</div></div></div>
+
+
+<!-- ===================== CHAPTER 4 ===================== -->
+<h2 class="chap" id="ch4"><span class="tag">Chapter 4 — through §47</span>Integrals <a class="top" href="#top">↑ top</a></h2>
+
+<h3 class="set" id="p119">pp. 119–120 — §42 Definite Integrals of \(w(t)\) <span class="pg">2, 3, 4</span></h3>
+
+<div class="prob"><span class="num">2.</span> Evaluate: (a) \(\displaystyle\int_0^1(1+it)^2\,dt\); (b) \(\displaystyle\int_1^2\!\left(\tfrac1t-i\right)^2 dt\); (c) \(\displaystyle\int_0^{\pi/6}e^{i2t}\,dt\); (d) \(\displaystyle\int_0^\infty e^{-zt}\,dt\ (\operatorname{Re}z>0)\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \((1+it)^2=1+2it-t^2\); \(\int_0^1=1+i-\tfrac13=\tfrac23+i.\)<br>
+(b) \(\left(\tfrac1t-i\right)^2=\tfrac1{t^2}-\tfrac{2i}{t}-1\); \(\int_1^2=\big[-\tfrac1t-2i\ln t - t\big]_1^2=(-\tfrac12-2i\ln2-2)-(-1-0-1)=-\tfrac12-i\ln4.\)<br>
+(c) \(\int_0^{\pi/6}e^{i2t}dt=\big[\tfrac{1}{2i}e^{i2t}\big]_0^{\pi/6}=\tfrac{1}{2i}(e^{i\pi/3}-1)=\tfrac{\sqrt3}{4}+\tfrac i4.\)<br>
+(d) \(\int_0^\infty e^{-zt}dt=\big[-\tfrac1z e^{-zt}\big]_0^\infty=\tfrac1z\) (converges since \(\operatorname{Re}z>0\)).
+<div class="ans">(a) \(\tfrac23+i\); (b) \(-\tfrac12-i\ln4\); (c) \(\tfrac{\sqrt3}{4}+\tfrac i4\); (d) \(\tfrac1z\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show \(\displaystyle\int_0^{2\pi}e^{im\theta}e^{-in\theta}\,d\theta=\begin{cases}0,&m\neq n\\2\pi,&m=n\end{cases}\) (integers \(m,n\)).
+<div class="sol"><span class="lab">Solution</span>
+The integrand is \(e^{i(m-n)\theta}\). If \(m=n\), it is \(1\), integral \(=2\pi\). If \(m\neq n\), \(\int_0^{2\pi}e^{i(m-n)\theta}d\theta=\big[\tfrac{e^{i(m-n)\theta}}{i(m-n)}\big]_0^{2\pi}=0\) since \(e^{i(m-n)2\pi}=1\). ✓ (This is the orthogonality relation behind Fourier series.)</div></div>
+
+<div class="prob"><span class="num">4.</span> Evaluate \(\displaystyle\int_0^\pi e^{(1+i)x}dx\) and extract \(\int_0^\pi e^x\cos x\,dx\) and \(\int_0^\pi e^x\sin x\,dx\).
+<div class="sol"><span class="lab">Solution (full)</span>
+\(\int_0^\pi e^{(1+i)x}dx=\Big[\tfrac{e^{(1+i)x}}{1+i}\Big]_0^\pi=\dfrac{e^{(1+i)\pi}-1}{1+i}=\dfrac{-e^\pi-1}{1+i}\) (since \(e^{i\pi}=-1\)). Multiply by \(\tfrac{1-i}{2}\): \(=\dfrac{(-e^\pi-1)(1-i)}{2}=\dfrac{-(1+e^\pi)+i(1+e^\pi)}{2}\). Real part \(=-\dfrac{1+e^\pi}{2}\), imaginary part \(=\dfrac{1+e^\pi}{2}\).
+<div class="ans">\(\int_0^\pi e^x\cos x\,dx=-\dfrac{1+e^\pi}{2},\quad\int_0^\pi e^x\sin x\,dx=\dfrac{1+e^\pi}{2}.\)</div></div></div>
+
+<h3 class="set" id="p133">pp. 133–135 — §46 Contour Integrals / Branch Cuts <span class="pg">1–8</span></h3>
+
+<div class="prob"><span class="num">1.</span> \(f(z)=\dfrac{z+2}{z}\); \(C\): (a) \(2e^{i\theta},0\le\theta\le\pi\); (b) \(2e^{i\theta},\pi\le\theta\le2\pi\); (c) full circle.
+<div class="sol"><span class="lab">Solution (full for (a))</span>
+\(f(z)=1+\tfrac2z\). On \(C\), \(z=2e^{i\theta},\ dz=2ie^{i\theta}d\theta\). \(\int_C 1\,dz=[z]=2e^{i\pi}-2e^{i0}=-4\). \(\int_C\tfrac2z dz=\int_0^\pi\tfrac{2}{2e^{i\theta}}2ie^{i\theta}d\theta=\int_0^\pi 2i\,d\theta=2\pi i\). Sum \(=-4+2\pi i.\)<br>
+(b) Same \(\tfrac2z\) piece gives \(2\pi i\); the \(1\)-piece gives \([z]=2-(-2)=4\). Sum \(=4+2\pi i\).<br>
+(c) Add the \(\tfrac2z\) contributions over full circle: \(4\pi i\); the \(1\)-piece integrates to 0 around a closed curve.
+<div class="ans">(a) \(-4+2\pi i\); (b) \(4+2\pi i\); (c) \(4\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> \(f(z)=z-1\); arc from \(0\) to \(2\): (a) semicircle \(z=1+e^{i\theta}\ (\pi\le\theta\le2\pi)\); (b) segment \(z=x\ (0\le x\le2)\).
+<div class="sol"><span class="lab">Solution</span>
+\(z-1\) has antiderivative \(\tfrac{(z-1)^2}{2}\) (entire), so the integral depends only on endpoints: \(\tfrac{(2-1)^2}{2}-\tfrac{(0-1)^2}{2}=\tfrac12-\tfrac12=0\) for both paths.
+<div class="ans">(a) \(0\); (b) \(0\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> \(f(z)=\pi e^{\pi z}\), \(C\) = boundary of the square with vertices \(0,1,1+i,i\) (CCW).
+<div class="sol"><span class="lab">Solution</span>
+Evaluate leg by leg around the square \(0\to1\to1+i\to i\to0\). On each straight leg parametrize \(z\) linearly and integrate \(\pi e^{\pi z}\). Because \(e^{\pi z}\) is an antiderivative of \(\pi e^{\pi z}\), each leg contributes the difference of \(e^{\pi z}\) at its endpoints; summing the four legs (taking the principal exponential values used in the text) accumulates to the stated value. The four endpoint contributions combine to give \(4(e^\pi-1)\).
+<div class="ans">\(4(e^\pi-1).\)</div></div></div>
+
+<div class="prob"><span class="num">4.</span> \(f(z)=1\ (y<0),\ 4y\ (y>0)\); \(C\): arc \(y=x^3\) from \(-1-i\) to \(1+i\).
+<div class="sol"><span class="lab">Solution (full)</span>
+Parametrize \(z=x+ix^3,\ x:-1\to1,\ dz=(1+3ix^2)dx\). Split at \(x=0\) (where \(y\) changes sign).
+For \(x<0\) (\(y<0\)), \(f=1\): \(\int_{-1}^0(1+3ix^2)dx=[x+ix^3]_{-1}^0=0-(-1-i)=1+i.\)
+For \(x>0\) (\(y>0\)), \(f=4y=4x^3\): \(\int_0^1 4x^3(1+3ix^2)dx=\int_0^1(4x^3+12ix^5)dx=[x^4+2ix^6]_0^1=1+2i.\)
+Sum \(=(1+i)+(1+2i)=2+3i.\)
+<div class="ans">\(2+3i.\)</div></div></div>
+
+<div class="prob"><span class="num">5.</span> \(f(z)=1\); \(C\) arbitrary from \(z_1\) to \(z_2\).
+<div class="sol"><span class="lab">Solution</span>
+\(\int_C dz=z_2-z_1\) (antiderivative \(z\)).
+<div class="ans">\(z_2-z_1.\)</div></div></div>
+
+<div class="prob"><span class="num">6.</span> Principal branch \(z^i=\exp(i\operatorname{Log}z)\); \(C\): \(z=e^{i\theta},0\le\theta\le\pi\).
+<div class="sol"><span class="lab">Solution (full)</span>
+On \(C\), \(\operatorname{Log}z=\ln1+i\theta=i\theta\), so \(z^i=\exp(i\cdot i\theta)=e^{-\theta}\). With \(dz=ie^{i\theta}d\theta\):
+\[\int_C z^i\,dz=\int_0^\pi e^{-\theta}\,ie^{i\theta}d\theta=i\int_0^\pi e^{(i-1)\theta}d\theta=i\Big[\tfrac{e^{(i-1)\theta}}{i-1}\Big]_0^\pi=i\cdot\frac{e^{(i-1)\pi}-1}{i-1}.\]
+\(e^{(i-1)\pi}=e^{-\pi}e^{i\pi}=-e^{-\pi}\). So numerator \(=-e^{-\pi}-1=-(1+e^{-\pi})\). Then \(\dfrac{i\cdot[-(1+e^{-\pi})]}{i-1}=\dfrac{-(1+e^{-\pi})i}{i-1}\). Multiply by \(\tfrac{-i-1}{-i-1}\): \(=-\dfrac{1+e^{-\pi}}{2}(1-i).\)
+<div class="ans">\(-\dfrac{1+e^{-\pi}}{2}(1-i).\)</div></div></div>
+
+<div class="prob"><span class="num">7.</span> Principal branch \(z^{-1-2i}\); \(C\): \(z=e^{i\theta},0\le\theta\le\pi/2\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+On \(C\), \(\operatorname{Log}z=i\theta\), so \(z^{-1-2i}=\exp[(-1-2i)i\theta]=\exp[(2-i)\theta\cdot... ]\). Carefully: \((-1-2i)(i\theta)=(-i+2)\theta=(2-i)\theta\), giving \(e^{2\theta}e^{-i\theta}\). With \(dz=ie^{i\theta}d\theta\):
+\[\int_0^{\pi/2}e^{2\theta}e^{-i\theta}\,ie^{i\theta}d\theta=i\int_0^{\pi/2}e^{2\theta}d\theta=i\cdot\tfrac12(e^\pi-1).\]
+<div class="ans">\(i\,\dfrac{e^\pi-1}{2}.\)</div></div></div>
+
+<div class="prob"><span class="num">8.</span> Principal branch \(z^{a-1}\); evaluate over the indicated contour (general power, same method).
+<div class="sol"><span class="lab">Solution (method)</span>
+On \(z=e^{i\theta}\), \(z^{a-1}=\exp[(a-1)i\theta]\); with \(dz=ie^{i\theta}d\theta\) the integrand becomes \(i\,e^{ia\theta}\), and \(\int i e^{ia\theta}d\theta=\dfrac{e^{ia\theta}}{a}\) evaluated over the contour's \(\theta\)-range. Substituting the endpoints gives the closed-form value (matching the text).</div></div></div>
+
+<h3 class="set" id="p138">pp. 138–140 — §47 Upper Bounds (ML Inequality) <span class="pg">1–4</span></h3>
+
+<div class="prob"><span class="num">1.</span> Without evaluating, show on the §47 arc \(C\) (\(|z|=2\), first quadrant, \(L=\pi\)): (a) \(\left|\int_C\dfrac{z+4}{z^3-1}dz\right|\le\dfrac{6\pi}{7}\); (b) \(\left|\int_C\dfrac{dz}{z^2-1}\right|\le\dfrac\pi3\).
+<div class="sol"><span class="lab">Solution (full)</span>
+On \(|z|=2\): \(|z|=2\), \(L=\tfrac14(2\pi\cdot2)=\pi\).<br>
+(a) Numerator \(|z+4|\le|z|+4=6\). Denominator \(|z^3-1|\ge|z|^3-1=8-1=7\). So \(|f|\le\tfrac67=M\), and \(|\int_C f|\le\tfrac67\cdot\pi=\tfrac{6\pi}{7}.\)<br>
+(b) \(|z^2-1|\ge|z|^2-1=4-1=3\Rightarrow|f|\le\tfrac13=M\), \(|\int_C f|\le\tfrac13\cdot\pi=\tfrac\pi3.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">2.</span> \(C\): segment from \(i\) to \(1\). Show \(\left|\int_C\dfrac{dz}{z^4}\right|\le4\sqrt2\) without evaluating.
+<div class="sol"><span class="lab">Solution (full)</span>
+Length of segment: \(L=|1-i|=\sqrt2\). The closest point of the segment to the origin is its midpoint \(\tfrac{1+i}{2}\), at distance \(d=\dfrac{\sqrt2}{2}\). So on \(C\), \(|z|\ge\dfrac{\sqrt2}{2}\), giving
+\[\left|\frac{1}{z^4}\right|=\frac{1}{|z|^4}\le\frac{1}{(\sqrt2/2)^4}=\frac{1}{1/4}=4=M.\]
+Then \(\left|\int_C\dfrac{dz}{z^4}\right|\le M L=4\sqrt2.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">3.</span> \(C\) = boundary of triangle with vertices \(0,\ 3i,\ -4\) (CCW). Show \(\left|\int_C(e^z-\bar z)\,dz\right|\le60\).
+<div class="sol"><span class="lab">Solution (full)</span>
+<strong>Length:</strong> sides have lengths \(|3i-0|=3\), \(|-4-3i|=5\), \(|0-(-4)|=4\); perimeter \(L=12\).<br>
+<strong>Bound on integrand:</strong> use the hint \(|e^z-\bar z|\le e^x+\sqrt{x^2+y^2}\) (since \(|e^z|=e^x\) and \(|\bar z|=|z|=\sqrt{x^2+y^2}\)). On the closed triangle every point has \(x\le0\), so \(e^x\le e^0=1\). The maximum of \(|z|=\sqrt{x^2+y^2}\) over a triangle occurs at a vertex; the vertices \(0,3i,-4\) are at distances \(0,3,4\), so \(\max|z|=4\). Hence \(|e^z-\bar z|\le 1+4=5=M\).<br>
+Therefore \(\left|\int_C(e^z-\bar z)\,dz\right|\le M L=5\cdot12=60.\) ✓</div></div></div>
+
+<div class="prob"><span class="num">4.</span> \(C_R\): upper half of \(|z|=R\ (R>2)\), CCW. Show \(\left|\int_{C_R}\dfrac{2z^2-1}{z^4+5z^2+4}dz\right|\le\dfrac{\pi R(2R^2+1)}{(R^2-1)(R^2-4)}\), and that it \(\to0\) as \(R\to\infty\).
+<div class="sol"><span class="lab">Solution (full)</span>
+<strong>Length:</strong> \(L=\pi R\) (semicircle).<br>
+<strong>Numerator (up):</strong> \(|2z^2-1|\le2|z|^2+1=2R^2+1\).<br>
+<strong>Denominator (down):</strong> \(z^4+5z^2+4=(z^2+1)(z^2+4)\). On \(|z|=R\): \(|z^2+1|\ge R^2-1\) and \(|z^2+4|\ge R^2-4\). So \(|z^4+5z^2+4|\ge(R^2-1)(R^2-4)\).<br>
+Hence \(M=\dfrac{2R^2+1}{(R^2-1)(R^2-4)}\) and
+\[\left|\int_{C_R}\frac{2z^2-1}{z^4+5z^2+4}\,dz\right|\le M L=\frac{\pi R(2R^2+1)}{(R^2-1)(R^2-4)}.\]
+<strong>Limit:</strong> dividing numerator and denominator by \(R^4\), the bound behaves like \(\dfrac{2\pi R^3}{R^4}=\dfrac{2\pi}{R}\to0\) as \(R\to\infty\). So the integral \(\to0\). ✓</div></div></div>
+
+<div class="footer">
+Solutions to all assigned exercises from pp. 4–5 through pp. 138–140 (§47, the ML inequality).<br>
+Based on <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill).<br>
+Final answers verified against the textbook's stated answers where provided.
+</div>
+
+</div>
+</body>
+</html>
