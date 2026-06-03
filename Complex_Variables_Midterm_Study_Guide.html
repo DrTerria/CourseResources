@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complex Variables — Midterm Study Guide (Ch. 1–4, §1–47)</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], tags: 'none' },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<style>
+  :root{
+    --ink:#1a1d24; --paper:#fbf8f1; --accent:#7a2e2e; --accent2:#1f5673;
+    --soft:#efe9dc; --line:#d9d0bd; --gold:#a8842c;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.62; font-size:18px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 26px 120px}
+  header.hero{
+    background:linear-gradient(135deg,#22323d,#3a2727);
+    color:#f3ecd9;padding:56px 26px 48px;text-align:center;
+    border-bottom:5px solid var(--gold);
+  }
+  header.hero h1{font-size:2.1rem;margin:0 0 8px;letter-spacing:.5px}
+  header.hero .sub{font-style:italic;opacity:.9;font-size:1.05rem}
+  header.hero .meta{margin-top:14px;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
+  h2.chap{
+    margin:64px 0 6px;font-size:1.7rem;color:var(--accent);
+    border-bottom:3px double var(--line);padding-bottom:6px;
+  }
+  h2.chap .tag{display:block;font-size:.7rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-style:normal}
+  h3{margin:38px 0 4px;font-size:1.22rem;color:var(--accent2)}
+  h3 .sec{color:var(--gold);font-size:.95rem;font-weight:normal}
+  h4{margin:24px 0 4px;font-size:1.05rem;color:var(--ink);font-variant:small-caps;letter-spacing:.5px}
+  p{margin:.55em 0}
+  ul,ol{margin:.4em 0 .8em;padding-left:1.4em}
+  li{margin:.28em 0}
+  .box{
+    background:var(--soft);border-left:4px solid var(--accent2);
+    padding:14px 18px;margin:18px 0;border-radius:0 6px 6px 0;
+  }
+  .box.key{border-left-color:var(--accent)}
+  .box.warn{border-left-color:var(--gold);background:#f7f0db}
+  .box .lab{font-variant:small-caps;font-weight:bold;letter-spacing:1px;font-size:.8rem;display:block;margin-bottom:4px;color:var(--accent)}
+  .box.key .lab{color:var(--accent)}
+  .box.warn .lab{color:var(--gold)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}body{font-size:17px}}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.95rem}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--soft);font-variant:small-caps;letter-spacing:.5px}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 26px;margin:34px 0;column-count:2;column-gap:40px}
+  @media(max-width:640px){.toc{column-count:1}}
+  .toc a{color:var(--accent2);text-decoration:none;font-size:.95rem}
+  .toc a:hover{text-decoration:underline}
+  .toc .ch{font-weight:bold;color:var(--accent);display:block;margin:10px 0 2px;break-after:avoid}
+  .pill{display:inline-block;background:var(--accent);color:#fff;font-size:.7rem;padding:2px 9px;border-radius:20px;letter-spacing:1px;vertical-align:middle}
+  .hwbox{background:#fff;border:1px dashed var(--accent2);border-radius:6px;padding:10px 16px;margin:14px 0;font-size:.92rem}
+  .hwbox .lab{font-variant:small-caps;font-weight:bold;color:var(--accent2);letter-spacing:1px}
+  hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+  .ex{font-size:.96rem}
+  .ex .q{font-weight:bold;color:var(--accent2)}
+  code{background:#ece5d4;padding:1px 5px;border-radius:3px;font-size:.85em}
+  .footer{text-align:center;font-size:.85rem;color:#7a7361;margin-top:60px;font-style:italic}
+  a.top{font-size:.75rem;color:var(--gold);text-decoration:none;float:right;margin-top:10px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Complex Variables &amp; Applications</h1>
+  <div class="sub">Midterm Study Guide — Brown &amp; Churchill, 9th ed.</div>
+  <div class="meta">Chapters 1–4 &nbsp;•&nbsp; Sections 1–47 &nbsp;•&nbsp; through Upper Bounds for Contour Integrals</div>
+</header>
+<div class="wrap">
+
+<p style="margin-top:30px">This guide is built to take you from essentially zero up through everything you need for the midterm. It follows the book section by section, states every definition, theorem, and formula you're responsible for, explains <em>why</em> things are true at an intuitive level, and shows the standard problem types your assigned homework draws from. Worked patterns matching specific assigned problems are flagged with a <span class="pill">HW</span> tag.</p>
+
+<div class="box warn"><span class="lab">How to use this</span>
+Read each section's <strong>core ideas</strong> first, memorize anything in a <strong>Key</strong> box, then look at the problem patterns. The boxes labeled <em>Key</em> are the formulas/results most likely to appear on quizzes and the exam. Don't skip the "common traps" notes — those are exactly where points are lost.</div>
+
+<div class="toc" id="top">
+  <span class="ch">Ch. 1 — Complex Numbers</span>
+  <a href="#s1">§1–3 Algebra of \(\mathbb{C}\)</a><br>
+  <a href="#s4">§4–5 Vectors, Moduli, Triangle Ineq.</a><br>
+  <a href="#s6">§6 Conjugates</a><br>
+  <a href="#s7">§7–9 Exponential form, args</a><br>
+  <a href="#s10">§10–11 Roots</a><br>
+  <a href="#s12">§12 Regions in the plane</a><br>
+  <span class="ch">Ch. 2 — Analytic Functions</span>
+  <a href="#s13">§13–14 Functions &amp; mappings</a><br>
+  <a href="#s15">§15–18 Limits &amp; continuity</a><br>
+  <a href="#s19">§19–20 Derivatives</a><br>
+  <a href="#s21">§21–24 Cauchy–Riemann</a><br>
+  <a href="#s25">§25–26 Analytic functions</a><br>
+  <a href="#s27">§27 Harmonic functions</a><br>
+  <a href="#s28">§28–29 Uniqueness, reflection</a><br>
+  <span class="ch">Ch. 3 — Elementary Functions</span>
+  <a href="#s30">§30 Exponential</a><br>
+  <a href="#s31">§31–34 Logarithms</a><br>
+  <a href="#s35">§35–36 Powers</a><br>
+  <a href="#s37">§37–38 Trig functions</a><br>
+  <a href="#s39">§39 Hyperbolic</a><br>
+  <a href="#s40">§40 Inverse trig/hyp</a><br>
+  <span class="ch">Ch. 4 — Integrals (through §47)</span>
+  <a href="#s41">§41–42 \(w(t)\) integrals</a><br>
+  <a href="#s43">§43 Contours</a><br>
+  <a href="#s44">§44–46 Contour integrals</a><br>
+  <a href="#s47">§47 Upper bounds (ML)</a><br>
+  <a href="#cheat">★ Final cheat sheet</a>
+</div>
+
+<!-- ============== CHAPTER 1 ============== -->
+<h2 class="chap" id="ch1"><span class="tag">Chapter 1</span>Complex Numbers <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s1"><span class="sec">§1–§3</span> The Algebra of \(\mathbb{C}\)</h3>
+
+<p>A <strong>complex number</strong> is an ordered pair \(z=(x,y)\), written \(z=x+iy\), where \(x=\operatorname{Re}z\) (real part) and \(y=\operatorname{Im}z\) (imaginary part). The symbol \(i\) satisfies \(i^2=-1\). Real numbers are the \(z\) with \(y=0\); <em>pure imaginary</em> numbers have \(x=0\).</p>
+
+<div class="box key"><span class="lab">Arithmetic</span>
+\[(x_1+iy_1)+(x_2+iy_2)=(x_1+x_2)+i(y_1+y_2)\]
+\[(x_1+iy_1)(x_2+iy_2)=(x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)\]
+Just multiply normally and replace \(i^2\) by \(-1\).</div>
+
+<p>\(\mathbb{C}\) is a <strong>field</strong>: addition and multiplication are commutative and associative, multiplication distributes over addition, \(0=(0,0)\) and \(1=(1,0)\) are the identities, every \(z\) has an additive inverse \(-z\), and every \(z\neq0\) has a multiplicative inverse. There is <em>no</em> ordering "\(<\)" on \(\mathbb{C}\) (inequalities only ever apply to real quantities such as \(|z|\)).</p>
+
+<div class="box key"><span class="lab">Inverse &amp; division</span>
+\[z^{-1}=\frac{x-iy}{x^2+y^2}\qquad(z\neq0)\]
+\[\frac{z_1}{z_2}=\frac{z_1\,\overline{z_2}}{z_2\,\overline{z_2}}=\frac{(x_1+iy_1)(x_2-iy_2)}{x_2^2+y_2^2}\]
+To divide: <strong>multiply top and bottom by the conjugate of the denominator.</strong></div>
+
+<h4>Problem patterns</h4>
+<div class="hwbox"><span class="lab">HW pp. 4–5, 7–8</span> Verify field identities; reduce expressions like \(\dfrac{1}{1-i}\) or \(\dfrac{5}{(1-i)(2-i)(3-i)}\) to the form \(x+iy\); prove the binomial-type and algebraic identities (e.g. \((1+z)^2=1+2z+z^2\), or that \(z^2=\bar z^2\iff z\) is real or pure imaginary). Standard moves: clear denominators by conjugates; separate real/imaginary parts.</div>
+
+<p class="ex"><span class="q">Worked.</span> \(\dfrac{1}{1-i}=\dfrac{1+i}{(1-i)(1+i)}=\dfrac{1+i}{2}=\tfrac12+\tfrac12 i.\)</p>
+
+<h3 id="s4"><span class="sec">§4–§5</span> Vectors, Moduli, and the Triangle Inequality</h3>
+
+<p>Identify \(z=x+iy\) with the vector/point \((x,y)\). Addition is vector addition (parallelogram rule).</p>
+
+<div class="box key"><span class="lab">Modulus</span>
+\[|z|=\sqrt{x^2+y^2}\ge 0,\qquad |z|^2=x^2+y^2=z\bar z.\]
+\(|z|\) is the distance from \(0\) to \(z\); \(|z_1-z_2|\) is the distance between two points. So \(|z-z_0|=R\) is a <em>circle</em> of radius \(R\) about \(z_0\), and \(|z-z_0|\le R\) is a closed disk.</div>
+
+<div class="box key"><span class="lab">Modulus rules &amp; triangle inequalities</span>
+\[|z_1z_2|=|z_1||z_2|,\qquad \left|\tfrac{z_1}{z_2}\right|=\tfrac{|z_1|}{|z_2|}.\]
+\[|z_1+z_2|\le |z_1|+|z_2|\quad(\text{triangle inequality})\]
+\[\big|\,|z_1|-|z_2|\,\big|\le |z_1\pm z_2|\quad(\text{reverse triangle inequality})\]
+Useful forms: \(\operatorname{Re}z\le|\operatorname{Re}z|\le|z|\), \(\ \operatorname{Im}z\le|z|\).</div>
+
+<div class="box warn"><span class="lab">Why the reverse inequality matters</span>
+For the integral bounds in §47 you constantly need a <em>lower</em> bound on a denominator. The key tool is
+\[|z^n + a|\ \ge\ \big|\,|z|^n-|a|\,\big|.\]
+E.g. on \(|z|=2\): \(|z^4+1|\ge |2^4-1|=15\). Memorize this — it appears on the exam.</div>
+
+<h4>Problem patterns</h4>
+<div class="hwbox"><span class="lab">HW pp. 13–14, 16–17</span> Locate/sketch sets defined by modulus conditions (\(|z-1+i|=1\) is a circle centered \(1-i\)); prove inequalities using triangle/reverse-triangle; show \(\sqrt2\,|z|\ge|\operatorname{Re}z|+|\operatorname{Im}z|\); establish algebraic identities like \(|z_1z_2|=|z_1||z_2|\) and \(|z_1-z_2|^2=|z_1|^2-2\operatorname{Re}(z_1\bar z_2)+|z_2|^2\).</div>
+
+<h3 id="s6"><span class="sec">§6</span> Complex Conjugates</h3>
+<div class="box key"><span class="lab">Conjugate</span>
+\[\bar z = x-iy,\qquad \overline{\bar z}=z,\qquad |\bar z|=|z|,\qquad z\bar z=|z|^2.\]
+\[\overline{z_1\pm z_2}=\bar z_1\pm\bar z_2,\quad \overline{z_1z_2}=\bar z_1\,\bar z_2,\quad \overline{(z_1/z_2)}=\bar z_1/\bar z_2.\]
+\[\operatorname{Re}z=\frac{z+\bar z}{2},\qquad \operatorname{Im}z=\frac{z-\bar z}{2i}.\]</div>
+<p>Conjugation reflects across the real axis. A number is real iff \(z=\bar z\) and pure imaginary iff \(z=-\bar z\).</p>
+<div class="hwbox"><span class="lab">HW pp. 16–17</span> Use \(z\bar z=|z|^2\) and conjugate rules to simplify, prove \(\overline{z^2}=\bar z^{\,2}\), or rewrite modulus identities. The trick "\(|z|^2=z\bar z\)" converts modulus problems into algebra.</div>
+
+<h3 id="s7"><span class="sec">§7–§9</span> Exponential Form &amp; Arguments</h3>
+
+<div class="box key"><span class="lab">Polar / exponential form</span>
+With \(r=|z|\) and \(\theta=\arg z\):
+\[z=r(\cos\theta+i\sin\theta)=re^{i\theta}\qquad(\text{Euler: } e^{i\theta}=\cos\theta+i\sin\theta).\]
+\(\theta\) is the <strong>argument</strong>, defined only up to multiples of \(2\pi\). The <strong>principal value</strong> \(\Theta=\operatorname{Arg}z\) is the one with \(-\pi<\Theta\le\pi\), and \(\arg z=\Theta+2n\pi\ (n\in\mathbb{Z}).\)</div>
+
+<div class="box key"><span class="lab">Multiplication, powers, de Moivre</span>
+\[z_1z_2=r_1r_2\,e^{i(\theta_1+\theta_2)},\qquad \frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.\]
+\[z^n=r^n e^{in\theta},\qquad (\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta.\]
+\[\arg(z_1z_2)=\arg z_1+\arg z_2,\qquad \arg(z_1/z_2)=\arg z_1-\arg z_2\]
+(as equalities between <em>sets</em> of values — they need NOT hold for the principal value \(\operatorname{Arg}\)).</div>
+
+<div class="box warn"><span class="lab">Common trap</span>
+\(\operatorname{Arg}(z_1z_2)\neq \operatorname{Arg}z_1+\operatorname{Arg}z_2\) in general — the sum can fall outside \((-\pi,\pi]\) and must be adjusted by \(\pm2\pi\). The identity is true only for the multivalued \(\arg\).</div>
+
+<div class="hwbox"><span class="lab">HW pp. 23–25</span> Put numbers in exponential form (e.g. \(-1-\sqrt3\,i = 2e^{-i2\pi/3}\)); use de Moivre to derive \(\cos3\theta,\sin3\theta\); compute powers like \((1+i)^{n}\); verify \(\arg\) relations and find \(\operatorname{Arg}\) of products/quotients.</div>
+
+<p class="ex"><span class="q">Worked.</span> \((1+i)^{10}\): write \(1+i=\sqrt2\,e^{i\pi/4}\). Then \((1+i)^{10}=(\sqrt2)^{10}e^{i10\pi/4}=2^{5}e^{i5\pi/2}=32\,e^{i\pi/2}=32i.\)</p>
+
+<h3 id="s10"><span class="sec">§10–§11</span> Roots of Complex Numbers</h3>
+
+<div class="box key"><span class="lab">\(n\)th roots</span>
+The \(n\) distinct \(n\)th roots of \(z_0=r_0e^{i\theta_0}\) are
+\[c_k=\sqrt[n]{r_0}\,\exp\!\Big[i\Big(\frac{\theta_0+2k\pi}{n}\Big)\Big],\qquad k=0,1,\dots,n-1.\]
+They lie on the circle \(|z|=\sqrt[n]{r_0}\), equally spaced by angle \(2\pi/n\). The <strong>principal root</strong> uses \(\theta_0=\operatorname{Arg}z_0\) and \(k=0\).</div>
+
+<p>The \(n\)th roots of unity are \(1,\omega,\omega^2,\dots,\omega^{n-1}\) where \(\omega=e^{i2\pi/n}\); they form a regular \(n\)-gon and sum to \(0\).</p>
+
+<div class="hwbox"><span class="lab">HW pp. 30–32, 34–35</span> Find all \(n\)th roots and plot them (e.g. the three cube roots of \(-8i\), the square roots of \(i\)); express roots in \(x+iy\) form; verify the roots-of-unity sum is zero. Method: convert to \(re^{i\theta}\), apply the formula, step \(k=0,\dots,n-1\).</div>
+
+<p class="ex"><span class="q">Worked.</span> Square roots of \(i=e^{i\pi/2}\): \(c_k=e^{i(\pi/2+2k\pi)/2}\), \(k=0,1\Rightarrow e^{i\pi/4}=\tfrac{\sqrt2}{2}(1+i)\) and \(e^{i5\pi/4}=-\tfrac{\sqrt2}{2}(1+i).\)</p>
+
+<h3 id="s12"><span class="sec">§12</span> Regions in the Complex Plane</h3>
+<p>Vocabulary you must be able to state and apply:</p>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>\(\varepsilon\)-neighborhood of \(z_0\)</td><td>\(\{z:|z-z_0|<\varepsilon\}\) (open disk)</td></tr>
+<tr><td>Interior point</td><td>Some neighborhood lies entirely in the set</td></tr>
+<tr><td>Open set</td><td>Every point is interior</td></tr>
+<tr><td>Closed set</td><td>Contains all its boundary points (complement is open)</td></tr>
+<tr><td>Boundary point</td><td>Every neighborhood meets the set and its complement</td></tr>
+<tr><td>Connected (open)</td><td>Any two points joined by a polygonal path inside the set</td></tr>
+<tr><td>Domain</td><td>A nonempty open <em>connected</em> set</td></tr>
+<tr><td>Region</td><td>A domain together with some/all boundary points</td></tr>
+<tr><td>Bounded</td><td>Contained in some disk \(|z|<M\)</td></tr>
+</table>
+<div class="box warn"><span class="lab">Why "domain" matters</span>The whole theory of analytic functions is stated on <em>domains</em>. Many later theorems require "analytic throughout a domain \(D\)," so know this word precisely.</div>
+
+
+<!-- ============== CHAPTER 2 ============== -->
+<h2 class="chap" id="ch2"><span class="tag">Chapter 2</span>Analytic Functions <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s13"><span class="sec">§13–§14</span> Functions and Mappings</h3>
+<p>A complex function \(w=f(z)\) assigns to each \(z=x+iy\) in a domain a value \(w=u+iv\). Writing</p>
+\[f(z)=u(x,y)+i\,v(x,y),\]
+<p>splits \(f\) into two real-valued functions of two real variables. (In polar form, \(f=u(r,\theta)+iv(r,\theta).\)) Because we can't graph \(w\) vs. \(z\) in 2-D, we picture \(f\) as a <strong>mapping</strong> from a \(z\)-plane to a \(w\)-plane: it sends curves and regions to image curves and regions.</p>
+
+<div class="box key"><span class="lab">The map \(w=z^2\)</span>
+With \(z=re^{i\theta}\), \(w=r^2e^{i2\theta}\): moduli square, angles double. In rectangular form \(u=x^2-y^2,\ v=2xy\). It maps the hyperbolas \(x^2-y^2=c_1\) and \(2xy=c_2\) to vertical/horizontal lines \(u=c_1,\ v=c_2\), and the upper half plane onto the whole plane.</p></div>
+
+<div class="hwbox"><span class="lab">HW pp. 43–44</span> Write \(f\) as \(u+iv\); describe images of lines, rays, circles, or regions under \(w=z^2\), \(w=1/z\), translations and rotations. Strategy: use polar form for power maps, rectangular form for linear maps; track what happens to \(r,\theta\) or to \(x,y\).</div>
+
+<h3 id="s15"><span class="sec">§15–§18</span> Limits and Continuity</h3>
+
+<div class="box key"><span class="lab">Limit</span>
+\(\displaystyle\lim_{z\to z_0}f(z)=w_0\) means: for every \(\varepsilon>0\) there is \(\delta>0\) so that
+\[0<|z-z_0|<\delta\ \Rightarrow\ |f(z)-w_0|<\varepsilon.\]
+The limit, if it exists, is <strong>unique</strong>, and \(z\) may approach \(z_0\) <em>from any direction</em>. If two different paths give different values, the limit does not exist.</div>
+
+<div class="box key"><span class="lab">Real/imaginary split (Thm, §15–16)</span>
+With \(f=u+iv\), \(z_0=x_0+iy_0\), \(w_0=u_0+iv_0\):
+\[\lim_{z\to z_0}f(z)=w_0\iff \lim_{(x,y)\to(x_0,y_0)}u=u_0\ \text{ and }\ \lim_{(x,y)\to(x_0,y_0)}v=v_0.\]</div>
+
+<div class="box key"><span class="lab">Limit laws (§16)</span>
+If \(\lim f=W\) and \(\lim g=W'\) (as \(z\to z_0\)) then the limit of a sum, product, and quotient (denominator \(\neq0\)) is \(W+W'\), \(WW'\), \(W/W'\). Polynomials behave like in calculus.</div>
+
+<div class="box key"><span class="lab">Point at infinity (§17)</span>
+On the Riemann sphere, the point \(\infty\) is added. Useful equivalences:
+\[\lim_{z\to z_0}f(z)=\infty \iff \lim_{z\to z_0}\frac{1}{f(z)}=0,\]
+\[\lim_{z\to\infty}f(z)=w_0 \iff \lim_{z\to0}f(1/z)=w_0,\]
+\[\lim_{z\to\infty}f(z)=\infty \iff \lim_{z\to0}\frac{1}{f(1/z)}=0.\]</div>
+
+<p><strong>Continuity (§18):</strong> \(f\) is continuous at \(z_0\) if \(f(z_0)\) exists, \(\lim_{z\to z_0}f(z)\) exists, and the two are equal. Sums, products, quotients, and compositions of continuous functions are continuous. A function continuous on a closed bounded region is bounded there and \(|f|\) attains a maximum — this fact is the backbone of §47.</p>
+
+<div class="hwbox"><span class="lab">HW pp. 54–55</span> Compute limits using the laws; show a limit fails to exist by comparing two paths (classic: \(\lim_{z\to0}\bar z/z\) gives \(1\) along the real axis, \(-1\) along the imaginary axis ⟹ DNE); evaluate limits involving \(\infty\) via the equivalences above.</div>
+
+<h3 id="s19"><span class="sec">§19–§20</span> Derivatives</h3>
+
+<div class="box key"><span class="lab">Derivative</span>
+\[f'(z_0)=\lim_{\Delta z\to0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z},\]
+provided the limit exists. As with limits, \(\Delta z\to0\) <strong>from every direction</strong> must give the same value — this is a far stronger requirement than real differentiability.</div>
+
+<p>All the familiar rules hold (same proofs):</p>
+\[\tfrac{d}{dz}c=0,\quad \tfrac{d}{dz}z^n=nz^{n-1},\quad (f\pm g)'=f'\pm g',\]
+\[(fg)'=f'g+fg',\quad \Big(\tfrac{f}{g}\Big)'=\frac{f'g-fg'}{g^2},\quad \tfrac{d}{dz}f(g(z))=f'(g(z))g'(z).\]
+
+<div class="box warn"><span class="lab">Common trap — \(f(z)=\bar z\)</span>
+\(f(z)=\bar z\) is continuous everywhere but <strong>differentiable nowhere.</strong> The difference quotient \(\overline{\Delta z}/\Delta z\) equals \(1\) along the real direction and \(-1\) along the imaginary direction. Likewise \(|z|^2\) is differentiable only at \(z=0\). Existence of \(f'\) is special.</div>
+
+<div class="hwbox"><span class="lab">HW pp. 61–62</span> Compute derivatives via the rules; use the definition to show \(\bar z\), \(\operatorname{Re}z\), \(|z|^2\) are non-differentiable (away from special points); apply chain/quotient rules.</div>
+
+<h3 id="s21"><span class="sec">§21–§24</span> The Cauchy–Riemann Equations</h3>
+
+<div class="box key"><span class="lab">C–R equations (necessary, §21)</span>
+If \(f=u+iv\) is differentiable at \(z_0=x_0+iy_0\), then \(u,v\) have first-order partials there satisfying
+\[\boxed{\,u_x=v_y\quad\text{and}\quad u_y=-v_x\,}\]
+and \(\displaystyle f'(z_0)=u_x+iv_x = v_y - i\,u_y.\)</div>
+
+<div class="box key"><span class="lab">Sufficient conditions (§23)</span>
+If \(u,v\) and their first partials are <em>continuous</em> in a neighborhood of \(z_0\) <strong>and</strong> satisfy the C–R equations at \(z_0\), then \(f'(z_0)\) exists. (C–R alone is necessary but not sufficient; continuity of the partials is what closes the gap.)</div>
+
+<div class="box key"><span class="lab">Polar form (§24)</span>
+With \(z=re^{i\theta}\), \(f=u(r,\theta)+iv(r,\theta)\), the C–R equations become
+\[r\,u_r=v_\theta,\qquad u_\theta=-r\,v_r\quad(r>0),\]
+\[f'(z_0)=e^{-i\theta}\big(u_r+i\,v_r\big).\]</div>
+
+<div class="box warn"><span class="lab">Common trap</span>
+C–R holding <em>at a point</em> does not make \(f\) differentiable there unless the partials are also continuous nearby. And differentiability at one point does not imply analyticity (next section). Order matters: <em>necessary</em> vs. <em>sufficient.</em></div>
+
+<div class="hwbox"><span class="lab">HW pp. 70–72</span> Verify or apply C–R to decide where \(f'\) exists and compute it; use the polar C–R for functions natural in \(r,\theta\); show where functions like \(f(z)=e^x e^{-iy}\) (i.e. \(e^{\bar z}\)) fail to be differentiable.</div>
+
+<p class="ex"><span class="q">Worked.</span> \(f(z)=z^2=x^2-y^2+i(2xy)\): \(u_x=2x=v_y\), \(u_y=-2y=-v_x\) ✓ everywhere, partials continuous ⟹ differentiable everywhere with \(f'=u_x+iv_x=2x+i2y=2z.\)</p>
+
+<h3 id="s25"><span class="sec">§25–§26</span> Analytic Functions</h3>
+<div class="box key"><span class="lab">Definition</span>
+\(f\) is <strong>analytic</strong> (holomorphic) at \(z_0\) if it is differentiable at every point of some neighborhood of \(z_0\). \(f\) is analytic <em>in a domain \(D\)</em> if differentiable at every point of \(D\). An <strong>entire</strong> function is analytic on all of \(\mathbb{C}\) (e.g. polynomials, \(e^z\)).</div>
+<p>"Analytic at a point" is therefore a <em>neighborhood</em> property, strictly stronger than "differentiable at a point." A <strong>singular point</strong> (singularity) \(z_0\) is a point where \(f\) fails to be analytic but is analytic at some point in every neighborhood of \(z_0\).</p>
+<div class="box key"><span class="lab">Key consequence</span>
+If \(f'(z)=0\) everywhere in a domain \(D\), then \(f\) is <strong>constant</strong> on \(D\). (Used repeatedly later.)</div>
+<div class="hwbox"><span class="lab">HW pp. 76–77</span> Determine domains of analyticity; locate singular points (e.g. \(f=1/(z^2+1)\) singular at \(\pm i\)); show a function with \(f'\equiv0\) is constant; argue why a function differentiable only on a curve/point is nowhere analytic.</div>
+
+<h3 id="s27"><span class="sec">§27</span> Harmonic Functions</h3>
+<div class="box key"><span class="lab">Harmonic &amp; harmonic conjugate</span>
+A real function \(H(x,y)\) is <strong>harmonic</strong> in a domain if it has continuous 2nd partials and satisfies Laplace's equation
+\[H_{xx}+H_{yy}=0.\]
+<strong>Theorem.</strong> If \(f=u+iv\) is analytic in \(D\), then \(u\) and \(v\) are each harmonic in \(D\). Here \(v\) is a <em>harmonic conjugate</em> of \(u\) (order matters — \(-u\) is a harmonic conjugate of \(v\)).</div>
+<p>To build a harmonic conjugate \(v\) of a given harmonic \(u\): integrate the C–R equations. From \(v_y=u_x\) integrate in \(y\), then differentiate in \(x\) and match \(v_x=-u_y\) to pin down the "constant" of integration.</p>
+<div class="hwbox"><span class="lab">HW pp. 89–90</span> Show a given \(u\) is harmonic; find its harmonic conjugate \(v\) and the analytic \(f=u+iv\); verify the conjugate relationship is not symmetric. Watch the sign convention in \(u_y=-v_x\).</div>
+<p class="ex"><span class="q">Worked.</span> \(u=x^2-y^2\): \(u_x=2x\Rightarrow v_y=2x\Rightarrow v=2xy+\phi(x)\). Then \(v_x=2y+\phi'(x)\) must equal \(-u_y=2y\), so \(\phi'(x)=0\), \(\phi=c\). Thus \(v=2xy+c\) and \(f=z^2+ic.\)</p>
+
+<h3 id="s28"><span class="sec">§28–§29</span> Uniquely Determined Analytic Functions &amp; the Reflection Principle</h3>
+<p><strong>Uniqueness (§28):</strong> if two functions are analytic in a domain \(D\) and agree on a line segment (or any set with a limit point) inside \(D\), they agree throughout \(D\). Equivalently, an analytic function that is \(0\) along a segment in \(D\) is identically \(0\). This is why analytic functions are extraordinarily "rigid."</p>
+<p><strong>Reflection principle (§29):</strong> Suppose \(f\) is analytic in a domain \(D\) symmetric about the real axis. Then
+\[\overline{f(\bar z)}=f(z)\ \text{ for all }z\in D \iff f(x)\ \text{is real on the segment of the real axis in } D.\]
+So a function real on a real interval satisfies \(\overline{f(\bar z)}=f(z)\).</p>
+<div class="hwbox"><span class="lab">HW pp. 95–97, 99–100</span> Apply uniqueness to show identities extend from \(\mathbb R\) to \(\mathbb C\); verify the reflection identity for entire functions like \(z^3\), \(e^z\); explain why it fails when \(f\) isn't real on the axis (e.g. \(iz+1\)).</div>
+
+
+<!-- ============== CHAPTER 3 ============== -->
+<h2 class="chap" id="ch3"><span class="tag">Chapter 3</span>Elementary Functions <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s30"><span class="sec">§30</span> The Exponential Function</h3>
+<div class="box key"><span class="lab">Definition &amp; properties</span>
+\[e^z=e^{x}(\cos y+i\sin y)\qquad(z=x+iy).\]
+So \(|e^z|=e^x\) and \(\arg(e^z)=y\,(+2n\pi)\). Key facts:
+\[e^{z_1}e^{z_2}=e^{z_1+z_2},\quad \frac{e^{z_1}}{e^{z_2}}=e^{z_1-z_2},\quad (e^z)'=e^z\ (\text{entire}).\]
+\(e^z\) is <strong>never zero</strong> (\(|e^z|=e^x>0\)) and is <strong>periodic with period \(2\pi i\)</strong>: \(e^{z+2\pi i}=e^z\).</div>
+<div class="box warn"><span class="lab">Trap</span>Unlike the real case, \(e^z\) is not one-to-one and \(e^z<0\) <em>is</em> possible? No — \(e^z\neq0\), but \(e^z\) can be any nonzero complex number, e.g. \(e^{i\pi}=-1\). Also \(e^{z_1}=e^{z_2}\iff z_1-z_2=2n\pi i\).</div>
+<div class="hwbox"><span class="lab">HW p. 103</span> Compute \(e^z\) in \(x+iy\) form; solve \(e^z=\) given value (find all \(z\)); show \(|e^{z^2}|\le e^{|z|^2}\); verify periodicity and the modulus/argument identities.</div>
+
+<h3 id="s31"><span class="sec">§31–§34</span> The Logarithmic Function</h3>
+<div class="box key"><span class="lab">Logarithm (multivalued)</span>
+\[\log z=\ln|z|+i\arg z=\ln r + i(\Theta+2n\pi),\quad n\in\mathbb Z,\ z\neq0,\]
+where \(\Theta=\operatorname{Arg}z\). It is the inverse of \(e^z\): \(e^{\log z}=z\), and \(\log(e^z)=z+2n\pi i\).</div>
+<div class="box key"><span class="lab">Principal value &amp; branches</span>
+\[\operatorname{Log}z=\ln r + i\Theta\qquad(-\pi<\Theta\le\pi).\]
+A <strong>branch</strong> fixes \(\arg z\) in an interval \(\alpha<\theta<\alpha+2\pi\), making \(\log\) single-valued and analytic on the plane minus a <strong>branch cut</strong> (a ray from the origin). For the principal branch the cut is the negative real axis including \(0\); there
+\[\frac{d}{dz}\operatorname{Log}z=\frac1z\quad(|z|>0,\ -\pi<\operatorname{Arg}z<\pi).\]
+The point \(0\) is a <strong>branch point</strong>.</div>
+<div class="box key"><span class="lab">Log identities (§34)</span>
+As multivalued sets:
+\[\log(z_1z_2)=\log z_1+\log z_2,\qquad \log(z_1/z_2)=\log z_1-\log z_2.\]
+These can <strong>fail for \(\operatorname{Log}\)</strong> (principal) by a \(\pm2\pi i\) correction. Also \(\log(z^n)\neq n\log z\) in general.</div>
+<div class="hwbox"><span class="lab">HW pp. 107–109, 111–112</span> Evaluate \(\log\) and \(\operatorname{Log}\) of specific numbers (e.g. \(\operatorname{Log}(-ei)=1-i\pi/2\)); solve \(\log z = \) value; show identity failures with explicit examples; identify domains where a chosen branch is analytic.</div>
+<p class="ex"><span class="q">Worked.</span> \(\log(-1)=\ln1+i(\pi+2n\pi)=(2n+1)\pi i\); principal value \(\operatorname{Log}(-1)=i\pi.\)</p>
+
+<h3 id="s35"><span class="sec">§35–§36</span> The Power Function</h3>
+<div class="box key"><span class="lab">Complex powers</span>
+For \(z\neq0\) and any complex \(c\),
+\[z^{c}=e^{\,c\log z}\quad(\text{multivalued}),\qquad \text{P.V. } z^{c}=e^{\,c\operatorname{Log}z}.\]
+On a branch of \(\log\), \(z^c\) is analytic with \(\dfrac{d}{dz}z^c = c\,z^{c-1}.\) The exponential base form \(c^z=e^{z\log c}\) is also defined this way.</div>
+<div class="box warn"><span class="lab">Trap</span>Powers are generally multivalued; e.g. \(i^{i}=e^{i\log i}=e^{i\cdot i(\pi/2+2n\pi)}=e^{-(\pi/2+2n\pi)}\) — infinitely many <em>real</em> values; principal value \(e^{-\pi/2}\).</div>
+<div class="hwbox"><span class="lab">HW pp. 111–112, 119–120</span> Compute all values (and the P.V.) of powers like \((1+i)^{i}\), \((-1)^{1/\pi}\), \(i^{i}\); differentiate branch-defined powers; show when \(z^cz^d=z^{c+d}\) holds.</div>
+
+<h3 id="s37"><span class="sec">§37–§38</span> Trigonometric Functions</h3>
+<div class="box key"><span class="lab">Definitions</span>
+\[\sin z=\frac{e^{iz}-e^{-iz}}{2i},\qquad \cos z=\frac{e^{iz}+e^{-iz}}{2}.\]
+Both are entire with \((\sin z)'=\cos z\), \((\cos z)'=-\sin z\); all the usual identities (\(\sin^2z+\cos^2z=1\), addition formulas, periodicity \(2\pi\)) carry over.</div>
+<div class="box key"><span class="lab">Real/imaginary parts &amp; moduli</span>
+\[\sin z=\sin x\cosh y+i\cos x\sinh y,\quad \cos z=\cos x\cosh y - i\sin x\sinh y,\]
+\[|\sin z|^2=\sin^2x+\sinh^2y,\qquad |\cos z|^2=\cos^2x+\sinh^2y.\]</div>
+<div class="box warn"><span class="lab">Big difference from real trig</span>
+\(\sin z\) and \(\cos z\) are <strong>unbounded</strong> (because \(\sinh y\to\infty\)). Their <strong>only zeros are the real ones</strong>: \(\sin z=0\iff z=n\pi\); \(\cos z=0\iff z=\tfrac\pi2+n\pi\). The other functions \(\tan,\cot,\sec,\csc\) are defined as ratios and are analytic except where their denominators vanish.</div>
+<div class="hwbox"><span class="lab">HW pp. 133–135, 138–140</span> Verify identities; compute \(|\sin z|^2\); locate all zeros of \(\sin,\cos\); solve equations like \(\cos z=2\) (note: possible in \(\mathbb C\)!); show unboundedness.</div>
+
+<h3 id="s39"><span class="sec">§39</span> Hyperbolic Functions</h3>
+<div class="box key"><span class="lab">Definitions &amp; links to trig</span>
+\[\sinh z=\frac{e^{z}-e^{-z}}{2},\qquad \cosh z=\frac{e^{z}+e^{-z}}{2},\]
+\[(\sinh z)'=\cosh z,\quad (\cosh z)'=\sinh z,\quad \cosh^2z-\sinh^2z=1.\]
+Bridges to trig:
+\[\sinh(iz)=i\sin z,\quad \cosh(iz)=\cos z,\quad \sin(iz)=i\sinh z,\quad \cos(iz)=\cosh z.\]
+Zeros: \(\sinh z=0\iff z=n\pi i\); \(\cosh z=0\iff z=(\tfrac\pi2+n\pi)i.\)</div>
+<div class="hwbox"><span class="lab">HW p. 147</span> Prove hyperbolic identities; relate to trig via the \(iz\) substitutions; find zeros; compute real/imaginary parts.</div>
+
+<h3 id="s40"><span class="sec">§40</span> Inverse Trigonometric and Hyperbolic Functions</h3>
+<p>Solving e.g. \(z=\sin w\) leads to a quadratic in \(e^{iw}\); the inverses are therefore <strong>multivalued</strong> and expressible through logs and square roots:</p>
+<div class="box key"><span class="lab">Key formulas</span>
+\[\sin^{-1}z=-i\log\!\big(iz+(1-z^2)^{1/2}\big),\qquad \cos^{-1}z=-i\log\!\big(z+i(1-z^2)^{1/2}\big),\]
+\[\tan^{-1}z=\frac{i}{2}\log\frac{i+z}{i-z}.\]
+Differentiating (on a branch): \(\dfrac{d}{dz}\sin^{-1}z=\dfrac{1}{(1-z^2)^{1/2}}\), \(\ \dfrac{d}{dz}\tan^{-1}z=\dfrac{1}{1+z^2}.\) Analogous log-formulas hold for \(\sinh^{-1},\cosh^{-1},\tanh^{-1}\).</div>
+<div class="hwbox"><span class="lab">HW pp. 159–162</span> Derive these formulas; find all values of \(\sin^{-1}(\text{number})\), \(\cos^{-1}2\), etc.; differentiate. Remember: multivaluedness comes from both the \(\log\) and the square root.</div>
+
+<!-- ============== CHAPTER 4 ============== -->
+<h2 class="chap" id="ch4"><span class="tag">Chapter 4 (through §47)</span>Integrals <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s41"><span class="sec">§41–§42</span> Derivatives and Integrals of \(w(t)\)</h3>
+<p>Here \(w(t)=u(t)+iv(t)\) is a complex-valued function of a <em>real</em> variable \(t\in[a,b]\). Differentiation and integration are done componentwise:</p>
+<div class="box key"><span class="lab">Calculus of \(w(t)\)</span>
+\[w'(t)=u'(t)+i\,v'(t),\qquad \int_a^b w(t)\,dt=\int_a^b u\,dt + i\int_a^b v\,dt.\]
+Linearity holds. The Fundamental Theorem holds: if \(W'(t)=w(t)\) then \(\int_a^b w\,dt = W(b)-W(a).\) Properties (used in §47):
+\[\operatorname{Re}\int_a^b w\,dt=\int_a^b \operatorname{Re}\,w\,dt,\qquad \operatorname{Im}\int_a^b w\,dt=\int_a^b \operatorname{Im}\,w\,dt.\]</div>
+<div class="box warn"><span class="lab">Trap</span>The Mean Value Theorem for derivatives <em>fails</em> for \(w(t)\) (e.g. \(w=e^{it}\) on \([0,2\pi]\)). Many real-calculus shortcuts don't transfer; integrate/differentiate parts separately.</div>
+<div class="hwbox"><span class="lab">HW pp. 170–172</span> Evaluate \(\int_a^b w(t)\,dt\) for things like \(e^{(1+i)t}\), \((1+it)^2\); use the FTC for \(w(t)\); demonstrate the failure of the MVT.</div>
+<p class="ex"><span class="q">Worked.</span> \(\displaystyle\int_0^{\pi/4} e^{it}\,dt=\Big[\tfrac{1}{i}e^{it}\Big]_0^{\pi/4}=\tfrac1i\big(e^{i\pi/4}-1\big)= \tfrac{\sqrt2}{2}+i\big(1-\tfrac{\sqrt2}{2}\big).\)</p>
+
+<h3 id="s43"><span class="sec">§43</span> Contours</h3>
+<p>Terminology for the curves we integrate over:</p>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>Arc</td><td>\(z=z(t)=x(t)+iy(t)\), \(a\le t\le b\), \(x,y\) continuous</td></tr>
+<tr><td>Simple arc (Jordan)</td><td>Does not cross itself: \(z(t_1)\neq z(t_2)\) for \(t_1\neq t_2\)</td></tr>
+<tr><td>Simple closed curve</td><td>Simple except \(z(a)=z(b)\) (e.g. a circle)</td></tr>
+<tr><td>Differentiable arc</td><td>\(z'(t)\) exists and is continuous</td></tr>
+<tr><td>Smooth</td><td>\(z'(t)\) continuous and \(\neq0\) on \([a,b]\)</td></tr>
+<tr><td>Contour</td><td>A chain of finitely many smooth arcs joined end to end (piecewise smooth)</td></tr>
+</table>
+<div class="box key"><span class="lab">Arc length</span>
+For a smooth arc, \(\displaystyle L=\int_a^b |z'(t)|\,dt\) where \(|z'(t)|=\sqrt{x'(t)^2+y'(t)^2}\). \(L\) is independent of the parametrization.</div>
+<p>The <strong>Jordan curve theorem</strong>: a simple closed contour divides the plane into an inside (bounded) and outside. Positive orientation = counterclockwise.</p>
+<div class="hwbox"><span class="lab">HW pp. 185–186</span> Parametrize standard contours (segments, circles \(z=z_0+Re^{i\theta}\), arcs); compute lengths; check smoothness; reverse orientation.</div>
+
+<h3 id="s44"><span class="sec">§44–§46</span> Contour Integrals</h3>
+<div class="box key"><span class="lab">Definition</span>
+For \(f\) piecewise continuous on a contour \(C:z=z(t),\ a\le t\le b\),
+\[\int_C f(z)\,dz=\int_a^b f\big(z(t)\big)\,z'(t)\,dt.\]
+The right side is an ordinary \(w(t)\)-integral.</div>
+<div class="box key"><span class="lab">Properties</span>
+\[\int_C \big(k_1f+k_2g\big)\,dz=k_1\!\int_C f\,dz+k_2\!\int_C g\,dz,\]
+\[\int_{-C} f\,dz=-\int_{C} f\,dz\quad(\text{reverse orientation}),\qquad \int_{C_1+C_2}=\int_{C_1}+\int_{C_2}.\]
+The value is <strong>independent of parametrization</strong> (within a fixed orientation), but in general <strong>does</strong> depend on the path \(C\).</div>
+<div class="box key"><span class="lab">Two fundamental computations to memorize</span>
+Around the positively oriented circle \(C:|z-z_0|=R\) (use \(z=z_0+Re^{i\theta},\ z'=iRe^{i\theta}\)):
+\[\int_{C}\frac{dz}{z-z_0}=2\pi i,\qquad \int_{C}(z-z_0)^{\,n-1}dz=\begin{cases}2\pi i,& n=0\\[2pt]0,& n=\pm1,\pm2,\dots\end{cases}\]
+The first is THE most important integral in the course.</div>
+<p><strong>Branch cuts (§46):</strong> when the integrand involves a multivalued function (\(\log\), \(z^{a}\)), fix a branch first so the integrand is continuous along \(C\), and make sure \(C\) avoids the branch cut.</p>
+<div class="hwbox"><span class="lab">HW pp. 195–197, 205–208</span> Evaluate \(\int_C f\,dz\) by direct parametrization for \(f=\bar z,\ 1/z,\ z^n,\ e^z,\ \) etc. over segments, circles, and arcs; show path-dependence by comparing two contours with the same endpoints; handle a branch-cut example (e.g. \(\int_C z^{1/2}dz\) on a chosen branch).</div>
+<p class="ex"><span class="q">Worked (path dependence).</span> \(\int_C \bar z\,dz\) from \(0\) to \(1+i\): along the straight segment \(z=t(1+i)\), \(dz=(1+i)dt\), \(\bar z=t(1-i)\): integral \(=\int_0^1 t(1-i)(1+i)\,dt=\int_0^1 2t\,dt=1\). Along the path \(0\to1\to1+i\) you get a different value — so \(\int\bar z\,dz\) is path-dependent (\(\bar z\) is not analytic).</p>
+
+<h3 id="s47"><span class="sec">§47</span> Upper Bounds for Moduli of Contour Integrals <span class="pill">EXAM FOCUS</span></h3>
+
+<div class="box key"><span class="lab">Lemma</span>
+For a piecewise-continuous \(w(t)\) on \([a,b]\):
+\[\left|\int_a^b w(t)\,dt\right|\le \int_a^b |w(t)|\,dt.\]
+(Proof idea: write the left integral as \(r_0e^{i\theta_0}\), so \(r_0=\int_a^b\operatorname{Re}[e^{-i\theta_0}w(t)]\,dt\le\int_a^b|w(t)|\,dt\), using \(\operatorname{Re}\zeta\le|\zeta|\).)</div>
+
+<div class="box key"><span class="lab">★ The ML Inequality (the theorem)</span>
+Let \(C\) be a contour of length \(L\), and \(f\) piecewise continuous on \(C\). If
+\[|f(z)|\le M\quad\text{for all }z\text{ on }C,\]
+then
+\[\boxed{\ \left|\int_C f(z)\,dz\right|\le M\,L.\ }\]
+Such an \(M\) always exists when \(f\) is continuous on \(C\) (a continuous function on a closed bounded set attains a max).</div>
+
+<div class="box warn"><span class="lab">Strategy — this is exactly the exam skill</span>
+To bound \(\big|\int_C f\,dz\big|\):
+<ol>
+<li><strong>Find \(L\)</strong>, the length of \(C\) (e.g. a circular arc of radius \(R\) subtending angle \(\alpha\) has \(L=\alpha R\); a full circle \(L=2\pi R\); a semicircle \(L=\pi R\)).</li>
+<li><strong>Bound \(|f(z)|\le M\) on \(C\).</strong> Bound the numerator <em>above</em> with the triangle inequality \(|a+b|\le|a|+|b|\), and the denominator <em>below</em> with the reverse triangle inequality \(|z^n+a|\ge\big|\,|z|^n-|a|\,\big|\). On \(|z|=R\), \(|z|=R\) is constant, which makes this clean.</li>
+<li><strong>Conclude</strong> \(\big|\int_C f\,dz\big|\le ML\). For limits as \(R\to\infty\), show \(M(R)\,L(R)\to0\).</li>
+</ol></div>
+
+<p class="ex"><span class="q">Worked (Example 1, §47).</span> \(C\): arc of \(|z|=2\) in the first quadrant, from \(2\) to \(2i\), so \(L=\tfrac14(2\pi\cdot2)=\pi\). For \(z\) on \(C\): \(|z-2|\le|z|+2=4\) and \(|z^4+1|\ge|z|^4-1=15\). Hence \(\Big|\dfrac{z-2}{z^4+1}\Big|\le\dfrac{4}{15}=M\), giving
+\[\left|\int_C\frac{z-2}{z^4+1}\,dz\right|\le \frac{4}{15}\cdot\pi=\frac{4\pi}{15}.\]</p>
+
+<p class="ex"><span class="q">Worked (Example 2 — vanishing limit).</span> \(C_R\): semicircle \(z=Re^{i\theta}\), \(0\le\theta\le\pi\), \(R>3\), \(L=\pi R\). On \(C_R\): \(|z+1|\le R+1\), \(|z^2+4|\ge R^2-4\), \(|z^2+9|\ge R^2-9\). So
+\[\left|\int_{C_R}\frac{(z+1)\,dz}{(z^2+4)(z^2+9)}\right|\le \frac{(R+1)\pi R}{(R^2-4)(R^2-9)}\xrightarrow[R\to\infty]{}0,\]
+since the bound behaves like \(\pi R^2/R^4=\pi/R^2\to0\). Therefore the integral \(\to0\) without ever evaluating it.</p>
+
+<div class="hwbox"><span class="lab">HW pp. 218–221</span> Pure ML-inequality problems: bound integrals over arcs/circles (\(\big|\int_C \tfrac{z+4}{z^3-1}dz\big|\le \tfrac{6\pi}{7}\) on the §47 arc; \(\big|\int_C \tfrac{dz}{z^4}\big|\le 4\sqrt2\) on the segment from \(i\) to \(1\) using the nearest-point distance \(d=\sqrt2/2\)); show triangle-inequality bounds (\(|e^z-\bar z|\le e^x+\sqrt{x^2+y^2}\)); and prove \(R\to\infty\) (or \(\rho\to0\)) limits vanish by dividing numerator/denominator by the top power of \(R\). These problems are the most likely exam questions from this section.</div>
+
+
+<!-- ============== CHEAT SHEET ============== -->
+<h2 class="chap" id="cheat"><span class="tag">One-page reference</span>★ Final Cheat Sheet <a class="top" href="#top">↑ top</a></h2>
+
+<div class="grid2">
+<div class="box key"><span class="lab">Numbers &amp; moduli</span>
+\(z=x+iy=re^{i\theta}\), \(|z|=\sqrt{x^2+y^2}\), \(z\bar z=|z|^2\)<br>
+\(|z_1z_2|=|z_1||z_2|\), \(\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|\)<br>
+<strong>Lower bound:</strong> \(|z^n+a|\ge\big||z|^n-|a|\big|\)
+</div>
+<div class="box key"><span class="lab">Roots</span>
+\(c_k=\sqrt[n]{r_0}\,e^{i(\theta_0+2k\pi)/n}\), \(k=0,\dots,n-1\)<br>
+de Moivre: \((\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta\)
+</div>
+<div class="box key"><span class="lab">Cauchy–Riemann</span>
+\(u_x=v_y,\quad u_y=-v_x\) &nbsp;(rect.)<br>
+\(ru_r=v_\theta,\ u_\theta=-rv_r\) &nbsp;(polar)<br>
+\(f'=u_x+iv_x\); +continuous partials ⟹ differentiable
+</div>
+<div class="box key"><span class="lab">Harmonic</span>
+\(H_{xx}+H_{yy}=0\); real &amp; imag parts of analytic \(f\) are harmonic; build conjugate by integrating C–R
+</div>
+<div class="box key"><span class="lab">Elementary functions</span>
+\(e^z=e^x(\cos y+i\sin y)\), period \(2\pi i\), never \(0\)<br>
+\(\log z=\ln|z|+i\arg z\); \(\operatorname{Log}z=\ln r+i\Theta\)<br>
+\(z^c=e^{c\log z}\); \(\ \sin z=\frac{e^{iz}-e^{-iz}}{2i}\), \(\cos z=\frac{e^{iz}+e^{-iz}}{2}\)<br>
+\(|\sin z|^2=\sin^2x+\sinh^2y\) (unbounded!)
+</div>
+<div class="box key"><span class="lab">Trig ↔ hyperbolic</span>
+\(\sin(iz)=i\sinh z\), \(\cos(iz)=\cosh z\)<br>
+\(\sinh(iz)=i\sin z\), \(\cosh(iz)=\cos z\)<br>
+\(\cosh^2z-\sinh^2z=1\)
+</div>
+<div class="box key"><span class="lab">Integrals of \(w(t)\) &amp; contours</span>
+\(\int_a^b w\,dt=\int u\,dt+i\int v\,dt\); &nbsp; \(L=\int_a^b|z'(t)|\,dt\)<br>
+\(\int_C f\,dz=\int_a^b f(z(t))z'(t)\,dt\), &nbsp; \(\int_{-C}=-\int_C\)
+</div>
+<div class="box key"><span class="lab">Key contour integrals</span>
+On \(|z-z_0|=R\) (CCW): \(\displaystyle\int_C\frac{dz}{z-z_0}=2\pi i\)<br>
+\(\displaystyle\int_C(z-z_0)^{n-1}dz=0\) for integer \(n\neq0\)
+</div>
+</div>
+
+<div class="box warn"><span class="lab">★ ML inequality (the headline result of this midterm)</span>
+\[\left|\int_C f(z)\,dz\right|\le M L,\qquad |f(z)|\le M \text{ on }C,\ \ L=\text{length}(C).\]
+Numerator up with triangle inequality, denominator down with reverse triangle inequality, then multiply by \(L\). For \(R\to\infty\) limits, divide top/bottom by the highest power of \(R\) and show the bound \(\to0\).</div>
+
+<div class="box"><span class="lab">Top exam-day reminders</span>
+<ul>
+<li>Limits/derivatives must be path-independent — show DNE by two paths (\(\bar z/z\)).</li>
+<li>C–R is <em>necessary</em>; need continuous partials for <em>sufficient</em>. Differentiable ≠ analytic.</li>
+<li>\(\operatorname{Arg}\), \(\operatorname{Log}\), principal powers can break the "additive" identities by \(\pm2\pi(i)\).</li>
+<li>\(e^z\) is never zero; \(\sin,\cos\) are unbounded and have only real zeros.</li>
+<li>Contour integrals are generally path-dependent unless the integrand is analytic.</li>
+<li>Memorize \(\int_C dz/(z-z_0)=2\pi i\) and the ML inequality cold.</li>
+</ul></div>
+
+<div class="footer">
+Study guide compiled from <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill), Chapters 1–4, §§1–47.<br>
+Covers every assigned homework page range through pp. 218–221. Good luck on the midterm.
+</div>
+
+</div>
+</body>
+</html>
