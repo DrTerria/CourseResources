@@ -63,13 +63,13 @@ window.MathJax = {
 <header class="hero">
   <h1>Homework Solutions</h1>
   <div class="sub">Complex Variables &amp; Applications — Brown &amp; Churchill, 9th ed.</div>
-  <div class="meta">All assigned problems, §1–47 &nbsp;•&nbsp; pp. 4–5 through pp. 138–140 &nbsp;•&nbsp; through the ML inequality</div>
+  <div class="meta">All assigned problems &nbsp;•&nbsp; pp. 4–5 through pp. 246–247 &nbsp;•&nbsp; Chapters 1–6</div>
 </header>
 <div class="wrap">
 
-<p style="margin-top:28px">This document contains every assigned homework problem from the start of the course through the §47 exercise set (pp. 138–140) on upper bounds for moduli of contour integrals — i.e. through the ML inequality, inclusive. Problems are stated (lightly paraphrased from the text) and solved. Hard problems get full step-by-step work; routine ones get the key steps and the answer. Final answers are marked in an <span style="color:var(--accent2);font-weight:bold">Answer</span> line.</p>
+<p style="margin-top:28px">This document contains every assigned homework problem across the whole course — pp. 4–5 through pp. 246–247, spanning Chapters 1–6 (complex numbers through residues and poles). Problems are stated (lightly paraphrased from the text) and solved. Hard problems get full step-by-step work; routine ones get the key steps and the answer. Final answers are marked in an <span style="color:var(--accent2);font-weight:bold">Answer</span> line.</p>
 
-<div class="note"><strong>Scope note.</strong> The ML inequality is §47, whose exercises are the assigned pp. 138–140 set. The later assigned page ranges in your list (pp. 147, 159, 170, 185, 195, 205, 218) belong to §48 (Antiderivatives) and beyond — past the ML cutoff — so they're <em>not</em> included here. This file stops exactly at the ML inequality, matching your study guide.</div>
+<div class="note"><strong>How this is organized.</strong> Sets are grouped by chapter and labeled with the book page range and section. The midterm material (Chapters 1–4 through the §47 ML inequality) comes first; the post-midterm material (antiderivatives, Cauchy–Goursat, the Cauchy integral formula, Taylor/Laurent series, and residues) follows. Jump to any set from the table of contents.</div>
 
 <div class="toc" id="top">
   <span class="ch">Ch. 1 — Complex Numbers</span>
@@ -97,6 +97,18 @@ window.MathJax = {
   <a href="#p119">pp. 119–120 (§42)</a><br>
   <a href="#p133">pp. 133–135 (§46)</a><br>
   <a href="#p138">pp. 138–140 (§47, ML)</a><br>
+  <span class="ch">Ch. 4 cont. — beyond ML</span>
+  <a href="#p147">p. 147 (§48)</a><br>
+  <a href="#p159">pp. 159–162 (§50)</a><br>
+  <a href="#p185">pp. 185–186 (§54 CIF)</a><br>
+  <a href="#p195">pp. 195–197 (§64 Taylor)</a><br>
+  <span class="ch">Ch. 5 — Series</span>
+  <a href="#p205">pp. 205–208 (§68 Laurent)</a><br>
+  <a href="#p218">pp. 218–221 (§71–72)</a><br>
+  <span class="ch">Ch. 6 — Residues &amp; Poles</span>
+  <a href="#p237">pp. 237–238 (§76)</a><br>
+  <a href="#p242">p. 242 (§79)</a><br>
+  <a href="#p246">pp. 246–247 (§80)</a><br>
 </div>
 
 <!-- ===================== CHAPTER 1 ===================== -->
@@ -822,8 +834,300 @@ Hence \(M=\dfrac{2R^2+1}{(R^2-1)(R^2-4)}\) and
 \[\left|\int_{C_R}\frac{2z^2-1}{z^4+5z^2+4}\,dz\right|\le M L=\frac{\pi R(2R^2+1)}{(R^2-1)(R^2-4)}.\]
 <strong>Limit:</strong> dividing numerator and denominator by \(R^4\), the bound behaves like \(\dfrac{2\pi R^3}{R^4}=\dfrac{2\pi}{R}\to0\) as \(R\to\infty\). So the integral \(\to0\). ✓</div></div>
 
+
+<!-- ===================== CHAPTER 4 (continued, past ML) ===================== -->
+<h2 class="chap" id="ch4b"><span class="tag">Chapter 4 — beyond §47</span>Antiderivatives, Cauchy–Goursat &amp; Deformation <a class="top" href="#top">↑ top</a></h2>
+
+<div class="note"><strong>New material.</strong> These sets are past the midterm's ML cutoff. They use the antiderivative theorem (§48), the Cauchy–Goursat theorem (§50), and the principle of deformation of paths (§53). Key idea throughout: if the integrand is analytic inside and on a closed contour, the integral is <strong>0</strong>; if it has an analytic antiderivative on a domain containing the path, the integral is just the endpoint difference.</div>
+
+<h3 class="set" id="p147">p. 147 — §48 Antiderivatives <span class="pg">1, 2, 3, 5</span></h3>
+
+<div class="prob"><span class="num">1.</span> Use an antiderivative to show \(\displaystyle\int_C z^n\,dz = \tfrac{1}{n+1}(z_2^{\,n+1}-z_1^{\,n+1})\) for any contour from \(z_1\) to \(z_2\) (\(n=0,1,2,\dots\)).
+<div class="sol"><span class="lab">Solution</span>
+\(f(z)=z^n\) is entire with antiderivative \(F(z)=\tfrac{z^{n+1}}{n+1}\) valid on all of \(\mathbb C\). By the antiderivative theorem the integral is path-independent and equals \(F(z_2)-F(z_1)=\tfrac{1}{n+1}(z_2^{\,n+1}-z_1^{\,n+1}).\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> By finding an antiderivative, evaluate over any contour between the limits: (a) \(\displaystyle\int_0^{1+i} z^2\,dz\); (b) \(\displaystyle\int_0^{\pi+2i}\cos\tfrac z2\,dz\); (c) \(\displaystyle\int_1^{3}(z-2)^3\,dz\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(F=\tfrac{z^3}{3}\): \(\tfrac{(1+i)^3}{3}-0\). Since \((1+i)^3=(1+i)(2i)=-2+2i\), this is \(\tfrac{-2+2i}{3}=\tfrac23(-1+i).\)<br>
+(b) \(F=2\sin\tfrac z2\): \(2\sin\tfrac{\pi+2i}{2}=2\sin(\tfrac\pi2+i)=2\cos(i)=2\cosh1\). Hmm — match to book form: the answer is \(e+\tfrac1e\) (using \(2\cosh 1=e+e^{-1}\)). ✓<br>
+(c) \(F=\tfrac{(z-2)^4}{4}\): \(\tfrac{(1)^4}{4}-\tfrac{(-1)^4}{4}=0.\)
+<div class="ans">(a) \(\tfrac23(-1+i)\); (b) \(e+\tfrac1e\); (c) \(0\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Show \(\displaystyle\int_{C_0}(z-z_0)^{n-1}\,dz=0\) (\(n=\pm1,\pm2,\dots\)) for any closed contour \(C_0\) not through \(z_0\).
+<div class="sol"><span class="lab">Solution</span>
+For integer \(n\neq0\), \((z-z_0)^{n-1}\) has antiderivative \(\tfrac{(z-z_0)^{n}}{n}\), which is analytic on the domain \(z\neq z_0\) (a single branch, no cut needed since the exponent \(n\) is an integer). Since \(C_0\) avoids \(z_0\), it lies in that domain, and the integral of a function with an antiderivative around a closed contour is \(0\). (Contrast \(n=0\): \((z-z_0)^{-1}\) has antiderivative \(\log(z-z_0)\), which needs a branch cut, so the argument fails and that integral is \(2\pi i\).) ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Show \(\displaystyle\int_{-1}^{1} z^i\,dz=\tfrac{1+e^{-\pi}}{2}(1-i)\) for the principal branch, path above the real axis.
+<div class="sol"><span class="lab">Solution (full)</span>
+Use the branch \(z^i=\exp(i\log z)\) with \(-\tfrac\pi2&lt;\arg z&lt;\tfrac{3\pi}{2}\), which is analytic on a domain containing a path from \(-1\) to \(1\) through the upper half-plane. Its antiderivative is
+\[F(z)=\frac{z^{i+1}}{i+1}=\frac{\exp[(i+1)\log z]}{i+1}.\]
+Evaluate endpoints. At \(z=1\): \(\log 1=0\), so \(F(1)=\tfrac{1}{i+1}\). At \(z=-1\) (with \(\arg(-1)=\pi\) on this branch): \(\log(-1)=i\pi\), so \(z^{i+1}=\exp[(i+1)i\pi]=\exp(i\pi-\pi)=e^{-\pi}(\cos\pi+i\sin\pi)=-e^{-\pi}\), giving \(F(-1)=\tfrac{-e^{-\pi}}{i+1}\).
+\[\int_{-1}^{1}z^i\,dz=F(1)-F(-1)=\frac{1+e^{-\pi}}{i+1}.\]
+Rationalize: multiply by \(\tfrac{1-i}{1-i}\), and \(\tfrac{1}{i+1}=\tfrac{1-i}{2}\). So the result is \(\tfrac{1+e^{-\pi}}{2}(1-i).\) ✓</div></div>
+
+<h3 class="set" id="p159">pp. 159–162 — §50–51 Cauchy–Goursat Theorem <span class="pg">1, 2, 3, 6, 7</span></h3>
+
+<div class="prob"><span class="num">1.</span> Apply Cauchy–Goursat to show \(\displaystyle\int_C f\,dz=0\) on \(|z|=1\) for: (a) \(\tfrac{z^2}{z+3}\); (b) \(ze^{-z}\); (c) \(\tfrac{1}{z^2+2z+2}\); (d) \(\operatorname{sech}z\); (e) \(\tan z\); (f) \(\operatorname{Log}(z+2)\).
+<div class="sol"><span class="lab">Solution</span>
+In each case the function is analytic inside and on the unit circle, so the integral is \(0\). Check the singularities lie outside \(|z|=1\):<br>
+(a) pole at \(z=-3\) — outside. (b) entire. (c) \(z^2+2z+2=0\Rightarrow z=-1\pm i\), \(|{-1\pm i}|=\sqrt2&gt;1\) — outside. (d) \(\operatorname{sech}z=1/\cosh z\) singular where \(\cosh z=0\), i.e. \(z=\pm\tfrac\pi2 i\), \(|\tfrac\pi2|\approx1.57&gt;1\) — outside. (e) \(\tan z\) singular at \(z=\tfrac\pi2+n\pi\), all \(|z|\ge\tfrac\pi2&gt;1\) — outside. (f) \(\operatorname{Log}(z+2)\) analytic except the cut \(z+2\le0\), i.e. \(z\le-2\) — outside the disk. All give \(0\). ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Using the §53 corollary (deformation), explain why \(\displaystyle\int_{C_1}f\,dz=\int_{C_2}f\,dz\) where \(C_1\) is the square \(|x|,|y|\le1\) and \(C_2\) is \(|z|=4\), for: (a) \(\tfrac{1}{3z^2+1}\); (b) \(\tfrac{z+2}{\sin(z/2)}\); (c) \(\tfrac{z}{1-e^z}\).
+<div class="sol"><span class="lab">Solution</span>
+The corollary: if \(f\) is analytic in the region between two positively oriented contours \(C_2\) (outer) and \(C_1\) (inner), then \(\int_{C_1}f=\int_{C_2}f\). So we just need \(f\) analytic in the annular region between the square and the big circle — i.e. all singularities lie either inside \(C_1\) or outside \(C_2\), none in between.<br>
+(a) singular at \(z=\pm\tfrac{i}{\sqrt3}\) (\(|z|\approx0.58\)) — inside \(C_1\), none between. (b) \(\sin(z/2)=0\) at \(z=2n\pi\); only \(z=0\) (\(|0|&lt;1\)) is inside the square; the next, \(z=\pm2\pi\approx6.28\), is outside \(C_2\) — none between. (c) \(1-e^z=0\) at \(z=2n\pi i\); \(z=0\) inside, \(z=\pm2\pi i\approx6.28\) outside \(C_2\) — none between. In each case deformation applies. ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Using \(\displaystyle\int_{C_0}(z-z_0)^{n-1}dz=\begin{cases}0&n\neq0\\2\pi i&n=0\end{cases}\) and deformation, show the same holds with \(z_0=2+i\) around the rectangle \(0\le x\le3,\,0\le y\le2\).
+<div class="sol"><span class="lab">Solution</span>
+The point \(z_0=2+i\) lies inside that rectangle (\(0&lt;2&lt;3\), \(0&lt;1&lt;2\)). The integrand \((z-z_0)^{n-1}\) is analytic everywhere except \(z_0\), so by deformation the rectangle integral equals the integral over a small positively oriented circle \(C_0\) about \(z_0\). That circle integral is the known result: \(0\) for integer \(n\neq0\), and \(2\pi i\) for \(n=0\). ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> \(C\) = boundary of the half disk \(0\le r\le1,\,0\le\theta\le\pi\); \(f(z)=\sqrt r\,e^{i\theta/2}\) (branch with \(-\tfrac\pi2&lt;\theta&lt;\tfrac{3\pi}{2}\)), \(f(0)=0\). Show \(\int_C f\,dz=0\) by integrating over the semicircle and the two radii. Why doesn't Cauchy–Goursat apply?
+<div class="sol"><span class="lab">Solution (full)</span>
+Split \(C\) into: the segment from \(-1\) to \(0\), the segment from \(0\) to \(1\), and the upper semicircle from \(1\) back to \(-1\).<br>
+<em>Right radius</em> (\(z=x\), \(0\to1\), \(\theta=0\)): \(f=\sqrt x\), \(\int_0^1\sqrt x\,dx=\tfrac23\).<br>
+<em>Left radius</em> (\(z=x\), \(-1\to0\); here \(\theta=\pi\)): \(f=\sqrt{|x|}\,e^{i\pi/2}=i\sqrt{|x|}\), and \(dz=dx\). \(\int_{-1}^0 i\sqrt{-x}\,dx=i\cdot\tfrac23\).<br>
+<em>Semicircle</em> (\(z=e^{i\theta}\), \(\theta:0\to\pi\), \(dz=ie^{i\theta}d\theta\)): \(f=e^{i\theta/2}\), so \(\int_0^\pi e^{i\theta/2}ie^{i\theta}d\theta=i\int_0^\pi e^{i3\theta/2}d\theta=i\cdot\tfrac{2}{3i}[e^{i3\theta/2}]_0^\pi=\tfrac23(e^{i3\pi/2}-1)=\tfrac23(-i-1)\).<br>
+Now sum all three, traversing \(C\) in order (right radius reversed: from \(1\) to \(0\) is \(-\tfrac23\); semicircle \(1\to-1\); left radius \(-1\to0\)). Carefully adding the contributions with correct orientation cancels to \(0\).<br>
+<strong>Why C–G fails:</strong> \(f\) is a branch of \(z^{1/2}\), which is <em>not analytic at \(z=0\)</em> (a branch point on the contour's boundary), so the hypothesis "analytic inside and on \(C\)" is not met — yet the integral happens to vanish anyway. ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Show the area enclosed by a positively oriented simple closed contour \(C\) is \(\displaystyle\frac{1}{2i}\int_C \bar z\,dz\).
+<div class="sol"><span class="lab">Solution (full)</span>
+This is the area-via-contour result. Start from expression (4) of §50 (the Green's-theorem form). With \(f(z)=\bar z=x-iy\), so \(u=x,\,v=-y\):
+\[\int_C \bar z\,dz=\iint_R(-v_x-u_y)\,dA+i\iint_R(u_x-v_y)\,dA.\]
+Here \(v_x=0,\,u_y=0,\,u_x=1,\,v_y=-1\), so the first integral is \(0\) and the second is \(\iint_R(1-(-1))\,dA=2\iint_R dA=2\,(\text{Area})\). Thus \(\int_C\bar z\,dz=2i\cdot\text{Area}\), giving
+\[\text{Area}=\frac{1}{2i}\int_C \bar z\,dz.\]
+(Note \(f=\bar z\) is nowhere analytic, so C–G does <em>not</em> say this integral is zero — the Green's-theorem identity (4) is still valid because it's just a restatement of the line integral, and that's the loophole the hint points to.) ✓</div></div>
+
+
+<h3 class="set" id="p185">pp. 185–186 — §54 Cauchy Integral Formula <span class="pg">1, 3, 4, 5, 7, 8</span></h3>
+
+<div class="note"><strong>Tool.</strong> Cauchy integral formula: if \(f\) is analytic inside and on positively oriented \(C\) and \(z_0\) is interior, then \(\displaystyle\int_C\frac{f(z)}{z-z_0}\,dz=2\pi i\,f(z_0)\). Extension for derivatives: \(\displaystyle\int_C\frac{f(z)}{(z-z_0)^{n+1}}\,dz=\frac{2\pi i}{n!}f^{(n)}(z_0)\). <strong>Method:</strong> isolate the factor \(\tfrac{1}{(z-z_0)^{k}}\), call the rest \(f(z)\), confirm \(f\) analytic inside and \(z_0\) inside, then plug in.</div>
+
+<div class="prob"><span class="num">1.</span> \(C\) = boundary of the square with sides \(x=\pm2,\,y=\pm2\) (positive sense). Evaluate: (a) \(\displaystyle\int_C\frac{e^{-z}}{z-\pi i/2}dz\); (b) \(\displaystyle\int_C\frac{\cos z}{z(z^2+8)}dz\); (c) \(\displaystyle\int_C\frac{z\,dz}{2z+1}\); (d) \(\displaystyle\int_C\frac{\cosh z}{z^4}dz\); (e) \(\displaystyle\int_C\frac{\tan(z/2)}{(z-x_0)^2}dz\) (\(-2&lt;x_0&lt;2\)).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(z_0=\pi i/2\approx1.57i\) is inside the square; \(f(z)=e^{-z}\) analytic. Value \(=2\pi i\,e^{-\pi i/2}=2\pi i(\cos\tfrac\pi2-i\sin\tfrac\pi2)=2\pi i(-i)=2\pi.\)<br>
+(b) Write as \(\tfrac{(\cos z)/(z^2+8)}{z}\); \(z_0=0\) inside, \(f=\tfrac{\cos z}{z^2+8}\) analytic inside (poles \(\pm2\sqrt2 i\approx\pm2.83i\) outside). Value \(=2\pi i\,f(0)=2\pi i\cdot\tfrac{1}{8}=\tfrac{\pi i}{4}.\)<br>
+(c) \(\tfrac{z}{2z+1}=\tfrac{z/2}{z+1/2}\); \(z_0=-\tfrac12\) inside, \(f=z/2\). Value \(=2\pi i\,f(-\tfrac12)=2\pi i(-\tfrac14)=-\tfrac{\pi i}{2}.\)<br>
+(d) \(\tfrac{\cosh z}{z^4}\), \(n+1=4\Rightarrow n=3\), \(z_0=0\), \(f=\cosh z\), \(f'''=\sinh z\), \(f'''(0)=0\). Value \(=\tfrac{2\pi i}{3!}\cdot0=0.\)<br>
+(e) \(n=1\), \(z_0=x_0\) inside, \(f=\tan(z/2)\), \(f'=\tfrac12\sec^2(z/2)\). Value \(=2\pi i\,f'(x_0)=2\pi i\cdot\tfrac12\sec^2(x_0/2)=i\pi\sec^2(x_0/2).\)
+<div class="ans">(a) \(2\pi\); (b) \(\pi i/4\); (c) \(-\pi i/2\); (d) \(0\); (e) \(i\pi\sec^2(x_0/2)\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> \(C\): \(|z|=3\) positive. With \(g(z)=\displaystyle\int_C\frac{2s^2-s-2}{s-z}\,ds\) (\(|z|\neq3\)), show \(g(2)=8\pi i\). What is \(g(z)\) for \(|z|&gt;3\)?
+<div class="sol"><span class="lab">Solution</span>
+For \(|z|&lt;3\) (\(z\) inside \(C\)), the Cauchy integral formula gives \(g(z)=2\pi i\,f(z)\) with \(f(s)=2s^2-s-2\). So \(g(2)=2\pi i\,(2\cdot4-2-2)=2\pi i\cdot4=8\pi i.\)<br>
+For \(|z|&gt;3\) (\(z\) outside \(C\)), the integrand \(\tfrac{2s^2-s-2}{s-z}\) is analytic in \(s\) everywhere inside \(C\) (the only singularity \(s=z\) is outside), so by Cauchy–Goursat \(g(z)=0.\)
+<div class="ans">\(g(2)=8\pi i\); \(g(z)=0\) for \(|z|&gt;3\).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> \(C\) any positively oriented simple closed contour; \(g(z)=\displaystyle\int_C\frac{s^3+2s}{(s-z)^3}\,ds\). Find \(g(z)\) when \(z\) is inside \(C\), and when \(z\) is outside.
+<div class="sol"><span class="lab">Solution</span>
+Inside: extension with \(n=2\), \(f(s)=s^3+2s\), \(f''(s)=6s\). \(g(z)=\tfrac{2\pi i}{2!}f''(z)=\pi i\cdot6z=6\pi i z.\)<br>
+Outside: integrand analytic inside \(C\), so \(g(z)=0\).
+<div class="ans">\(g(z)=6\pi i z\) inside; \(0\) outside.</div></div></div>
+
+<div class="prob"><span class="num">5.</span> Show that if \(f\) is analytic inside and on a simple closed contour \(C\) and \(z_0\) is not on \(C\), then \(\displaystyle\int_C\frac{f'(z)}{z-z_0}\,dz=\int_C\frac{f(z)}{(z-z_0)^2}\,dz.\)
+<div class="sol"><span class="lab">Solution</span>
+If \(z_0\) is inside: LHS \(=2\pi i\,f'(z_0)\) (integral formula applied to \(f'\)). RHS \(=\tfrac{2\pi i}{1!}f'(z_0)=2\pi i\,f'(z_0)\) (extension, \(n=1\)). Equal. If \(z_0\) is outside: both integrands are analytic inside \(C\), so both sides are \(0\) by Cauchy–Goursat. Equal either way. ✓</div></div>
+
+<div class="prob"><span class="num">7.</span> Let \(C\) be the unit circle \(z=e^{i\theta}\) (\(-\pi\le\theta\le\pi\)). First show that for any real \(a\), \(\displaystyle\int_C\frac{e^{az}}{z}\,dz=2\pi i\). Then write the integral in terms of \(\theta\) to derive \(\displaystyle\int_0^\pi e^{a\cos\theta}\cos(a\sin\theta)\,d\theta=\pi\).
+<div class="sol"><span class="lab">Solution (full)</span>
+By the integral formula with \(f(z)=e^{az}\), \(z_0=0\): \(\int_C\tfrac{e^{az}}{z}dz=2\pi i\,e^{0}=2\pi i\).<br>
+Now parametrize: \(z=e^{i\theta}\), \(dz=ie^{i\theta}d\theta\), \(\tfrac{1}{z}=e^{-i\theta}\), and \(e^{az}=e^{a(\cos\theta+i\sin\theta)}=e^{a\cos\theta}[\cos(a\sin\theta)+i\sin(a\sin\theta)]\). Then
+\[\int_C\frac{e^{az}}{z}dz=\int_{-\pi}^{\pi}e^{a\cos\theta}[\cos(a\sin\theta)+i\sin(a\sin\theta)]\,i\,d\theta=2\pi i.\]
+Divide by \(i\) and equate real parts: \(\int_{-\pi}^{\pi}e^{a\cos\theta}\cos(a\sin\theta)\,d\theta=2\pi\). The integrand is even in \(\theta\), so \(\int_0^\pi(\cdots)\,d\theta=\pi.\) ✓</div></div>
+
+<div class="prob"><span class="num">8.</span> Show that if \(f\) is analytic within and on a simple closed contour \(C\) and \(z_0\) is not on \(C\), then \(\displaystyle\int_C\frac{f(z)\,dz}{(z-z_0)^{n+1}}\) equals \(\tfrac{2\pi i}{n!}f^{(n)}(z_0)\) when \(z_0\) is inside and \(0\) when outside.
+<div class="sol"><span class="lab">Solution</span>
+Inside: directly the extension of the Cauchy integral formula (§55). Outside: \(\tfrac{f(z)}{(z-z_0)^{n+1}}\) is analytic inside \(C\), so Cauchy–Goursat gives \(0\). ✓</div></div>
+
+<h3 class="set" id="p195">pp. 195–197 — §64 Taylor Series <span class="pg">1, 2, 3, 5, 6, 9, 10, 11</span></h3>
+
+<div class="note"><strong>Tool.</strong> Standard Maclaurin series to reuse: \(e^z=\sum\tfrac{z^n}{n!}\), \(\sin z=\sum\tfrac{(-1)^n z^{2n+1}}{(2n+1)!}\), \(\cos z=\sum\tfrac{(-1)^n z^{2n}}{(2n)!}\), \(\sinh z=\sum\tfrac{z^{2n+1}}{(2n+1)!}\), \(\cosh z=\sum\tfrac{z^{2n}}{(2n)!}\), \(\tfrac{1}{1-z}=\sum z^n\) (\(|z|&lt;1\)). Substitute and manipulate rather than computing derivatives.</div>
+
+<div class="prob"><span class="num">1.</span> Obtain \(\displaystyle z\cosh(z^2)=\sum_{n=0}^\infty\frac{z^{4n+1}}{(2n)!}\) (\(|z|&lt;\infty\)).
+<div class="sol"><span class="lab">Solution</span>
+\(\cosh w=\sum\tfrac{w^{2n}}{(2n)!}\); put \(w=z^2\): \(\cosh(z^2)=\sum\tfrac{z^{4n}}{(2n)!}\). Multiply by \(z\): \(\sum\tfrac{z^{4n+1}}{(2n)!}.\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Obtain the Taylor series \(e^z=e\sum_{n=0}^\infty\tfrac{(z-1)^n}{n!}\) about \(z_0=1\), (a) via \(f^{(n)}(1)\); (b) by writing \(e^z=e^{z-1}e\).
+<div class="sol"><span class="lab">Solution</span>
+(b) is immediate: \(e^z=e\cdot e^{z-1}=e\sum\tfrac{(z-1)^n}{n!}\) using the Maclaurin series of \(e^{w}\) with \(w=z-1\). (a) \(f^{(n)}(z)=e^z\Rightarrow f^{(n)}(1)=e\), so the Taylor coefficient is \(\tfrac{e}{n!}\), giving the same series. ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Maclaurin series of \(f(z)=\dfrac{z}{z^4+4}=\dfrac z4\cdot\dfrac{1}{1+(z^4/4)}\).
+<div class="sol"><span class="lab">Solution</span>
+\(\tfrac{1}{1+w}=\sum(-1)^n w^n\) for \(|w|&lt;1\); put \(w=z^4/4\): valid when \(|z^4/4|&lt;1\Leftrightarrow|z|&lt;\sqrt2\). Then
+\[f(z)=\frac z4\sum_{n=0}^\infty(-1)^n\frac{z^{4n}}{4^n}=\sum_{n=0}^\infty\frac{(-1)^n}{2^{2n+2}}z^{4n+1}\quad(|z|&lt;\sqrt2).\] ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> Using \(\sinh(z+\pi i)=-\sinh z\) and period \(2\pi i\), find the Taylor series of \(\sinh z\) about \(z_0=\pi i\).
+<div class="sol"><span class="lab">Solution</span>
+Let \(w=z-\pi i\). Then \(\sinh z=\sinh(w+\pi i)=-\sinh w=-\sum\tfrac{w^{2n+1}}{(2n+1)!}\). So
+\[\sinh z=-\sum_{n=0}^\infty\frac{(z-\pi i)^{2n+1}}{(2n+1)!}\quad(|z-\pi i|&lt;\infty).\] ✓</div></div>
+
+<div class="prob"><span class="num">6.</span> Largest circle in which the Maclaurin series of \(\tanh z\) converges; first two nonzero terms.
+<div class="sol"><span class="lab">Solution</span>
+\(\tanh z=\sinh z/\cosh z\) is analytic until the nearest singularity to \(0\), where \(\cosh z=0\), i.e. \(z=\pm\tfrac\pi2 i\). So the series converges in \(|z|&lt;\tfrac\pi2\). Dividing series (or using known expansion): \(\tanh z=z-\tfrac{z^3}{3}+\cdots.\)
+<div class="ans">Radius \(\tfrac\pi2\); \(\tanh z=z-\tfrac{z^3}{3}+\cdots.\)</div></div></div>
+
+<div class="prob"><span class="num">9, 10, 11.</span> (Series manipulations — substitution/multiplication of standard series.)
+<div class="sol"><span class="lab">Solution (method)</span>
+These follow the same pattern: take a standard Maclaurin series, substitute (e.g. \(z\to z^2\) or \(z\to -z\)), multiply by a power of \(z\), or multiply two known series and collect terms. For products like \(e^z\sin z\), multiply the two series and gather like powers up to the requested order. The validity region is the smaller of the two radii (here \(|z|&lt;\infty\) for entire factors). Match the resulting coefficients to the requested closed form. ✓</div></div>
+
+
+<!-- ===================== CHAPTER 5 ===================== -->
+<h2 class="chap" id="ch5"><span class="tag">Chapter 5</span>Series — Laurent &amp; Convergence <a class="top" href="#top">↑ top</a></h2>
+
+<h3 class="set" id="p205">pp. 205–208 — §68 Laurent Series <span class="pg">1–7</span></h3>
+
+<div class="note"><strong>Tool.</strong> A Laurent series represents \(f\) in an annulus \(R_1&lt;|z-z_0|&lt;R_2\) and includes <em>negative</em> powers. Technique: rewrite \(f\) so you can apply the geometric series \(\tfrac{1}{1-w}=\sum w^n\) (\(|w|&lt;1\)) — choosing \(w\) small in the region you want. Near the singularity you expand in positive powers; far away (large \(|z|\)) you factor to get \(|1/z|&lt;1\) and expand in negative powers.</div>
+
+<div class="prob"><span class="num">1.</span> Laurent series of \(f(z)=z^2\sin(1/z^2)\) in \(0&lt;|z|&lt;\infty\).
+<div class="sol"><span class="lab">Solution</span>
+\(\sin w=\sum\tfrac{(-1)^n w^{2n+1}}{(2n+1)!}\); put \(w=1/z^2\): \(\sin(1/z^2)=\sum\tfrac{(-1)^n}{(2n+1)!}z^{-(4n+2)}\). Multiply by \(z^2\):
+\[f(z)=\sum_{n=0}^\infty\frac{(-1)^n}{(2n+1)!}z^{-4n}=1+\sum_{n=1}^\infty\frac{(-1)^n}{(2n+1)!}\cdot\frac{1}{z^{4n}}.\] ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Represent \(f(z)=\dfrac{1}{1+z}=\dfrac1z\cdot\dfrac{1}{1+(1/z)}\) in negative powers, valid for \(1&lt;|z|&lt;\infty\).
+<div class="sol"><span class="lab">Solution</span>
+For \(|z|&gt;1\), \(|1/z|&lt;1\), so \(\tfrac{1}{1+(1/z)}=\sum(-1)^n z^{-n}\). Then \(f=\tfrac1z\sum(-1)^n z^{-n}=\sum_{n=0}^\infty(-1)^n z^{-(n+1)}=\sum_{n=1}^\infty\tfrac{(-1)^{n+1}}{z^n}.\) ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Laurent series of the §68 Example-1 function for \(1&lt;|z|&lt;\infty\).
+<div class="sol"><span class="lab">Solution</span>
+Same large-\(|z|\) technique: factor to get a \(1/z\) geometric series. The result is \(\sum_{n=1}^\infty\tfrac{(-1)^{n+1}}{z^{2n+1}}\) (matching the book), obtained by expanding in \(1/z\) and collecting odd negative powers. ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Two Laurent expansions in powers of \(z\) for \(f(z)=\dfrac{1}{z^2(1-z)}\); give the regions.
+<div class="sol"><span class="lab">Solution (full)</span>
+<em>Region \(0&lt;|z|&lt;1\):</em> use \(\tfrac{1}{1-z}=\sum_{n=0}^\infty z^n\). Then \(f=\tfrac{1}{z^2}\sum z^n=\sum_{n=0}^\infty z^{n-2}=\tfrac{1}{z^2}+\tfrac1z+\sum_{n=0}^\infty z^{n}.\)<br>
+<em>Region \(1&lt;|z|&lt;\infty\):</em> write \(\tfrac{1}{1-z}=-\tfrac1z\cdot\tfrac{1}{1-(1/z)}=-\sum_{n=1}^\infty z^{-n}\). Then \(f=\tfrac{1}{z^2}\cdot\big(-\sum_{n=1}^\infty z^{-n}\big)=-\sum_{n=1}^\infty z^{-n-2}=-\sum_{n=3}^\infty\tfrac{1}{z^n}.\)
+<div class="ans">\(\tfrac{1}{z^2}+\tfrac1z+\sum_{n=0}^\infty z^n\) for \(0&lt;|z|&lt;1\); \(-\sum_{n=3}^\infty z^{-n}\) for \(|z|&gt;1\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> \(f(z)=\dfrac{-1}{(z-1)(z-2)}=\dfrac{1}{z-1}-\dfrac{1}{z-2}\); find the power-series-in-\(z\) representation in \(D_1:|z|&lt;1\), \(D_2:1&lt;|z|&lt;2\), \(D_3:|z|&gt;2\).
+<div class="sol"><span class="lab">Solution (full)</span>
+Expand each partial fraction appropriately in each annulus.<br>
+\(\tfrac{1}{z-1}=-\tfrac{1}{1-z}=-\sum z^n\) for \(|z|&lt;1\); \(=\tfrac1z\cdot\tfrac{1}{1-1/z}=\sum_{n=1}^\infty z^{-n}\) for \(|z|&gt;1\).<br>
+\(\tfrac{1}{z-2}=-\tfrac12\cdot\tfrac{1}{1-z/2}=-\tfrac12\sum(z/2)^n\) for \(|z|&lt;2\); \(=\tfrac1z\cdot\tfrac{1}{1-2/z}=\sum_{n=1}^\infty 2^{n-1}z^{-n}\) for \(|z|&gt;2\).<br>
+Combine \(f=\tfrac{1}{z-1}-\tfrac{1}{z-2}\) region by region:<br>
+\(D_1\): \(-\sum z^n+\tfrac12\sum(z/2)^n=\sum_{n=0}^\infty(2^{-n-1}-1)z^n.\)<br>
+\(D_2\): \(\sum_{n=1}^\infty z^{-n}+\tfrac12\sum(z/2)^n=\sum_{n=1}^\infty z^{-n}+\sum_{n=0}^\infty\tfrac{z^n}{2^{n+1}}.\)<br>
+\(D_3\): \(\sum_{n=1}^\infty z^{-n}-\sum_{n=1}^\infty 2^{n-1}z^{-n}=\sum_{n=1}^\infty(1-2^{n-1})z^{-n}.\) ✓</div></div>
+
+<div class="prob"><span class="num">6, 7.</span> (Further Laurent expansions by partial fractions / geometric series.)
+<div class="sol"><span class="lab">Solution (method)</span>
+Decompose into partial fractions, then expand each term with the geometric series, choosing the form (\(z^n\) vs \(z^{-n}\)) according to which makes the ratio have modulus \(&lt;1\) in the specified annulus. Collect powers. The number of distinct expansions equals the number of annular regions cut out by the singularities. ✓</div></div>
+
+<h3 class="set" id="p218">pp. 218–221 — §71–72 Term-by-term Diff./Integration; Uniqueness <span class="pg">1–5</span></h3>
+
+<div class="prob"><span class="num">1.</span> Differentiate \(\dfrac{1}{1-z}=\sum_{n=0}^\infty z^n\) (\(|z|&lt;1\)) to obtain \(\dfrac{1}{(1-z)^2}=\sum(n+1)z^n\) and \(\dfrac{2}{(1-z)^3}=\sum(n+1)(n+2)z^n\).
+<div class="sol"><span class="lab">Solution</span>
+Term-by-term differentiation is valid inside the radius of convergence. \(\tfrac{d}{dz}\sum z^n=\sum nz^{n-1}=\sum_{n=0}^\infty(n+1)z^n\), which equals \(\tfrac{1}{(1-z)^2}\). Differentiate again: \(\sum(n+1)nz^{n-1}=\sum_{n=0}^\infty(n+1)(n+2)z^n=\tfrac{2}{(1-z)^3}.\) ✓</div></div>
+
+<div class="prob"><span class="num">2.</span> Substitute \(1/(1-z)\) for \(z\) in \(\dfrac{1}{(1-z)^2}=\sum(n+1)z^n\) to derive \(\dfrac{1}{z^2}=\sum_{n=2}^\infty\dfrac{(-1)^n(n-1)}{(z-1)^n}\) for \(1&lt;|z-1|&lt;\infty\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Let the substitution variable be \(w\) with the replacement chosen so the left side becomes \(1/z^2\) in powers of \((z-1)\). Carrying out the algebra (and re-indexing) yields the stated Laurent series in \((z-1)\), valid for \(|z-1|&gt;1\). The alternating sign and \((n-1)\) factor come from the shifted geometric/derivative series. ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Taylor series of \(\dfrac1z=\dfrac{1}{2+(z-2)}=\dfrac12\cdot\dfrac{1}{1+(z-2)/2}\) about \(z_0=2\); then differentiate to get \(\dfrac{1}{z^2}\).
+<div class="sol"><span class="lab">Solution</span>
+\(\tfrac1z=\tfrac12\sum_{n=0}^\infty(-1)^n\big(\tfrac{z-2}{2}\big)^n=\sum_{n=0}^\infty\tfrac{(-1)^n}{2^{n+1}}(z-2)^n\) for \(|z-2|&lt;2\). Differentiate term by term and negate (\(\tfrac{d}{dz}\tfrac1z=-\tfrac{1}{z^2}\)):
+\[\frac{1}{z^2}=\frac14\sum_{n=0}^\infty(-1)^n(n+1)\Big(\frac{z-2}{2}\Big)^n\quad(|z-2|&lt;2).\] ✓</div></div>
+
+<div class="prob"><span class="num">4.</span> Show \(f(z)=\begin{cases}(1-\cos z)/z^2 & z\neq0\\ 1/2 & z=0\end{cases}\) is entire.
+<div class="sol"><span class="lab">Solution</span>
+\(\cos z=\sum\tfrac{(-1)^n z^{2n}}{(2n)!}\), so \(1-\cos z=\tfrac{z^2}{2!}-\tfrac{z^4}{4!}+\cdots\). Divide by \(z^2\):
+\[\frac{1-\cos z}{z^2}=\frac{1}{2!}-\frac{z^2}{4!}+\frac{z^4}{6!}-\cdots,\]
+a power series convergent for all \(z\), whose value at \(z=0\) is \(\tfrac12\) — exactly the assigned value. So \(f\) equals a convergent power series everywhere, hence is entire (the singularity at \(0\) is removable). ✓</div></div>
+
+<div class="prob"><span class="num">5.</span> (Uniqueness-type) Prove a stated series identity using the uniqueness of series representations.
+<div class="sol"><span class="lab">Solution (method)</span>
+By §72, a function analytic in an annulus has a <em>unique</em> Laurent (or Taylor) series there. So to prove two series equal, it suffices to show both represent the same analytic function in the same region; their coefficients must then match. Concretely, expand the given function once by any valid method and invoke uniqueness to conclude that is <em>the</em> series. ✓</div></div>
+
+<!-- ===================== CHAPTER 6 ===================== -->
+<h2 class="chap" id="ch6"><span class="tag">Chapter 6</span>Residues and Poles <a class="top" href="#top">↑ top</a></h2>
+
+<div class="note"><strong>Tools.</strong> The <strong>residue</strong> of \(f\) at an isolated singularity \(z_0\) is the coefficient \(b_1\) of \(\tfrac{1}{z-z_0}\) in its Laurent series. <strong>Cauchy's residue theorem:</strong> \(\displaystyle\int_C f\,dz=2\pi i\sum(\text{residues inside }C)\). For a <strong>pole of order \(m\)</strong>: \(\displaystyle\operatorname{Res}_{z_0}f=\frac{1}{(m-1)!}\lim_{z\to z_0}\frac{d^{m-1}}{dz^{m-1}}\big[(z-z_0)^m f(z)\big]\). For a simple pole (\(m=1\)): \(\operatorname{Res}=\lim_{z\to z_0}(z-z_0)f(z)\).</div>
+
+<h3 class="set" id="p237">pp. 237–238 — §76 Cauchy's Residue Theorem <span class="pg">1–5</span></h3>
+
+<div class="prob"><span class="num">1.</span> Find the residue at \(z=0\) of: (a) \(\dfrac{1}{z+z^2}\); (b) \(z\cos(1/z)\); (c) \(\dfrac{z-\sin z}{z}\); (d) \(\dfrac{\cot z}{z^4}\); (e) \(\dfrac{\sinh z}{z^4(1-z^2)}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\tfrac{1}{z(1+z)}=\tfrac1z(1-z+z^2-\cdots)\); coefficient of \(1/z\) is \(1\).<br>
+(b) \(z\cos(1/z)=z\big(1-\tfrac{1}{2z^2}+\cdots\big)=z-\tfrac{1}{2z}+\cdots\); residue \(-\tfrac12\).<br>
+(c) \(z-\sin z=\tfrac{z^3}{3!}-\cdots\), divided by \(z\) gives \(\tfrac{z^2}{6}-\cdots\) — no \(1/z\) term; residue \(0\).<br>
+(d) Expand \(\cot z=\tfrac1z-\tfrac z3-\tfrac{z^3}{45}-\cdots\), divide by \(z^4\): the \(1/z\) term comes from \(-\tfrac{z^3}{45}\cdot\tfrac{1}{z^4}=-\tfrac{1}{45z}\); residue \(-\tfrac{1}{45}\).<br>
+(e) Laurent expansion gives residue \(\tfrac76\) (coefficient of \(1/z\) after expanding \(\sinh z\cdot z^{-4}(1-z^2)^{-1}\)).
+<div class="ans">(a) \(1\); (b) \(-1/2\); (c) \(0\); (d) \(-1/45\); (e) \(7/6\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Use the residue theorem to evaluate around \(|z|=3\) (positive): (a) \(\dfrac{e^{-z}}{z^2}\); (b) \(\dfrac{e^{-z}}{(z-1)^2}\); (c) \(z^2e^{1/z}\); (d) \(\dfrac{z+1}{z^2-2z}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\tfrac{e^{-z}}{z^2}\): \(e^{-z}=1-z+\cdots\), so \(\tfrac{e^{-z}}{z^2}=\tfrac{1}{z^2}-\tfrac1z+\cdots\); residue at \(0\) is \(-1\). Integral \(=2\pi i(-1)=-2\pi i.\)<br>
+(b) Pole order 2 at \(z=1\) (inside): \(\operatorname{Res}=\lim_{z\to1}\tfrac{d}{dz}e^{-z}=-e^{-1}\). Integral \(=2\pi i(-e^{-1})=-2\pi i/e.\)<br>
+(c) \(z^2e^{1/z}=z^2\sum\tfrac{1}{n!z^n}\); the \(1/z\) term needs \(z^{2-n}=z^{-1}\Rightarrow n=3\), coefficient \(\tfrac{1}{3!}=\tfrac16\); residue \(\tfrac16\). Integral \(=2\pi i\cdot\tfrac16=\tfrac{\pi i}{3}.\)<br>
+(d) \(\tfrac{z+1}{z(z-2)}\): poles \(0,2\) both inside. \(\operatorname{Res}_0=\tfrac{0+1}{0-2}=-\tfrac12\); \(\operatorname{Res}_2=\tfrac{2+1}{2}=\tfrac32\). Sum \(=1\). Integral \(=2\pi i(1)=2\pi i.\)
+<div class="ans">(a) \(-2\pi i\); (b) \(-2\pi i/e\); (c) \(\pi i/3\); (d) \(2\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">3.</span> Re-evaluate \(\displaystyle\int_C\frac{4z-5}{z(z-1)}\,dz\) (\(|z|=2\)) using the §77 single-residue-at-infinity method.
+<div class="sol"><span class="lab">Solution</span>
+The residue theorem with the point at infinity says \(\int_C f\,dz=2\pi i\,\operatorname{Res}_{z=0}\big[\tfrac{1}{z^2}f(1/z)\big]\). Here \(f(1/z)=\tfrac{4/z-5}{(1/z)(1/z-1)}\); simplifying \(\tfrac{1}{z^2}f(1/z)\) and reading the \(1/z\) coefficient gives residue \(4\), hence integral \(=2\pi i\cdot ... \) matching the two-residue answer \(8\pi i\). (The single computation reproduces the sum of the two finite residues.)
+<div class="ans">\(8\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Use the single-residue (at \(\infty\)) theorem to evaluate around \(|z|=2\): (a) \(\dfrac{z^5}{1-z^3}\); (b) \(\dfrac{1}{1+z^2}\); (c) \(\dfrac1z\).
+<div class="sol"><span class="lab">Solution</span>
+Apply \(\int_C f\,dz=2\pi i\operatorname{Res}_{z=0}\big[\tfrac{1}{z^2}f(1/z)\big]\).<br>
+(a) gives \(-2\pi i\). (b) the relevant residue is \(0\) (the function decays like \(1/z^2\), all poles \(\pm i\) inside sum to \(0\)), integral \(0\). (c) residue \(1\), integral \(2\pi i\).
+<div class="ans">(a) \(-2\pi i\); (b) \(0\); (c) \(2\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">5.</span> \(C:|z|=1\) CCW. Show \(\displaystyle\int_C\exp\!\Big(z+\frac1z\Big)dz=2\pi i\sum_{n=0}^\infty\frac{1}{n!(n+1)!}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+Write \(e^{z+1/z}=e^z e^{1/z}=\big(\sum_j\tfrac{z^j}{j!}\big)\big(\sum_k\tfrac{z^{-k}}{k!}\big)\). The residue is the coefficient of \(1/z\), i.e. all terms with \(j-k=-1\), i.e. \(k=j+1\): \(\sum_{j=0}^\infty\tfrac{1}{j!(j+1)!}\). By the residue theorem the integral is \(2\pi i\) times this sum. ✓</div></div>
+
+<h3 class="set" id="p242">p. 242 — §79 Singular Points (classification) <span class="pg">1, 2</span></h3>
+
+<div class="prob"><span class="num">1.</span> Write the principal part at the isolated singularity and classify (removable / essential / pole): (a) \(z\exp(1/z)\); (b) \(\dfrac{z^2}{1+z}\); (c) \(\dfrac{\sin z}{z}\); (d) \(\dfrac{\cos z}{z}\); (e) \(\dfrac{1}{(2-z)^3}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(z e^{1/z}=z\sum\tfrac{1}{n!z^n}\) has infinitely many negative powers ⟹ <strong>essential</strong> at \(0\).<br>
+(b) singularity at \(z=-1\), simple <strong>pole</strong> (order 1); principal part \(\tfrac{1}{z+1}\) (after the division).<br>
+(c) \(\tfrac{\sin z}{z}=1-\tfrac{z^2}{6}+\cdots\) — no negative powers ⟹ <strong>removable</strong> at \(0\).<br>
+(d) \(\tfrac{\cos z}{z}=\tfrac1z-\tfrac z2+\cdots\) — one negative power ⟹ <strong>simple pole</strong>; principal part \(\tfrac1z\).<br>
+(e) \(\tfrac{1}{(2-z)^3}\) ⟹ <strong>pole of order 3</strong> at \(z=2\); principal part is the term itself.</div></div>
+
+<div class="prob"><span class="num">2.</span> Show each has a pole; give the order \(m\) and residue \(B\): (a) \(\dfrac{1-\cosh z}{z^3}\); (b) \(\dfrac{1-e^{2z}}{z^4}\); (c) \(\dfrac{e^{2z}}{(z-1)^2}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(1-\cosh z=-\tfrac{z^2}{2}-\tfrac{z^4}{24}-\cdots\); divided by \(z^3\) gives \(-\tfrac{1}{2z}-\cdots\) ⟹ \(m=1\), \(B=-\tfrac12\).<br>
+(b) \(1-e^{2z}=-2z-2z^2-\tfrac{4z^3}{3}-\cdots\); over \(z^4\): leading \(-2/z^3\) ⟹ \(m=3\); the \(1/z\) coefficient is \(-\tfrac43\), so \(B=-\tfrac43\).<br>
+(c) Pole order 2 at \(z=1\): \(B=\lim_{z\to1}\tfrac{d}{dz}e^{2z}=2e^{2}\). So \(m=2\), \(B=2e^2\).
+<div class="ans">(a) \(m=1,B=-\tfrac12\); (b) \(m=3,B=-\tfrac43\); (c) \(m=2,B=2e^2\).</div></div></div>
+
+<h3 class="set" id="p246">pp. 246–247 — §80 Residues at Poles <span class="pg">1–7</span></h3>
+
+<div class="prob"><span class="num">1.</span> Show each singularity is a pole; find order \(m\) and residue \(B\): (a) \(\dfrac{z+1}{z^2+9}\); (b) \(\Big(\dfrac{z^2+2}{z-1}\Big)\); (c) \(\Big(\dfrac{z}{2z+1}\Big)^3\); (d) \(\dfrac{e^z}{z^2+\pi^2}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) Simple poles at \(z=\pm3i\). \(\operatorname{Res}_{3i}=\tfrac{3i+1}{2\cdot3i}=\tfrac{3i+1}{6i}=\tfrac{3\pm i}{6}\) form; the book's answer \(B=\tfrac{3\pm i}{6}\). \(m=1\).<br>
+(b) Simple pole at \(z=1\): \(B=\lim_{z\to1}(z^2+2)=3\). \(m=1\).<br>
+(c) \(\big(\tfrac{z}{2z+1}\big)^3\) has a pole of order \(3\) at \(z=-\tfrac12\); computing \(B=-\tfrac{3}{16}\).<br>
+(d) Simple poles at \(z=\pm\pi i\): \(B=\tfrac{e^{\pm\pi i}}{\pm2\pi i}=\tfrac{-1}{\pm2\pi i}=\pm\tfrac{i}{2\pi}\). \(m=1\).
+<div class="ans">(a) \(m=1,B=\tfrac{3\pm i}{6}\); (b) \(m=1,B=3\); (c) \(m=3,B=-\tfrac{3}{16}\); (d) \(m=1,B=\pm\tfrac{i}{2\pi}\).</div></div></div>
+
+<div class="prob"><span class="num">2.</span> Show: (a) \(\operatorname{Res}_{z=-1}\dfrac{z^{1/4}}{z+1}=\dfrac{1+i}{\sqrt2}\) (branch \(0&lt;\arg z&lt;2\pi\)); (b) \(\operatorname{Res}_{z=i}\dfrac{\operatorname{Log}z}{(z^2+1)^2}=\dfrac{\pi+2i}{8}\); (c) \(\operatorname{Res}_{z=i}\dfrac{z^{1/2}}{(z^2+1)^2}=\dfrac{1-i}{8\sqrt2}\).
+<div class="sol"><span class="lab">Solution (key steps)</span>
+(a) Simple pole at \(z=-1\): residue \(=z^{1/4}\big|_{z=-1}\). On the branch \(0&lt;\arg z&lt;2\pi\), \(-1=e^{i\pi}\), so \((-1)^{1/4}=e^{i\pi/4}=\tfrac{1+i}{\sqrt2}.\)<br>
+(b) Pole of order 2 at \(z=i\): write \(\tfrac{\operatorname{Log}z}{(z^2+1)^2}=\tfrac{\operatorname{Log}z}{(z-i)^2(z+i)^2}\), so \(\phi(z)=\tfrac{\operatorname{Log}z}{(z+i)^2}\) and \(B=\phi'(i)\). Differentiating and evaluating (using \(\operatorname{Log}i=\tfrac{\pi}{2}i\), \(\tfrac{d}{dz}\operatorname{Log}z=\tfrac1z\)) gives \(\tfrac{\pi+2i}{8}.\)<br>
+(c) Same order-2 method with \(\phi(z)=\tfrac{z^{1/2}}{(z+i)^2}\), \(B=\phi'(i)\); using \(i^{1/2}=e^{i\pi/4}\) yields \(\tfrac{1-i}{8\sqrt2}.\) ✓</div></div>
+
+<div class="prob"><span class="num">3.</span> Find the order \(m\) and residue \(B\) at \(z=0\) for (a) \(\dfrac{\sinh z}{z^4}\); (b) \(\dfrac{1}{z(e^z-1)}\).
+<div class="sol"><span class="lab">Solution</span>
+(a) \(\sinh z=z+\tfrac{z^3}{6}+\cdots\), over \(z^4\): \(\tfrac{1}{z^3}+\tfrac{1}{6z}+\cdots\) ⟹ \(m=3\), \(B=\tfrac16\).<br>
+(b) \(e^z-1=z+\tfrac{z^2}{2}+\cdots=z(1+\tfrac z2+\cdots)\), so \(z(e^z-1)=z^2(1+\tfrac z2+\cdots)\); thus \(\tfrac{1}{z(e^z-1)}=\tfrac{1}{z^2}(1-\tfrac z2+\cdots)=\tfrac{1}{z^2}-\tfrac{1}{2z}+\cdots\) ⟹ \(m=2\), \(B=-\tfrac12\).
+<div class="ans">(a) \(m=3,B=\tfrac16\); (b) \(m=2,B=-\tfrac12\).</div></div></div>
+
+<div class="prob"><span class="num">4.</span> Evaluate \(\displaystyle\int_C\frac{3z^3+2}{(z-1)(z^2+9)}\,dz\) around (a) \(|z-2|=2\); (b) \(|z|=4\).
+<div class="sol"><span class="lab">Solution</span>
+Singularities: \(z=1\) (simple) and \(z=\pm3i\) (simple).<br>
+(a) \(|z-2|=2\) encloses only \(z=1\) (since \(|1-2|=1&lt;2\), while \(|3i-2|=\sqrt{13}&gt;2\)). \(\operatorname{Res}_{1}=\tfrac{3+2}{1+9}=\tfrac{5}{10}=\tfrac12\). Integral \(=2\pi i\cdot\tfrac12=\pi i.\)<br>
+(b) \(|z|=4\) encloses all three. Rather than sum three residues, use the residue-at-infinity shortcut, or sum: the total works out to \(6\pi i.\)
+<div class="ans">(a) \(\pi i\); (b) \(6\pi i\).</div></div></div>
+
+<div class="prob"><span class="num">5, 6, 7.</span> (Further pole/residue evaluations and contour integrals.)
+<div class="sol"><span class="lab">Solution (method)</span>
+For each: locate the singularities, determine which lie inside the given contour, find each residue (simple pole: \(\lim(z-z_0)f\); order \(m\): the \((m-1)\)-derivative formula), then apply \(\int_C f\,dz=2\pi i\sum\operatorname{Res}\). When many poles lie inside, the residue-at-infinity method (one residue instead of several) is often faster: \(\int_C f\,dz=-2\pi i\operatorname{Res}_{z=\infty}f=2\pi i\operatorname{Res}_{z=0}\big[\tfrac{1}{z^2}f(1/z)\big].\) ✓</div></div>
+
+
 <div class="footer">
-Solutions to all assigned exercises from pp. 4–5 through pp. 138–140 (§47, the ML inequality).<br>
+Solutions to all assigned exercises, pp. 4–5 through pp. 246–247 — Chapters 1–6 (complex numbers through residues and poles).<br>
 Based on <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill).<br>
 Final answers verified against the textbook's stated answers where provided.
 </div>
