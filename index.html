@@ -76,12 +76,12 @@ window.MathJax = {
 <body>
 <header class="hero">
   <h1>Complex Variables &amp; Applications</h1>
-  <div class="sub">Midterm Study Guide — Brown &amp; Churchill, 9th ed.</div>
-  <div class="meta">Chapters 1–4 &nbsp;•&nbsp; Sections 1–47 &nbsp;•&nbsp; through Upper Bounds for Contour Integrals</div>
+  <div class="sub">Complete Course Study Guide — Brown &amp; Churchill, 9th ed.</div>
+  <div class="meta">Chapters 1–6 &nbsp;•&nbsp; Sections 1–81 &nbsp;•&nbsp; complex numbers through residues and poles</div>
 </header>
 <div class="wrap">
 
-<p style="margin-top:30px">This guide is built to take you from essentially zero up through everything you need for the midterm. It follows the book section by section, states every definition, theorem, and formula you're responsible for, explains <em>why</em> things are true at an intuitive level, and shows the standard problem types your assigned homework draws from. Worked patterns matching specific assigned problems are flagged with a <span class="pill">HW</span> tag.</p>
+<p style="margin-top:30px">This guide is built to take you from essentially zero up through everything you need for the course. It follows the book section by section, states every definition, theorem, and formula you're responsible for, explains <em>why</em> things are true at an intuitive level, and shows the standard problem types your assigned homework draws from. Worked patterns matching specific assigned problems are flagged with a <span class="pill">HW</span> tag.</p>
 
 <div class="box warn"><span class="lab">How to use this</span>
 Read each section's <strong>core ideas</strong> first, memorize anything in a <strong>Key</strong> box, then look at the problem patterns. The boxes labeled <em>Key</em> are the formulas/results most likely to appear on quizzes and the exam. Don't skip the "common traps" notes — those are exactly where points are lost.</div>
@@ -114,7 +114,20 @@ Read each section's <strong>core ideas</strong> first, memorize anything in a <s
   <a href="#s43">§43 Contours</a><br>
   <a href="#s44">§44–46 Contour integrals</a><br>
   <a href="#s47">§47 Upper bounds (ML)</a><br>
-  <a href="#cheat">★ Final cheat sheet</a>
+  <span class="ch">Ch. 4 cont. — Fundamental theorems</span>
+  <a href="#s48">§48 Antiderivatives</a><br>
+  <a href="#s50">§50 Cauchy–Goursat</a><br>
+  <a href="#s54">§54–55 Cauchy integral formula</a><br>
+  <span class="ch">Ch. 5 — Series</span>
+  <a href="#s62">§62–64 Taylor series</a><br>
+  <a href="#s66">§66–68 Laurent series</a><br>
+  <span class="ch">Ch. 6 — Residues &amp; Poles</span>
+  <a href="#s75">§74–75 Residues</a><br>
+  <a href="#s76">§76–77 Residue theorem</a><br>
+  <a href="#s78">§78–79 Singularity types</a><br>
+  <a href="#s80">§80–81 Residues at poles</a><br>
+  <a href="#cheat">★ Midterm cheat sheet</a><br>
+  <a href="#cheat2">★ Final-scope cheat sheet</a>
 </div>
 
 <!-- ============== CHAPTER 1 ============== -->
@@ -129,7 +142,7 @@ Read each section's <strong>core ideas</strong> first, memorize anything in a <s
 \[(x_1+iy_1)(x_2+iy_2)=(x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)\]
 Just multiply normally and replace \(i^2\) by \(-1\).</div>
 
-<p>\(\mathbb{C}\) is a <strong>field</strong>: addition and multiplication are commutative and associative, multiplication distributes over addition, \(0=(0,0)\) and \(1=(1,0)\) are the identities, every \(z\) has an additive inverse \(-z\), and every \(z\neq0\) has a multiplicative inverse. There is <em>no</em> ordering "\(<\)" on \(\mathbb{C}\) (inequalities only ever apply to real quantities such as \(|z|\)).</p>
+<p>\(\mathbb{C}\) is a <strong>field</strong>: addition and multiplication are commutative and associative, multiplication distributes over addition, \(0=(0,0)\) and \(1=(1,0)\) are the identities, every \(z\) has an additive inverse \(-z\), and every \(z\neq0\) has a multiplicative inverse. There is <em>no</em> ordering "\(&lt;\)" on \(\mathbb{C}\) (inequalities only ever apply to real quantities such as \(|z|\)).</p>
 
 <div class="box key"><span class="lab">Inverse &amp; division</span>
 \[z^{-1}=\frac{x-iy}{x^2+y^2}\qquad(z\neq0)\]
@@ -176,7 +189,7 @@ E.g. on \(|z|=2\): \(|z^4+1|\ge |2^4-1|=15\). Memorize this — it appears on th
 <div class="box key"><span class="lab">Polar / exponential form</span>
 With \(r=|z|\) and \(\theta=\arg z\):
 \[z=r(\cos\theta+i\sin\theta)=re^{i\theta}\qquad(\text{Euler: } e^{i\theta}=\cos\theta+i\sin\theta).\]
-\(\theta\) is the <strong>argument</strong>, defined only up to multiples of \(2\pi\). The <strong>principal value</strong> \(\Theta=\operatorname{Arg}z\) is the one with \(-\pi<\Theta\le\pi\), and \(\arg z=\Theta+2n\pi\ (n\in\mathbb{Z}).\)</div>
+\(\theta\) is the <strong>argument</strong>, defined only up to multiples of \(2\pi\). The <strong>principal value</strong> \(\Theta=\operatorname{Arg}z\) is the one with \(-\pi&lt;\Theta\le\pi\), and \(\arg z=\Theta+2n\pi\ (n\in\mathbb{Z}).\)</div>
 
 <div class="box key"><span class="lab">Multiplication, powers, de Moivre</span>
 \[z_1z_2=r_1r_2\,e^{i(\theta_1+\theta_2)},\qquad \frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.\]
@@ -208,7 +221,7 @@ They lie on the circle \(|z|=\sqrt[n]{r_0}\), equally spaced by angle \(2\pi/n\)
 <p>Vocabulary you must be able to state and apply:</p>
 <table>
 <tr><th>Term</th><th>Meaning</th></tr>
-<tr><td>\(\varepsilon\)-neighborhood of \(z_0\)</td><td>\(\{z:|z-z_0|<\varepsilon\}\) (open disk)</td></tr>
+<tr><td>\(\varepsilon\)-neighborhood of \(z_0\)</td><td>\(\{z:|z-z_0|&lt;\varepsilon\}\) (open disk)</td></tr>
 <tr><td>Interior point</td><td>Some neighborhood lies entirely in the set</td></tr>
 <tr><td>Open set</td><td>Every point is interior</td></tr>
 <tr><td>Closed set</td><td>Contains all its boundary points (complement is open)</td></tr>
@@ -216,7 +229,7 @@ They lie on the circle \(|z|=\sqrt[n]{r_0}\), equally spaced by angle \(2\pi/n\)
 <tr><td>Connected (open)</td><td>Any two points joined by a polygonal path inside the set</td></tr>
 <tr><td>Domain</td><td>A nonempty open <em>connected</em> set</td></tr>
 <tr><td>Region</td><td>A domain together with some/all boundary points</td></tr>
-<tr><td>Bounded</td><td>Contained in some disk \(|z|<M\)</td></tr>
+<tr><td>Bounded</td><td>Contained in some disk \(|z|&lt;M\)</td></tr>
 </table>
 <div class="box warn"><span class="lab">Why "domain" matters</span>The whole theory of analytic functions is stated on <em>domains</em>. Many later theorems require "analytic throughout a domain \(D\)," so know this word precisely.</div>
 
@@ -237,8 +250,8 @@ With \(z=re^{i\theta}\), \(w=r^2e^{i2\theta}\): moduli square, angles double. In
 <h3 id="s15"><span class="sec">§15–§18</span> Limits and Continuity</h3>
 
 <div class="box key"><span class="lab">Limit</span>
-\(\displaystyle\lim_{z\to z_0}f(z)=w_0\) means: for every \(\varepsilon>0\) there is \(\delta>0\) so that
-\[0<|z-z_0|<\delta\ \Rightarrow\ |f(z)-w_0|<\varepsilon.\]
+\(\displaystyle\lim_{z\to z_0}f(z)=w_0\) means: for every \(\varepsilon&gt;0\) there is \(\delta&gt;0\) so that
+\[0&lt;|z-z_0|&lt;\delta\ \Rightarrow\ |f(z)-w_0|&lt;\varepsilon.\]
 The limit, if it exists, is <strong>unique</strong>, and \(z\) may approach \(z_0\) <em>from any direction</em>. If two different paths give different values, the limit does not exist.</div>
 
 <div class="box key"><span class="lab">Real/imaginary split (Thm, §15–16)</span>
@@ -285,7 +298,7 @@ If \(u,v\) and their first partials are <em>continuous</em> in a neighborhood of
 
 <div class="box key"><span class="lab">Polar form (§24)</span>
 With \(z=re^{i\theta}\), \(f=u(r,\theta)+iv(r,\theta)\), the C–R equations become
-\[r\,u_r=v_\theta,\qquad u_\theta=-r\,v_r\quad(r>0),\]
+\[r\,u_r=v_\theta,\qquad u_\theta=-r\,v_r\quad(r&gt;0),\]
 \[f'(z_0)=e^{-i\theta}\big(u_r+i\,v_r\big).\]</div>
 
 <div class="box warn"><span class="lab">Common trap</span>
@@ -328,8 +341,8 @@ So a function real on a real interval satisfies \(\overline{f(\bar z)}=f(z)\).</
 \[e^z=e^{x}(\cos y+i\sin y)\qquad(z=x+iy).\]
 So \(|e^z|=e^x\) and \(\arg(e^z)=y\,(+2n\pi)\). Key facts:
 \[e^{z_1}e^{z_2}=e^{z_1+z_2},\quad \frac{e^{z_1}}{e^{z_2}}=e^{z_1-z_2},\quad (e^z)'=e^z\ (\text{entire}).\]
-\(e^z\) is <strong>never zero</strong> (\(|e^z|=e^x>0\)) and is <strong>periodic with period \(2\pi i\)</strong>: \(e^{z+2\pi i}=e^z\).</div>
-<div class="box warn"><span class="lab">Trap</span>Unlike the real case, \(e^z\) is not one-to-one and \(e^z<0\) <em>is</em> possible? No — \(e^z\neq0\), but \(e^z\) can be any nonzero complex number, e.g. \(e^{i\pi}=-1\). Also \(e^{z_1}=e^{z_2}\iff z_1-z_2=2n\pi i\).</div>
+\(e^z\) is <strong>never zero</strong> (\(|e^z|=e^x&gt;0\)) and is <strong>periodic with period \(2\pi i\)</strong>: \(e^{z+2\pi i}=e^z\).</div>
+<div class="box warn"><span class="lab">Trap</span>Unlike the real case, \(e^z\) is not one-to-one and \(e^z&lt;0\) <em>is</em> possible? No — \(e^z\neq0\), but \(e^z\) can be any nonzero complex number, e.g. \(e^{i\pi}=-1\). Also \(e^{z_1}=e^{z_2}\iff z_1-z_2=2n\pi i\).</div>
 <div class="hwbox"><span class="lab">HW p. 103</span> Compute \(e^z\) in \(x+iy\) form; solve \(e^z=\) given value (find all \(z\)); show \(|e^{z^2}|\le e^{|z|^2}\); verify periodicity and the modulus/argument identities.</div>
 
 <h3 id="s31"><span class="sec">§31–§34</span> The Logarithmic Function</h3>
@@ -337,9 +350,9 @@ So \(|e^z|=e^x\) and \(\arg(e^z)=y\,(+2n\pi)\). Key facts:
 \[\log z=\ln|z|+i\arg z=\ln r + i(\Theta+2n\pi),\quad n\in\mathbb Z,\ z\neq0,\]
 where \(\Theta=\operatorname{Arg}z\). It is the inverse of \(e^z\): \(e^{\log z}=z\), and \(\log(e^z)=z+2n\pi i\).</div>
 <div class="box key"><span class="lab">Principal value &amp; branches</span>
-\[\operatorname{Log}z=\ln r + i\Theta\qquad(-\pi<\Theta\le\pi).\]
-A <strong>branch</strong> fixes \(\arg z\) in an interval \(\alpha<\theta<\alpha+2\pi\), making \(\log\) single-valued and analytic on the plane minus a <strong>branch cut</strong> (a ray from the origin). For the principal branch the cut is the negative real axis including \(0\); there
-\[\frac{d}{dz}\operatorname{Log}z=\frac1z\quad(|z|>0,\ -\pi<\operatorname{Arg}z<\pi).\]
+\[\operatorname{Log}z=\ln r + i\Theta\qquad(-\pi&lt;\Theta\le\pi).\]
+A <strong>branch</strong> fixes \(\arg z\) in an interval \(\alpha&lt;\theta&lt;\alpha+2\pi\), making \(\log\) single-valued and analytic on the plane minus a <strong>branch cut</strong> (a ray from the origin). For the principal branch the cut is the negative real axis including \(0\); there
+\[\frac{d}{dz}\operatorname{Log}z=\frac1z\quad(|z|&gt;0,\ -\pi&lt;\operatorname{Arg}z&lt;\pi).\]
 The point \(0\) is a <strong>branch point</strong>.</div>
 <div class="box key"><span class="lab">Log identities (§34)</span>
 As multivalued sets:
@@ -455,7 +468,7 @@ To bound \(\big|\int_C f\,dz\big|\):
 <p class="ex"><span class="q">Worked (Example 1, §47).</span> \(C\): arc of \(|z|=2\) in the first quadrant, from \(2\) to \(2i\), so \(L=\tfrac14(2\pi\cdot2)=\pi\). For \(z\) on \(C\): \(|z-2|\le|z|+2=4\) and \(|z^4+1|\ge|z|^4-1=15\). Hence \(\Big|\dfrac{z-2}{z^4+1}\Big|\le\dfrac{4}{15}=M\), giving
 \[\left|\int_C\frac{z-2}{z^4+1}\,dz\right|\le \frac{4}{15}\cdot\pi=\frac{4\pi}{15}.\]</p>
 
-<p class="ex"><span class="q">Worked (Example 2 — vanishing limit).</span> \(C_R\): semicircle \(z=Re^{i\theta}\), \(0\le\theta\le\pi\), \(R>3\), \(L=\pi R\). On \(C_R\): \(|z+1|\le R+1\), \(|z^2+4|\ge R^2-4\), \(|z^2+9|\ge R^2-9\). So
+<p class="ex"><span class="q">Worked (Example 2 — vanishing limit).</span> \(C_R\): semicircle \(z=Re^{i\theta}\), \(0\le\theta\le\pi\), \(R&gt;3\), \(L=\pi R\). On \(C_R\): \(|z+1|\le R+1\), \(|z^2+4|\ge R^2-4\), \(|z^2+9|\ge R^2-9\). So
 \[\left|\int_{C_R}\frac{(z+1)\,dz}{(z^2+4)(z^2+9)}\right|\le \frac{(R+1)\pi R}{(R^2-4)(R^2-9)}\xrightarrow[R\to\infty]{}0,\]
 since the bound behaves like \(\pi R^2/R^4=\pi/R^2\to0\). Therefore the integral \(\to0\) without ever evaluating it.</p>
 
@@ -518,9 +531,171 @@ Numerator up with triangle inequality, denominator down with reverse triangle in
 <li>Memorize \(\int_C dz/(z-z_0)=2\pi i\) and the ML inequality cold.</li>
 </ul></div>
 
+
+<!-- ============== CHAPTER 4 (continued) ============== -->
+<h2 class="chap" id="ch4cont"><span class="tag">Chapter 4 — §48–55</span>The Fundamental Theorems of Contour Integration <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s48"><span class="sec">§48</span> Antiderivatives</h3>
+<p>An <strong>antiderivative</strong> of \(f\) on a domain \(D\) is a function \(F\) with \(F'(z)=f(z)\) throughout \(D\). This is the complex Fundamental Theorem of Calculus, and it ties three properties together.</p>
+<div class="box key"><span class="lab">Equivalence theorem</span>
+For \(f\) continuous on a domain \(D\), the following are <strong>all true or all false together</strong>:
+<ol>
+<li>\(f\) has an antiderivative \(F\) on \(D\);</li>
+<li>integrals of \(f\) along contours in \(D\) joining fixed \(z_1,z_2\) are <strong>path-independent</strong>, with value \(F(z_2)-F(z_1)\);</li>
+<li>\(\displaystyle\oint_C f\,dz=0\) for every closed contour \(C\) in \(D\).</li>
+</ol></div>
+<div class="box warn"><span class="lab">The decisive subtlety</span>
+\(1/z^2\) has antiderivative \(-1/z\) valid on all of \(z\neq0\), so \(\oint_C \tfrac{dz}{z^2}=0\) around the unit circle. But \(1/z\) has antiderivative \(\log z\), which needs a <em>branch cut</em> — no single branch is analytic on a whole loop around \(0\). That's exactly why \(\oint_C \tfrac{dz}{z}=2\pi i\neq0\). When an integral around a closed loop is nonzero, it's because no antiderivative exists on a domain containing the loop.</div>
+
+<h3 id="s50"><span class="sec">§50</span> The Cauchy–Goursat Theorem</h3>
+<div class="box key"><span class="lab">Theorem</span>
+If \(f\) is analytic at all points interior to and on a simple closed contour \(C\), then
+\[\oint_C f(z)\,dz=0.\]
+Analyticity inside and on the loop is enough — no antiderivative need be found.</div>
+<p><strong>Where it comes from.</strong> Writing \(f=u+iv\), \(dz=dx+i\,dy\), and applying Green's theorem turns the contour integral into double integrals over the enclosed region \(R\):
+\[\oint_C f\,dz=\iint_R(-v_x-u_y)\,dA+i\iint_R(u_x-v_y)\,dA.\]
+The <strong>Cauchy–Riemann equations</strong> make both integrands zero. (Cauchy assumed \(f'\) continuous; <em>Goursat</em> removed that assumption — hence the name and why it's stated purely in terms of "analytic.")</p>
+<div class="box"><span class="lab">Simply vs. multiply connected (§52–53)</span>
+A <strong>simply connected</strong> domain has no holes; there \(\oint_C f\,dz=0\) for <em>every</em> closed contour when \(f\) is analytic throughout. In <strong>multiply connected</strong> domains (with holes), use the <strong>principle of deformation of paths</strong>: a contour can be continuously deformed through the region where \(f\) is analytic without changing the integral. This lets you shrink a big contour to a small circle around a trouble point.</div>
+
+<h3 id="s54"><span class="sec">§54–§55</span> The Cauchy Integral Formula</h3>
+<div class="box key"><span class="lab">Cauchy integral formula</span>
+If \(f\) is analytic inside and on a positively oriented simple closed contour \(C\), and \(z_0\) is interior to \(C\), then
+\[f(z_0)=\frac{1}{2\pi i}\oint_C\frac{f(z)}{z-z_0}\,dz,\qquad\text{i.e.}\qquad \oint_C\frac{f(z)}{z-z_0}\,dz=2\pi i\,f(z_0).\]
+A function's values on the boundary determine its value at every interior point.</div>
+<div class="box key"><span class="lab">Extension to derivatives</span>
+\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\,dz,\qquad\text{i.e.}\qquad \oint_C\frac{f(z)}{(z-z_0)^{n+1}}\,dz=\frac{2\pi i}{n!}\,f^{(n)}(z_0).\]
+<strong>Consequence:</strong> an analytic function has derivatives of <em>all</em> orders, all analytic. Differentiable once (complex sense) ⟹ infinitely differentiable.</div>
+<div class="box warn"><span class="lab">How to pick the tool for \(\oint_C g\,dz\)</span>
+<ol>
+<li>\(g\) analytic inside &amp; on \(C\)? → Cauchy–Goursat: answer \(0\).</li>
+<li>\(g=\dfrac{f(z)}{z-z_0}\), \(f\) analytic inside, \(z_0\) inside? → \(2\pi i\,f(z_0)\).</li>
+<li>\(g=\dfrac{f(z)}{(z-z_0)^{n+1}}\)? → \(\dfrac{2\pi i}{n!}f^{(n)}(z_0)\).</li>
+<li>Singularity <em>outside</em> \(C\)? → it doesn't count; integral is \(0\).</li>
+<li>Several singularities inside? → split, or use residues (Ch. 6).</li>
+</ol></div>
+<p class="ex"><span class="q">Worked.</span> \(\displaystyle\oint_{|z|=1}\frac{\cos z}{z(z^2+9)}\,dz\): write as \(\dfrac{(\cos z)/(z^2+9)}{z}\), so \(z_0=0\) inside and \(f=\tfrac{\cos z}{z^2+9}\) analytic inside (poles \(\pm3i\) are outside). Value \(=2\pi i\,f(0)=2\pi i\cdot\tfrac19=\tfrac{2\pi i}{9}.\)</p>
+
+<!-- ============== CHAPTER 5 ============== -->
+<h2 class="chap" id="ch5"><span class="tag">Chapter 5</span>Series — Taylor &amp; Laurent <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s62"><span class="sec">§62–§64</span> Taylor Series</h3>
+<div class="box key"><span class="lab">Taylor's theorem</span>
+If \(f\) is analytic throughout the disk \(|z-z_0|&lt;R_0\), then
+\[f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n,\qquad a_n=\frac{f^{(n)}(z_0)}{n!},\quad(|z-z_0|&lt;R_0).\]
+About \(z_0=0\) this is the <strong>Maclaurin series</strong>. The radius of convergence is the distance from \(z_0\) to the <em>nearest singularity</em>.</div>
+<div class="box key"><span class="lab">Standard Maclaurin series (memorize)</span>
+\[e^z=\sum_{n=0}^\infty\frac{z^n}{n!},\qquad \frac{1}{1-z}=\sum_{n=0}^\infty z^n\ (|z|&lt;1),\]
+\[\sin z=\sum_{n=0}^\infty\frac{(-1)^n z^{2n+1}}{(2n+1)!},\qquad \cos z=\sum_{n=0}^\infty\frac{(-1)^n z^{2n}}{(2n)!},\]
+\[\sinh z=\sum_{n=0}^\infty\frac{z^{2n+1}}{(2n+1)!},\qquad \cosh z=\sum_{n=0}^\infty\frac{z^{2n}}{(2n)!}.\]
+All entire ones converge for \(|z|&lt;\infty\); the geometric series needs \(|z|&lt;1\).</div>
+<div class="box warn"><span class="lab">Technique</span>
+Don't compute \(f^{(n)}(z_0)\) by hand — <strong>substitute and manipulate</strong> known series instead. Replace \(z\) by \(z^2\), \(-z\), \(1/z\), etc.; multiply by powers of \(z\); or multiply two series and collect terms. The radius of a product is the smaller of the two radii.</div>
+<p class="ex"><span class="q">Worked.</span> \(z\cosh(z^2)\): put \(w=z^2\) in \(\cosh w=\sum\tfrac{w^{2n}}{(2n)!}\) to get \(\sum\tfrac{z^{4n}}{(2n)!}\), then multiply by \(z\): \(\sum_{n=0}^\infty\tfrac{z^{4n+1}}{(2n)!}.\)</p>
+
+<h3 id="s66"><span class="sec">§66–§68</span> Laurent Series</h3>
+<div class="box key"><span class="lab">Laurent's theorem</span>
+If \(f\) is analytic in the annulus \(R_1&lt;|z-z_0|&lt;R_2\), then there
+\[f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n+\sum_{n=1}^\infty\frac{b_n}{(z-z_0)^n},\]
+a series with both positive <em>and negative</em> powers. The coefficient \(b_1\) (of \(\tfrac{1}{z-z_0}\)) is the <strong>residue</strong> — the key to Chapter 6.</div>
+<div class="box warn"><span class="lab">Technique</span>
+Rewrite \(f\) to apply the geometric series \(\tfrac{1}{1-w}=\sum w^n\), choosing \(w\) so that \(|w|&lt;1\) in the region you want:
+<ul>
+<li><strong>Near</strong> the singularity (small \(|z-z_0|\)): expand in positive powers.</li>
+<li><strong>Far away</strong> (large \(|z|\)): factor out the largest term so the ratio is \(|1/z|&lt;1\), giving negative powers.</li>
+</ul>
+A function with \(k\) singularities produces several different Laurent expansions — one per annular region the singularities cut out. Use <strong>partial fractions</strong> first, then expand each piece.</div>
+<p class="ex"><span class="q">Worked.</span> \(\dfrac{1}{z^2(1-z)}\) for \(0&lt;|z|&lt;1\): use \(\tfrac{1}{1-z}=\sum z^n\), so \(f=\tfrac{1}{z^2}\sum z^n=\tfrac{1}{z^2}+\tfrac1z+\sum_{n=0}^\infty z^n.\) For \(|z|&gt;1\): \(\tfrac{1}{1-z}=-\tfrac1z\sum(1/z)^n\), giving \(f=-\sum_{n=3}^\infty z^{-n}.\)</p>
+<div class="box"><span class="lab">Term-by-term &amp; uniqueness (§71–72)</span>
+Inside its region of convergence a power/Laurent series may be <strong>differentiated and integrated term by term</strong>, and the representation is <strong>unique</strong> — so any valid expansion you find <em>is</em> the series. Removable-singularity check: if all \(b_n=0\), the singularity is removable (e.g. \(\tfrac{1-\cos z}{z^2}=\tfrac{1}{2!}-\tfrac{z^2}{4!}+\cdots\), value \(\tfrac12\) at \(0\)).</div>
+
+<!-- ============== CHAPTER 6 ============== -->
+<h2 class="chap" id="ch6"><span class="tag">Chapter 6</span>Residues and Poles <a class="top" href="#top">↑ top</a></h2>
+
+<h3 id="s75"><span class="sec">§74–§75</span> Isolated Singularities &amp; Residues</h3>
+<div class="box key"><span class="lab">Residue</span>
+\(z_0\) is an <strong>isolated singular point</strong> if \(f\) is analytic in some punctured disk \(0&lt;|z-z_0|&lt;R_2\). The <strong>residue</strong> of \(f\) at \(z_0\) is \(b_1\), the coefficient of \(\dfrac{1}{z-z_0}\) in the Laurent series there:
+\[\operatorname*{Res}_{z=z_0}f(z)=b_1=\frac{1}{2\pi i}\oint_C f(z)\,dz.\]</div>
+
+<h3 id="s76"><span class="sec">§76–§77</span> Cauchy's Residue Theorem</h3>
+<div class="box key"><span class="lab">Residue theorem</span>
+If \(C\) is a positively oriented simple closed contour and \(f\) is analytic inside and on \(C\) except for finitely many singular points \(z_k\) inside, then
+\[\oint_C f(z)\,dz=2\pi i\sum_{k}\operatorname*{Res}_{z=z_k}f(z).\]
+This unifies everything: Cauchy–Goursat is the case of no singularities (sum \(=0\)); the integral formula is the case of one simple pole.</div>
+<div class="box"><span class="lab">Residue at infinity (§77)</span>
+When many singularities lie inside \(C\), one computation can replace several:
+\[\oint_C f(z)\,dz=2\pi i\operatorname*{Res}_{z=0}\left[\frac{1}{z^2}\,f\!\left(\frac1z\right)\right].\]</div>
+
+<h3 id="s78"><span class="sec">§78–§79</span> The Three Types of Isolated Singularity</h3>
+<p>Classify by the <strong>principal part</strong> (the negative-power terms) of the Laurent series:</p>
+<table>
+<tr><th>Type</th><th>Principal part</th><th>Example</th></tr>
+<tr><td>Removable</td><td>no negative powers (all \(b_n=0\))</td><td>\(\tfrac{\sin z}{z}\) at \(0\)</td></tr>
+<tr><td>Pole of order \(m\)</td><td>finitely many: ends at \(\tfrac{b_m}{(z-z_0)^m}\), \(b_m\neq0\)</td><td>\(\tfrac{1}{(2-z)^3}\) at \(2\) (\(m=3\))</td></tr>
+<tr><td>Essential</td><td>infinitely many negative powers</td><td>\(e^{1/z}\) at \(0\)</td></tr>
+</table>
+
+<h3 id="s80"><span class="sec">§80–§81</span> Residues at Poles</h3>
+<div class="box key"><span class="lab">Pole-residue formula</span>
+\(z_0\) is a pole of order \(m\) iff \(f(z)=\dfrac{\phi(z)}{(z-z_0)^m}\) with \(\phi\) analytic and \(\phi(z_0)\neq0\). Then
+\[\operatorname*{Res}_{z=z_0}f=\phi(z_0)\ \ (m=1),\qquad \operatorname*{Res}_{z=z_0}f=\frac{\phi^{(m-1)}(z_0)}{(m-1)!}\ \ (m\ge2).\]
+<strong>Simple pole shortcut:</strong> \(\operatorname*{Res}_{z=z_0}f=\lim_{z\to z_0}(z-z_0)f(z)\). For \(f=p/q\) with a simple zero of \(q\) at \(z_0\): \(\operatorname*{Res}=\dfrac{p(z_0)}{q'(z_0)}.\)</div>
+<div class="box warn"><span class="lab">Method for \(\oint_C f\,dz\)</span>
+<ol>
+<li>Find the singularities; keep only those <em>inside</em> \(C\).</li>
+<li>For each: simple pole → \(\lim(z-z_0)f\) or \(p/q'\); order \(m\) → the \((m-1)\)-derivative formula; essential → read \(b_1\) off the Laurent series.</li>
+<li>Sum the residues and multiply by \(2\pi i\). (Many poles? Consider the residue at infinity.)</li>
+</ol></div>
+<p class="ex"><span class="q">Worked.</span> \(\displaystyle\oint_{|z|=2}\frac{z+1}{z^2-2z}\,dz\): \(=\dfrac{z+1}{z(z-2)}\), simple poles at \(0,2\) (both inside). \(\operatorname*{Res}_0=\tfrac{0+1}{0-2}=-\tfrac12\), \(\operatorname*{Res}_2=\tfrac{2+1}{2}=\tfrac32\); sum \(=1\), so the integral \(=2\pi i.\)</p>
+
+
+<!-- ============== EXTENDED CHEAT SHEET ============== -->
+<h2 class="chap" id="cheat2"><span class="tag">One-page reference — final scope</span>★ Cheat Sheet: §48–§81 <a class="top" href="#top">↑ top</a></h2>
+
+<div class="grid2">
+<div class="box key"><span class="lab">Antiderivatives (§48)</span>
+\(F'=f\) on \(D\) ⟹ path-independent, \(\int=F(z_2)-F(z_1)\), and \(\oint_C f=0\). Fails for \(1/z\) (needs branch cut) ⟹ \(\oint dz/z=2\pi i\).
+</div>
+<div class="box key"><span class="lab">Cauchy–Goursat (§50)</span>
+\(f\) analytic inside &amp; on \(C\) ⟹ \(\displaystyle\oint_C f\,dz=0\). Deform paths freely through analytic regions.
+</div>
+<div class="box key"><span class="lab">Cauchy integral formula (§54–55)</span>
+\(\displaystyle\oint_C\frac{f(z)}{z-z_0}dz=2\pi i\,f(z_0)\)<br>
+\(\displaystyle\oint_C\frac{f(z)}{(z-z_0)^{n+1}}dz=\frac{2\pi i}{n!}f^{(n)}(z_0)\)<br>
+(\(z_0\) inside, \(f\) analytic inside &amp; on \(C\))
+</div>
+<div class="box key"><span class="lab">Taylor / Maclaurin (§62)</span>
+\(f=\sum\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n\); radius = distance to nearest singularity. Reuse standard series by substitution.
+</div>
+<div class="box key"><span class="lab">Laurent (§66)</span>
+In an annulus: \(\sum a_n(z-z_0)^n+\sum\frac{b_n}{(z-z_0)^n}\). Use geometric series with \(|w|&lt;1\); \(b_1\) = residue. One expansion per annular region.
+</div>
+<div class="box key"><span class="lab">Singularity types (§78)</span>
+No neg. powers → removable; finite (ends at \(m\)) → pole order \(m\); infinite → essential.
+</div>
+<div class="box key"><span class="lab">Residue theorem (§76)</span>
+\(\displaystyle\oint_C f\,dz=2\pi i\sum_{\text{inside}}\operatorname*{Res}_{z=z_k}f.\) Many poles? \(=2\pi i\operatorname*{Res}_{z=0}[\tfrac{1}{z^2}f(1/z)].\)
+</div>
+<div class="box key"><span class="lab">Residues at poles (§80)</span>
+Simple: \(\operatorname*{Res}=\lim_{z\to z_0}(z-z_0)f=\dfrac{p(z_0)}{q'(z_0)}\).<br>
+Order \(m\): \(\operatorname*{Res}=\dfrac{\phi^{(m-1)}(z_0)}{(m-1)!}\), \(\phi=(z-z_0)^m f\).
+</div>
+</div>
+
+<div class="box warn"><span class="lab">★ Master decision tree for \(\oint_C f\,dz\)</span>
+<ol>
+<li>Analytic inside &amp; on \(C\)? → <strong>0</strong> (Cauchy–Goursat).</li>
+<li>One factor \(\tfrac{1}{z-z_0}\), rest analytic? → <strong>\(2\pi i f(z_0)\)</strong> (integral formula).</li>
+<li>Factor \(\tfrac{1}{(z-z_0)^{n+1}}\)? → <strong>\(\tfrac{2\pi i}{n!}f^{(n)}(z_0)\)</strong> (extension).</li>
+<li>Several isolated singularities inside? → <strong>\(2\pi i\sum\operatorname*{Res}\)</strong> (residue theorem).</li>
+<li>Has an antiderivative on a domain containing \(C\) (not a closed-loop-around-a-cut case)? → endpoints only.</li>
+</ol>
+Always check which singularities are actually <em>inside</em> \(C\) — ones outside contribute nothing.</div>
+
 <div class="footer">
-Study guide compiled from <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill), Chapters 1–4, §§1–47.<br>
-Covers every assigned homework page range through pp. 218–221. Good luck on the midterm.
+Study guide compiled from <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill).<br>
+Full course scope: Chapters 1–6, §§1–81 — complex numbers through residues and poles.<br>
+Covers every assigned homework page range, pp. 4–5 through pp. 246–247.
 </div>
 
 </div>
