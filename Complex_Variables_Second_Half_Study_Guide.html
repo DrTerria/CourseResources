@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complex Variables — Second-Half Study Guide (§48–§81)</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], tags: 'none' },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<style>
+  :root{
+    --ink:#1a1d24; --paper:#fbf8f1; --accent:#7a2e2e; --accent2:#1f5673;
+    --soft:#efe9dc; --line:#d9d0bd; --gold:#a8842c; --green:#3a6b41;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.6; font-size:18px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 26px 120px}
+  header.hero{
+    background:linear-gradient(135deg,#22323d,#3a2727);
+    color:#f3ecd9;padding:54px 26px 46px;text-align:center;
+    border-bottom:5px solid var(--gold);
+  }
+  header.hero h1{font-size:2rem;margin:0 0 8px;letter-spacing:.5px}
+  header.hero .sub{font-style:italic;opacity:.9;font-size:1.05rem}
+  header.hero .meta{margin-top:14px;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
+  h2.chap{
+    margin:60px 0 6px;font-size:1.6rem;color:var(--accent);
+    border-bottom:3px double var(--line);padding-bottom:6px;
+  }
+  h2.chap .tag{display:block;font-size:.68rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-style:normal}
+  h3.set{margin:40px 0 4px;font-size:1.2rem;color:var(--accent2);background:var(--soft);padding:8px 14px;border-radius:6px}
+  h3.set .pg{color:var(--gold);font-size:.9rem;font-weight:normal;float:right}
+  .prob{margin:22px 0 8px;padding-left:6px;border-left:3px solid var(--line)}
+  .prob .num{font-weight:bold;color:var(--accent);font-size:1.02rem}
+  .q{margin:.2em 0 .5em;padding-left:14px}
+  .sol{padding:10px 16px;background:#fff;border:1px solid var(--line);border-radius:6px;margin:6px 0 0}
+  .sol .lab{font-variant:small-caps;font-weight:bold;letter-spacing:1px;font-size:.78rem;color:var(--green);display:block;margin-bottom:3px}
+  .ans{margin-top:8px;font-weight:bold;color:var(--accent2)}
+  .ans::before{content:"Answer: ";font-variant:small-caps;color:var(--gold);font-weight:bold}
+  p{margin:.5em 0}
+  ul,ol{margin:.3em 0 .6em;padding-left:1.4em}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 24px;margin:30px 0;column-count:2;column-gap:38px}
+  @media(max-width:640px){.toc{column-count:1}body{font-size:17px}}
+  .toc a{color:var(--accent2);text-decoration:none;font-size:.93rem}
+  .toc a:hover{text-decoration:underline}
+  .toc .ch{font-weight:bold;color:var(--accent);display:block;margin:9px 0 2px;break-after:avoid}
+  .note{background:#f7f0db;border-left:4px solid var(--gold);padding:12px 16px;margin:18px 0;border-radius:0 6px 6px 0;font-size:.95rem}
+  a.top{font-size:.72rem;color:var(--gold);text-decoration:none;float:right;margin-top:8px}
+  .footer{text-align:center;font-size:.85rem;color:#7a7361;margin-top:56px;font-style:italic}
+  code{background:#ece5d4;padding:1px 5px;border-radius:3px;font-size:.85em}
+</style>
+</head><style>
+/* extras for this guide */
+.recipe{background:#eef3f5;border:1px solid #c6d6dd;border-radius:8px;padding:14px 18px;margin:18px 0}
+.recipe .lab{font-variant:small-caps;font-weight:bold;letter-spacing:1px;font-size:.8rem;color:var(--accent2);display:block;margin-bottom:4px}
+h3{margin:38px 0 4px;font-size:1.22rem;color:var(--accent2)}
+h3 .sec{color:var(--gold);font-size:.95rem;font-weight:normal}
+.box{background:var(--soft);border-left:4px solid var(--accent2);padding:14px 18px;margin:18px 0;border-radius:0 6px 6px 0}
+.box.key{border-left-color:var(--accent)}
+.box.warn{border-left-color:var(--gold);background:#f7f0db}
+.box .lab{font-variant:small-caps;font-weight:bold;letter-spacing:1px;font-size:.8rem;display:block;margin-bottom:4px;color:var(--accent)}
+.ex{font-size:.96rem}
+.ex .q{font-weight:bold;color:var(--accent2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+<body>
+<header class="hero">
+  <h1>Complex Variables — The Second Half</h1>
+  <div class="sub">A ground-up study guide · Cauchy's theorems, series, and residues</div>
+  <div class="meta">§48 Antiderivatives &nbsp;•&nbsp; §50 Cauchy–Goursat &nbsp;•&nbsp; §54 Integral Formula &nbsp;•&nbsp; §62–72 Taylor &amp; Laurent &nbsp;•&nbsp; §74–81 Residues &nbsp;•&nbsp; + winding numbers</div>
+</header>
+<div class="wrap">
+
+<p style="margin-top:28px">This guide teaches the second half of the course from zero. It assumes you can compute contour integrals by parametrization and use the ML inequality (the first-half material), and builds everything after that: why analytic functions make integrals collapse, how series expansions encode a function's behavior near its bad points, and how residues turn hard integrals into bookkeeping. Concepts come with the <em>why</em>, common traps are flagged, and "instructor extras" like the winding number get their own section.</p>
+
+<div class="box"><span class="lab">The arc of the second half — read this first</span>
+The whole story is one escalating question: <em>when is \(\oint_C f\,dz\) easy?</em>
+<ol>
+<li><strong>§48:</strong> If \(f\) has an antiderivative, closed loops give \(0\) and open paths only need endpoints.</li>
+<li><strong>§50:</strong> Even without finding an antiderivative, <em>analyticity inside and on the loop</em> forces \(\oint=0\) (Cauchy–Goursat).</li>
+<li><strong>§54:</strong> If there's exactly one bad point inside, the integral isn't \(0\) — it's \(2\pi i\) times the value (or derivative) of the nice part at that point (Cauchy integral formula).</li>
+<li><strong>§62–72:</strong> Series (Taylor, Laurent) give us a microscope for what a function looks like near a bad point.</li>
+<li><strong>§74–81:</strong> The microscope's \(\tfrac{1}{z-z_0}\) coefficient — the <em>residue</em> — is the only part that survives integration, and the residue theorem computes any such integral as \(2\pi i\sum\)(residues inside).</li>
+</ol>
+Every tool is a generalization of the previous one. Keep that ladder in mind and nothing here is arbitrary.</div>
+
+<!-- ================= PART 1 ================= -->
+<h2 class="chap" id="p1"><span class="tag">Part 1 — §48</span>Antiderivatives <a class="top" href="#top">↑ top</a></h2>
+
+<p>In real calculus, the Fundamental Theorem says \(\int_a^b f=F(b)-F(a)\) when \(F'=f\). The complex version is the same idea, but the conditions for an antiderivative to exist become interesting — and their failure is where all the famous results live.</p>
+
+<div class="box key"><span class="lab">Definition</span>
+\(F\) is an <strong>antiderivative</strong> of \(f\) on a domain \(D\) if \(F'(z)=f(z)\) at every point of \(D\). Since \(F\) has a complex derivative throughout \(D\), \(F\) is automatically analytic there — and an antiderivative, when it exists, is unique up to an added constant.</div>
+
+<div class="box key"><span class="lab">The three-way equivalence (the §48 theorem)</span>
+For \(f\) continuous on a domain \(D\), these are all true or all false together:
+<ol>
+<li>\(f\) has an antiderivative \(F\) on \(D\);</li>
+<li>integrals between any two fixed points of \(D\) are <strong>path-independent</strong>: \(\displaystyle\int_{z_1}^{z_2}f\,dz=F(z_2)-F(z_1)\);</li>
+<li>\(\displaystyle\oint_C f\,dz=0\) for <strong>every</strong> closed contour \(C\) lying in \(D\).</li>
+</ol>
+Read it as a diagnostic in both directions: find one closed loop with a nonzero integral, and you've <em>proved</em> no antiderivative exists on any domain containing that loop.</div>
+
+<p class="ex"><span class="q">Worked (the easy case).</span> \(\displaystyle\int_0^{1+i}z^2\,dz\): \(z^2\) is entire with antiderivative \(z^3/3\), so the path doesn't matter: \(\tfrac{(1+i)^3}{3}=\tfrac{-2+2i}{3}=\tfrac23(-1+i)\). One line — no parametrization.</p>
+
+<div class="box warn"><span class="lab">The \(1/z\) vs. \(1/z^2\) story — the single most important example in §48</span>
+Both functions are singular at \(0\), so on the unit circle <em>neither</em> satisfies Cauchy–Goursat (which needs analyticity <em>inside</em> the loop too). Yet:
+\[\oint_{|z|=1}\frac{dz}{z^2}=0\qquad\text{but}\qquad \oint_{|z|=1}\frac{dz}{z}=2\pi i.\]
+Why the difference? The antiderivative theorem only needs an antiderivative on a domain containing the <em>curve</em> — the interior is irrelevant. On the punctured plane \(z\neq0\):
+<ul>
+<li>\(1/z^2\) has the <strong>single-valued</strong> antiderivative \(-1/z\). It returns to its starting value after a loop, so the integral is \(0\).</li>
+<li>\(1/z\) would need \(\log z=\ln|z|+i\arg z\) — but \(\arg z\) grows by \(2\pi\) per loop and never returns. No single-valued antiderivative exists on any domain encircling \(0\), and the loop integral picks up exactly that argument jump: \(i\cdot2\pi\).</li>
+</ul>
+This is the \(n=-1\) exception in \(\oint_C(z-z_0)^{n}\,dz\): every integer power except \(-1\) antidifferentiates cleanly (single-valued \(\tfrac{(z-z_0)^{n+1}}{n+1}\)) and loops to \(0\); only \((z-z_0)^{-1}\) winds.</div>
+
+<div class="recipe"><span class="lab">Test: does \(f\) have an antiderivative here?</span>
+<ol>
+<li><strong>Analytic everywhere on a hole-free domain?</strong> Yes — always. Polynomials, \(e^z\), \(\sin z\), \(\cosh z\): antiderivatives exist, integrate by endpoints.</li>
+<li><strong>Singularities present, and your path loops around one?</strong> Check the <strong>residue</strong> (the \(\tfrac{1}{z-z_0}\) coefficient of the Laurent series — Part 5). Nonzero residue ⟹ no single-valued antiderivative. Residue zero at every enclosed point ⟹ an antiderivative exists despite the singularities (that's \(1/z^2\)).</li>
+<li><strong>Branch point enclosed</strong> (\(\log z\), \(z^{1/2}\), any non-integer power)? ⟹ no single-valued antiderivative on a loop around it.</li>
+</ol>
+Eyeball version: the only obstructions are a simple-pole term \(\tfrac{1}{z-z_0}\) and branch points. Everything else antidifferentiates.</div>
+
+<!-- ================= PART 2 ================= -->
+<h2 class="chap" id="p2"><span class="tag">Part 2 — §50–§53</span>The Cauchy–Goursat Theorem &amp; Deformation <a class="top" href="#top">↑ top</a></h2>
+
+<p>§48 needs you to <em>find</em> an antiderivative. Cauchy–Goursat removes that chore: analyticity alone is enough.</p>
+
+<div class="box key"><span class="lab">Cauchy–Goursat theorem (§50)</span>
+If \(f\) is analytic at every point <strong>inside and on</strong> a simple closed contour \(C\), then
+\[\oint_C f(z)\,dz=0.\]
+Both halves of the hypothesis matter: the curve <em>and</em> its whole interior. A singularity anywhere inside — even one the curve never touches — voids the theorem.</div>
+
+<p><strong>Where it comes from.</strong> Split \(f=u+iv\), \(dz=dx+i\,dy\); the contour integral becomes two real line integrals, and Green's theorem converts each into a double integral over the enclosed region:
+\[\oint_C f\,dz=\iint_R(-v_x-u_y)\,dA\;+\;i\iint_R(u_x-v_y)\,dA.\]
+Now look at the integrands: by the Cauchy–Riemann equations both are identically zero. So the integral is zero — analyticity kills it pointwise, before any integration happens. (Cauchy's original proof needed \(f'\) continuous; Goursat showed analyticity alone suffices, which is why the modern statement is so clean.)</p>
+
+<div class="box key"><span class="lab">Upgrades: simply &amp; multiply connected domains (§52–53)</span>
+A <strong>simply connected</strong> domain has no holes. There, \(\oint_C f\,dz=0\) for <em>every</em> closed contour (even self-crossing ones — they decompose into simple loops). A <strong>multiply connected</strong> domain has holes, and the right tool becomes the
+<br><br>
+<strong>Principle of deformation of paths:</strong> if \(C_1\) can be continuously deformed into \(C_2\) without ever crossing a point where \(f\) fails to be analytic, then
+\[\oint_{C_1}f\,dz=\oint_{C_2}f\,dz.\]
+This is how every big-contour problem gets reduced: shrink the contour down to a tiny circle hugging each singularity. The value of the integral only "sees" the singularities, not the shape of the curve.</div>
+
+<p class="ex"><span class="q">Worked (deformation in action).</span> Evaluate \(\oint_C\frac{dz}{z-(2+i)}\) around the rectangle \(0\le x\le3,\ 0\le y\le2\). The point \(2+i\) is inside. The integrand is analytic everywhere else, so deform the rectangle to a small circle centered at \(2+i\): the integral equals the circle's value, \(2\pi i\). No parametrization of the rectangle needed — that's the entire point of deformation.</p>
+
+<div class="box warn"><span class="lab">Trap — “analytic on the curve” is not enough</span>
+\(\oint_{|z|=1}\frac{dz}{z}\): the integrand is perfectly analytic <em>on</em> the unit circle (the only bad point is \(0\), which the curve avoids). Cauchy–Goursat still does <strong>not</strong> apply, because \(0\) is <em>inside</em>. Students lose points by checking the curve and forgetting the interior. The checklist is always: find every singularity, then ask "is it inside?"</div>
+
+<div class="box"><span class="lab">Aside your professor mentioned: the area formula</span>
+For a positively oriented simple closed contour \(C\), the Green's-theorem identity applied to \(f(z)=\bar z\) (which is nowhere analytic, so Cauchy–Goursat does <em>not</em> zero it out) gives
+\[\text{Area enclosed by }C=\frac{1}{2i}\oint_C \bar z\,dz.\]
+A line integral around the boundary measures the area inside — the complex cousin of the shoelace formula. (This is homework p. 170–172 #7.)</div>
+
+
+<!-- ================= PART 3 ================= -->
+<h2 class="chap" id="p3"><span class="tag">Part 3 — §54–§55</span>The Cauchy Integral Formula <a class="top" href="#top">↑ top</a></h2>
+
+<p>Cauchy–Goursat handles loops with <em>no</em> singularities inside. The integral formula handles the next case: exactly one bad point inside, of the special form \(\tfrac{1}{z-z_0}\). And it says something astonishing along the way.</p>
+
+<div class="box key"><span class="lab">Cauchy integral formula (§54)</span>
+Let \(f\) be analytic inside and on a positively oriented simple closed contour \(C\), with \(z_0\) interior to \(C\). Then
+\[\oint_C\frac{f(z)}{z-z_0}\,dz=2\pi i\,f(z_0).\]
+Read right-to-left it's even more striking: \(f(z_0)=\frac{1}{2\pi i}\oint_C\frac{f(z)}{z-z_0}dz\) — the boundary values of an analytic function completely determine its value at every interior point. Analytic functions are that rigid.</div>
+
+<div class="box key"><span class="lab">Extension to derivatives (§55)</span>
+\[\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\,dz=\frac{2\pi i}{n!}\,f^{(n)}(z_0).\]
+Watch the off-by-one: denominator power \(n+1\) ⟹ you take the \(n\)th derivative. A \((z-z_0)^3\) downstairs means \(n=2\) and \(\tfrac{2\pi i}{2!}f''(z_0)\).
+<br><br>
+<strong>Free consequence:</strong> since the right side exists for every \(n\), an analytic function automatically has derivatives of <em>all orders</em>, all analytic. Once complex-differentiable ⟹ infinitely differentiable. Nothing like this is true in real calculus, and it's why Taylor series (Part 4) always work for analytic functions.</div>
+
+<p><em>Why it's true, in one breath:</em> deform \(C\) to a tiny circle of radius \(\rho\) around \(z_0\) (deformation principle). On that circle \(\oint\frac{dz}{z-z_0}=2\pi i\) exactly, and the leftover error term \(\oint\frac{f(z)-f(z_0)}{z-z_0}dz\) is killed by the <strong>ML inequality</strong>: continuity makes \(|f(z)-f(z_0)|&lt;\varepsilon\) on a small enough circle, so the error is at most \(\tfrac{\varepsilon}{\rho}\cdot2\pi\rho=2\pi\varepsilon\to0\). Your first-half ML skill is literally the engine of this proof.</p>
+
+<h3 id="forcing"><span class="sec">The skill</span> Forcing an integrand into the right form</h3>
+<p>The formula only fires when the integrand looks like \(\frac{f(z)}{(z-z_0)^{k}}\) with \(f\) analytic inside. Real problems never arrive that way — the exam skill is the algebra that gets them there. The maneuvers:</p>
+
+<div class="recipe"><span class="lab">The five maneuvers</span>
+<ol>
+<li><strong>Factor the denominator</strong> completely and locate every root.</li>
+<li><strong>Sort roots inside vs. outside \(C\)</strong> (compare each \(|z_k|\) — or distance to the contour's center — against the radius). Outside roots are harmless: fold their factors into \(f\). Inside roots are the action.</li>
+<li><strong>Normalize the leading coefficient:</strong> the formula needs the factor as exactly \((z-z_0)\), so rewrite \(2z+1=2\left(z+\tfrac12\right)\) and pull the \(\tfrac12\) out front. Forgetting this scales your answer — the most common error on this topic.</li>
+<li><strong>Repeated inside factor \((z-z_0)^{n+1}\)?</strong> Use the derivative extension with the matching \(n\).</li>
+<li><strong>Two or more inside roots?</strong> Partial fractions to split into one-pole pieces (or jump to the residue theorem, Part 5, which automates exactly this).</li>
+</ol></div>
+
+<p class="ex"><span class="q">Worked — all maneuvers at once.</span> \(\displaystyle\oint_{|z|=2}\frac{z^2+1}{z(2z-1)(z-3)}\,dz.\)<br>
+<em>Factor &amp; sort:</em> roots \(0,\ \tfrac12,\ 3\); the first two are inside \(|z|=2\), and \(3\) is outside (it contributes nothing).<br>
+<em>Normalize:</em> \(2z-1=2(z-\tfrac12)\), giving a global factor \(\tfrac12\).<br>
+<em>Two inside poles — handle each:</em> at \(z=0\), strip the \(z\) factor and evaluate the rest: \(\frac{0+1}{(-\frac12)(-3)}=\frac23\). At \(z=\tfrac12\), strip \((z-\tfrac12)\): \(\frac{\frac14+1}{\frac12(\frac12-3)}=\frac{5/4}{-5/4}=-1\).<br>
+<em>Assemble:</em> \(\tfrac12\cdot2\pi i\left[\tfrac23-1\right]=\pi i\left(-\tfrac13\right)=-\dfrac{\pi i}{3}.\)<br>
+The formula was the last 10%; the form-forcing was the problem.</p>
+
+<p class="ex"><span class="q">Worked — derivative extension.</span> \(\displaystyle\oint_{|z|=1}\frac{e^{2z}}{z^4}\,dz\): denominator power \(4=n+1\Rightarrow n=3\), \(f=e^{2z}\), \(f'''(z)=8e^{2z}\), so the value is \(\frac{2\pi i}{3!}\cdot 8=\frac{8\pi i}{3}.\)</p>
+
+<div class="box"><span class="lab">Consequences worth knowing (§57–58, light touch)</span>
+From the derivative formula plus the ML inequality: <strong>Liouville's theorem</strong> — a bounded entire function is constant — and from it the <strong>Fundamental Theorem of Algebra</strong> (every nonconstant polynomial has a root: if \(P\) had none, \(1/P\) would be bounded and entire, hence constant — contradiction). These aren't in your assigned problem sets, but they show why the integral formula is considered the heart of the subject.</div>
+
+<!-- ================= PART 4 ================= -->
+<h2 class="chap" id="p4"><span class="tag">Part 4 — §62–§64</span>Taylor Series <a class="top" href="#top">↑ top</a></h2>
+
+<p>Series are the microscope: they describe a function near a point as a sum of powers. For analytic functions the microscope always works — that's Taylor's theorem — and the infinitely-many-derivatives fact from Part 3 is exactly what makes it possible.</p>
+
+<div class="box key"><span class="lab">Taylor's theorem</span>
+If \(f\) is analytic throughout an open disk \(|z-z_0|&lt;R_0\), then at every point of that disk
+\[f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n,\qquad a_n=\frac{f^{(n)}(z_0)}{n!}.\]
+With \(z_0=0\) it's called a Maclaurin series. <strong>Radius of convergence = the distance from \(z_0\) to the nearest singularity of \(f\).</strong> That one sentence answers every "largest circle of convergence" question instantly — no ratio tests needed.</div>
+
+<div class="box key"><span class="lab">The standard kit (memorize these six)</span>
+\[e^z=\sum_{n=0}^\infty\frac{z^n}{n!},\qquad\qquad \frac{1}{1-z}=\sum_{n=0}^\infty z^n\ \ (|z|&lt;1),\]
+\[\sin z=\sum_{n=0}^\infty\frac{(-1)^n z^{2n+1}}{(2n+1)!},\qquad \cos z=\sum_{n=0}^\infty\frac{(-1)^n z^{2n}}{(2n)!},\]
+\[\sinh z=\sum_{n=0}^\infty\frac{z^{2n+1}}{(2n+1)!},\qquad \cosh z=\sum_{n=0}^\infty\frac{z^{2n}}{(2n)!}.\]
+The entire ones hold for all \(z\); the geometric series needs \(|z|&lt;1\) — and it is the workhorse of Part 5.</div>
+
+<div class="box warn"><span class="lab">The technique: never differentiate, always manipulate</span>
+Computing \(f^{(n)}(z_0)\) by hand is the slow, error-prone route. Instead build new series from the kit:
+<ul>
+<li><strong>Substitute:</strong> \(\cosh(z^2)\) is the \(\cosh\) series with \(z\to z^2\). \(\frac{1}{1+w}\) is the geometric series with \(z\to-w\).</li>
+<li><strong>Multiply by powers:</strong> \(z\cosh(z^2)=\sum \tfrac{z^{4n+1}}{(2n)!}\).</li>
+<li><strong>Shift the center:</strong> for a series about \(z_0\neq0\), set \(w=z-z_0\), rewrite \(f\) in terms of \(w\) (often via an identity like \(e^z=e\cdot e^{z-1}\) or \(\sinh(w+\pi i)=-\sinh w\)), expand in \(w\).</li>
+<li><strong>Read coefficients backwards:</strong> uniqueness (Part 4½ below) means the coefficient of \(z^k\) in any valid expansion <em>is</em> \(f^{(k)}(0)/k!\) — so missing powers prove derivatives vanish. E.g. \(\sin(z^2)=\sum\tfrac{(-1)^nz^{4n+2}}{(2n+1)!}\) contains only powers \(\equiv2\pmod 4\), which instantly gives \(f^{(4n)}(0)=0\) and \(f^{(2n+1)}(0)=0\).</li>
+</ul></div>
+
+<p class="ex"><span class="q">Worked — largest circle.</span> Maclaurin series of \(\tanh z=\sinh z/\cosh z\): the nearest singularities to \(0\) are the zeros of \(\cosh z\) at \(z=\pm\tfrac{\pi}{2}i\), distance \(\tfrac\pi2\). So the series converges exactly on \(|z|&lt;\tfrac\pi2\), and dividing the two kit series gives \(\tanh z=z-\tfrac{z^3}{3}+\cdots\). The radius came from geometry, not from any convergence test.</p>
+
+<div class="box key"><span class="lab">§71–72: term-by-term operations &amp; uniqueness</span>
+Inside its circle (or annulus) of convergence, a power series may be <strong>differentiated and integrated term by term</strong>, and the resulting series converge in the same region. And representations are <strong>unique</strong>: if you produce <em>any</em> series for \(f\) in a region by <em>any</em> valid trick, it is <em>the</em> Taylor/Laurent series there — the coefficients must match \(f^{(n)}(z_0)/n!\). This is the license behind every "manipulate, don't differentiate" move, and behind removable-singularity arguments: \(\frac{1-\cos z}{z^2}=\frac{1}{2!}-\frac{z^2}{4!}+\cdots\) has no negative powers, so defining the value \(\tfrac12\) at \(0\) makes the function entire.</div>
+
+
+<!-- ================= PART 5 ================= -->
+<h2 class="chap" id="p5"><span class="tag">Part 5 — §66–§68</span>Laurent Series <a class="top" href="#top">↑ top</a></h2>
+
+<p>Taylor series need a disk where \(f\) is analytic — useless near a singularity. Laurent's theorem is the fix: in any <em>annulus</em> where \(f\) is analytic, it expands into powers of \((z-z_0)\) that include <strong>negative</strong> exponents. Those negative powers are precisely the record of how \(f\) misbehaves at \(z_0\).</p>
+
+<div class="box key"><span class="lab">Laurent's theorem</span>
+If \(f\) is analytic throughout the annulus \(R_1&lt;|z-z_0|&lt;R_2\), then everywhere in it
+\[f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n\;+\;\sum_{n=1}^{\infty}\frac{b_n}{(z-z_0)^n}.\]
+The negative-power tail is the <strong>principal part</strong>. The coefficient \(b_1\) — of \(\tfrac{1}{z-z_0}\) — is the <strong>residue</strong>, the single number Part 6 is built on. Like Taylor series, the representation in a given annulus is unique.</div>
+
+<div class="recipe"><span class="lab">How to actually find Laurent series (never use coefficient integrals)</span>
+Everything reduces to the geometric series \(\frac{1}{1-w}=\sum w^n\), valid when \(|w|&lt;1\) — the entire skill is choosing \(w\) so it's small <em>in the region you're asked about</em>.
+<ol>
+<li><strong>Partial fractions first</strong> if the denominator has several factors.</li>
+<li><strong>Near a point</strong> (small \(|z-z_0|\)): arrange each piece as \(\frac{1}{1-(\text{small})}\) and expand in positive powers.</li>
+<li><strong>Far away</strong> (large \(|z|\)): factor the biggest term out of the denominator so the ratio is \(\tfrac{1}{z}\)-sized: \(\frac{1}{z-a}=\frac1z\cdot\frac{1}{1-a/z}=\sum_{n=1}^\infty\frac{a^{n-1}}{z^{n}}\) for \(|z|&gt;|a|\). Negative powers come out automatically.</li>
+<li><strong>Off-center expansions:</strong> substitute \(w=z-z_0\) <em>everywhere first</em>, then play the same game in \(w\).</li>
+<li><strong>Singularities cut the plane into annuli</strong> — a function with bad points at \(|z|=1\) and \(|z|=2\) has three different expansions in powers of \(z\) (\(|z|&lt;1\), \(1&lt;|z|&lt;2\), \(|z|&gt;2\)), one per region. Which form of the geometric series you use for each factor depends on the region.</li>
+</ol></div>
+
+<p class="ex"><span class="q">Worked — same function, two regions.</span> \(f(z)=\dfrac{1}{z^2(1-z)}\).<br>
+<em>In \(0&lt;|z|&lt;1\):</em> \(\tfrac{1}{1-z}=\sum z^n\), so \(f=\tfrac{1}{z^2}\sum z^n=\dfrac{1}{z^2}+\dfrac1z+1+z+\cdots\) — principal part \(\tfrac{1}{z^2}+\tfrac1z\), residue \(b_1=1\).<br>
+<em>In \(|z|&gt;1\):</em> \(\tfrac{1}{1-z}=-\tfrac1z\cdot\tfrac{1}{1-1/z}=-\sum_{n=1}^\infty z^{-n}\), so \(f=-\sum_{n=3}^{\infty}\dfrac{1}{z^{n}}\) — all negative powers, and notice <em>no</em> \(\tfrac1z\) term here. Same function, different annulus, different series.</p>
+
+<p class="ex"><span class="q">Worked — substitution beats everything.</span> \(z^2\sin(1/z^2)\) on \(0&lt;|z|&lt;\infty\): drop \(w=1/z^2\) into the sine series:
+\(z^2\sum\frac{(-1)^n}{(2n+1)!}z^{-(4n+2)}=1-\dfrac{1}{3!\,z^{4}}+\dfrac{1}{5!\,z^{8}}-\cdots\) — infinitely many negative powers (an <em>essential</em> singularity, Part 6), found in one line.</p>
+
+<!-- ================= PART 6 ================= -->
+<h2 class="chap" id="p6"><span class="tag">Part 6 — §74–§81</span>Residues and Poles <a class="top" href="#top">↑ top</a></h2>
+
+<p>Here's the payoff of the whole course. Integrate the Laurent series of \(f\) term by term around a small loop at \(z_0\): every power \((z-z_0)^k\) with \(k\neq-1\) has a single-valued antiderivative and integrates to \(0\). Only the \(\tfrac{b_1}{z-z_0}\) term survives, contributing \(2\pi i\,b_1\). So <strong>the residue is the only part of a function that integration can see.</strong></p>
+
+<div class="box key"><span class="lab">Residue &amp; the residue theorem (§75–76)</span>
+At an isolated singular point \(z_0\), \(\operatorname*{Res}_{z=z_0}f=b_1\) (the \(\tfrac{1}{z-z_0}\) Laurent coefficient). If \(f\) is analytic inside and on a positively oriented simple closed contour \(C\) except at finitely many points \(z_k\) inside, then
+\[\oint_C f(z)\,dz=2\pi i\sum_{k}\operatorname*{Res}_{z=z_k}f(z).\]
+Everything earlier is a special case: no singularities ⟹ sum is empty ⟹ Cauchy–Goursat. One simple pole of the form \(\tfrac{f}{z-z_0}\) ⟹ residue is \(f(z_0)\) ⟹ the Cauchy integral formula.</div>
+
+<div class="box key"><span class="lab">The three types of isolated singularity (§78)</span>
+Classify by the principal part at \(z_0\):
+<table>
+<tr><th>Type</th><th>Principal part</th><th>Behavior / example</th></tr>
+<tr><td><strong>Removable</strong></td><td>empty (all \(b_n=0\))</td><td>fixable by defining one value; residue \(0\). \(\tfrac{\sin z}{z}\) at \(0\).</td></tr>
+<tr><td><strong>Pole of order \(m\)</strong></td><td>stops at \(\tfrac{b_m}{(z-z_0)^m},\ b_m\neq0\)</td><td>\(|f|\to\infty\). \(m=1\): simple pole. \(\tfrac{\cos z}{z}\) at \(0\) (\(m=1\)).</td></tr>
+<tr><td><strong>Essential</strong></td><td>infinitely many \(b_n\neq0\)</td><td>wild behavior; only route to the residue is the series itself. \(e^{1/z}\) at \(0\).</td></tr>
+</table></div>
+
+<div class="recipe"><span class="lab">Computing residues — the toolbox, fastest first</span>
+<ol>
+<li><strong>Simple pole, factored form</strong> \(\tfrac{\phi(z)}{z-z_0}\), \(\phi\) analytic: \(\operatorname{Res}=\phi(z_0)\). Equivalently \(\operatorname{Res}=\lim_{z\to z_0}(z-z_0)f(z)\).</li>
+<li><strong>Simple pole, \(p/q\) form</strong> where \(q\) has a simple zero at \(z_0\): \(\operatorname{Res}=\dfrac{p(z_0)}{q'(z_0)}\). Fastest when factoring is ugly (e.g. \(q=z^4+1\)).</li>
+<li><strong>Pole of order \(m\):</strong> write \(f=\dfrac{\phi(z)}{(z-z_0)^m}\) with \(\phi\) analytic, \(\phi(z_0)\neq0\); then \(\operatorname{Res}=\dfrac{\phi^{(m-1)}(z_0)}{(m-1)!}\). (For \(m=1\) this collapses to tool 1.)</li>
+<li><strong>Essential singularity (or any doubt):</strong> expand the Laurent series and read \(b_1\) directly. For products like \(z^2e^{1/z}\), multiply series and hunt the \(\tfrac1z\) term.</li>
+</ol></div>
+
+<p class="ex"><span class="q">Worked — order matters.</span> \(\operatorname*{Res}_{z=0}\dfrac{\sinh z}{z^4}\): naive guess says pole of order 4, but \(\sinh z=z+\tfrac{z^3}{3!}+\cdots\) cancels one power: \(\tfrac{\sinh z}{z^4}=\tfrac{1}{z^3}+\tfrac{1}{6z}+\cdots\). True order \(m=3\), residue \(\tfrac16\) — read straight off the series, no derivatives. <em>Lesson: when numerator and denominator both vanish, the series is faster and safer than the \(\phi^{(m-1)}\) formula.</em></p>
+
+<div class="box key"><span class="lab">Residue at infinity (§77) — the one-residue shortcut</span>
+When a contour encloses <em>many</em> singularities, trade them all for a single computation at the origin:
+\[\oint_C f(z)\,dz=2\pi i\,\operatorname*{Res}_{z=0}\!\left[\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right].\]
+Substitute, simplify, find one residue at \(0\) — done. Worth reaching for whenever three or more poles sit inside \(C\) (e.g. \(\oint_{|z|=3}\frac{(3z+2)^2}{z(z-1)(2z+5)}dz\): one residue instead of three).</div>
+
+<div class="recipe"><span class="lab">Master method for \(\oint_C f\,dz\)</span>
+<ol>
+<li>Find all singularities (factor; look for zeros of denominators, branch points, essential points).</li>
+<li>Keep only those <strong>inside</strong> \(C\). None inside ⟹ answer \(0\) and stop.</li>
+<li>Classify each (removable / pole order \(m\) / essential) and compute its residue with the cheapest tool above.</li>
+<li>Answer \(=2\pi i\times\)(sum of inside residues). Three-plus poles? Consider the residue at infinity instead.</li>
+</ol></div>
+
+<!-- ================= PART 7 ================= -->
+<h2 class="chap" id="p7"><span class="tag">Part 7 — instructor extras</span>Winding Numbers &amp; Other Things Professors Mention <a class="top" href="#top">↑ top</a></h2>
+
+<h3><span class="sec">7.1</span> The winding number</h3>
+<p>Every theorem so far assumed a <em>simple</em> closed contour — one loop, counterclockwise. The winding number handles everything else: contours that loop several times, run clockwise, or cross themselves.</p>
+
+<div class="box key"><span class="lab">Definition &amp; the master formula</span>
+The <strong>winding number</strong> \(n(C,z_0)\) is the net number of counterclockwise turns \(C\) makes around \(z_0\): each CCW loop counts \(+1\), each clockwise loop \(-1\), and a point the curve never encloses gets \(0\). It is computed/defined by
+\[n(C,z_0)=\frac{1}{2\pi i}\oint_C\frac{dz}{z-z_0},\]
+and the fully general residue theorem weights every singularity by it:
+\[\oint_C f\,dz=2\pi i\sum_k n(C,z_k)\,\operatorname*{Res}_{z=z_k}f.\]
+For a simple positively oriented contour every inside point has \(n=1\) and this collapses to the §76 statement — so the book's version is the winding-number theorem with all the weights set to 1.</div>
+
+<p><em>Why each loop adds exactly 1:</em> the antiderivative-that-isn't, \(\log(z-z_0)\), has a single-valued real part but its imaginary part \(\arg(z-z_0)\) climbs by \(2\pi\) per counterclockwise trip. The integral records the total climb: \(k\) loops ⟹ argument gain \(2\pi k\) ⟹ integral \(2\pi i k\). The winding number is just "total angle swept, in units of full turns."</p>
+
+<p class="ex"><span class="q">Worked.</span> \(C\): the unit circle traversed <em>twice</em> CCW (parametrized \(z=e^{i\theta},\ 0\le\theta\le4\pi\) — the \(4\pi\) is the tell). Then
+\(\displaystyle\oint_C\frac{e^z}{z}\,dz=2\pi i\cdot n(C,0)\cdot\operatorname*{Res}_{z=0}\frac{e^z}{z}=2\pi i\cdot2\cdot1=4\pi i.\)
+Clockwise once instead? \(n=-1\), answer \(-2\pi i\). Point outside? \(n=0\), contributes nothing — same as always.</p>
+
+<div class="box warn"><span class="lab">Recognition on an exam</span>
+Reach for winding numbers only when the problem <em>says</em> so: "traversed twice," a \(\theta\)-range longer than \(2\pi\), "clockwise"/negative orientation, or a drawn self-crossing curve. A plain "positively oriented circle" is \(n=1\) — don't overcomplicate it.</div>
+
+<h3><span class="sec">7.2</span> Quick-recognition: does an antiderivative exist?</h3>
+<div class="box"><span class="lab">The residue test, one more time</span>
+On a domain that loops around a singularity, \(f\) has a single-valued antiderivative <strong>iff the residue there is zero</strong> (and no branch point is enclosed). Nonzero residue ⟹ some loop integral is \(2\pi i\,b_1\neq0\) ⟹ no antiderivative. This unifies the \(1/z\) story, the winding number, and the residue theorem into one sentence: <em>the residue is the obstruction.</em></div>
+
+<h3><span class="sec">7.3</span> The area formula</h3>
+<div class="box"><span class="lab">Area as a contour integral</span>
+\(\displaystyle\text{Area enclosed by }C=\frac{1}{2i}\oint_C\bar z\,dz\) for a positively oriented simple closed \(C\). It works <em>because</em> \(\bar z\) is nowhere analytic — Green's theorem applies but Cauchy–Goursat can't zero it out. A favorite "explain why this doesn't contradict Cauchy–Goursat" question.</div>
+
+<!-- ================= CHEAT ================= -->
+<h2 class="chap" id="cheat"><span class="tag">One page</span>★ Second-Half Cheat Sheet <a class="top" href="#top">↑ top</a></h2>
+
+<div class="grid2">
+<div class="box key"><span class="lab">Antiderivative (§48)</span>
+\(F'=f\) on \(D\) ⟺ path-independence ⟺ all loops \(0\). Obstructions: \(\tfrac{1}{z-z_0}\) terms (nonzero residue) and branch points. \(\oint dz/z^2=0\) (antiderivative \(-1/z\)); \(\oint dz/z=2\pi i\) (\(\log\) winds).</div>
+<div class="box key"><span class="lab">Cauchy–Goursat (§50)</span>
+Analytic inside <em>and</em> on \(C\) ⟹ \(\oint_C f=0\). Check the interior, not just the curve. Deformation: slide contours through analytic territory freely.</div>
+<div class="box key"><span class="lab">Integral formula (§54–55)</span>
+\(\oint\frac{f}{z-z_0}=2\pi i f(z_0)\); \(\ \oint\frac{f}{(z-z_0)^{n+1}}=\frac{2\pi i}{n!}f^{(n)}(z_0)\). Normalize \(az-b=a(z-\tfrac ba)\) first. Power \(n{+}1\) ⟹ \(n\)th derivative.</div>
+<div class="box key"><span class="lab">Taylor (§62–64)</span>
+\(f=\sum\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n\); radius = distance to nearest singularity. Build by substitution into the six standard series; never differentiate by hand.</div>
+<div class="box key"><span class="lab">Laurent (§66–68)</span>
+Annulus ⟹ positive <em>and</em> negative powers; one expansion per annular region. Geometric series with \(|w|&lt;1\): near ⟹ positive powers; far ⟹ factor out \(z\), negative powers. \(b_1\)= residue.</div>
+<div class="box key"><span class="lab">Singularities (§78)</span>
+Principal part empty ⟹ removable (Res \(=0\)); finite ⟹ pole of order \(m\); infinite ⟹ essential (series only).</div>
+<div class="box key"><span class="lab">Residues (§75–80)</span>
+Simple: \(\lim(z-z_0)f\) or \(p(z_0)/q'(z_0)\). Order \(m\): \(\frac{\phi^{(m-1)}(z_0)}{(m-1)!}\), \(\phi=(z-z_0)^mf\). Cancellation? Trust the series, not the formula.</div>
+<div class="box key"><span class="lab">Residue theorem (§76–77) + winding</span>
+\(\oint_C f=2\pi i\sum n(C,z_k)\operatorname{Res}_{z_k}f\) (simple CCW contour: all \(n=1\)). Many poles: \(=2\pi i\operatorname{Res}_{0}[\tfrac{1}{z^2}f(1/z)]\).</div>
+</div>
+
+<div class="box warn"><span class="lab">★ The master decision tree for \(\oint_C f\,dz\)</span>
+<ol>
+<li>Singularities inside \(C\)? <strong>None</strong> ⟹ \(0\) (Cauchy–Goursat).</li>
+<li><strong>One</strong>, of the shape \(\tfrac{g}{(z-z_0)^{k}}\) with \(g\) analytic inside ⟹ integral formula (normalize coefficients; \(k=n+1\)).</li>
+<li><strong>Several</strong> ⟹ residue theorem: classify, compute each residue cheaply, sum, \(\times2\pi i\). Three+ ⟹ consider residue at infinity.</li>
+<li>Contour loops multiple times / clockwise ⟹ weight each residue by its winding number.</li>
+<li>Open path, integrand analytic with antiderivative ⟹ endpoints only.</li>
+</ol></div>
+
+<div class="footer">
+Second-half study guide — <em>Complex Variables and Applications</em>, 9th ed. (Brown &amp; Churchill), §§48–81,<br>
+plus winding numbers and other instructor extras. Pairs with the worked homework solutions file.
+</div>
+
+</div>
+</body>
+</html>
